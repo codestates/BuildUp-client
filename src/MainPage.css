@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#main-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: url("/src/images/sur.jpg");
+  background-size: cover;
+}
+
+#main-page header {
+  border: green solid 1px;
+  display: flex;
+  flex: 0.5;
+  flex-direction: row;
+}
+
+#main-page section {
+  border: green solid 1px;
+  display: flex;
+  flex: 8;
+  flex-direction: column;
+}
+#main-page footer {
+  border: green solid 1px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+#top-h,
+#top-l {
+  flex: 1;
+}
+#welcome-box {
+  flex: 1;
+}
+#welcome-box .welcome-text {
+  align-items: center;
+}
+
+#btn-beta-box {
+  flex: 1;
+}
+#btn-beta-box .btn-beta {
+  align-items: center;
+}
