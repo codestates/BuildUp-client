@@ -2,10 +2,16 @@
 const axios = require("axios");
 
 export const ACTIONS = {
+  // User
   SET_USERINFO: "SET_USERINFO",
+  // Token
   SET_ACCESSTOKEN: "SET_ACCESSTOKEN",
   SET_REFRESHTOKEN: "SETREFRESHTOKEN",
+  // Modal
   TOGGLE_MODAL: "TOGGLE_MODAL",
+  SET_MODALTYPE: "SET_MODALTYPE",
+  // Date Selector
+  SET_DATESELECTOR: "SET_DATESELECTOR",
 };
 
 // Action Creator Funcs
@@ -55,5 +61,21 @@ export const setRefreshToken = (refreshToken) => {
 export const toggleModal = () => {
   return {
     type: ACTIONS.TOGGLE_MODAL,
+  };
+};
+
+export const setModalType = (type) => {
+  return {
+    type: ACTIONS.SET_MODALTYPE,
+    payload: { type },
+  };
+};
+
+// -------------Modal--------------- //
+
+export const setDateSelector = (year, month, day) => {
+  return {
+    type: ACTIONS.SET_DATESELECTOR,
+    payload: { year, month, day },
   };
 };

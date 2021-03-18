@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "../actions/index";
+import { toggleModal, setModalType } from "../actions/index";
 import { useHistory } from "react-router";
 
 export default function MainPage() {
@@ -22,6 +22,10 @@ export default function MainPage() {
     }
   };
 
+  const handleModalType = (type) => {
+    dispatch(setModalType(type));
+  };
+
   const handleLogout = () => {};
 
   return (
@@ -32,12 +36,26 @@ export default function MainPage() {
         </div>
         <div id="button-box">
           {!isLogin ? (
-            <button onClick={handleModalToggle}>Join</button>
+            <button
+              onClick={() => {
+                handleModalToggle();
+                handleModalType("SIGNUP");
+              }}
+            >
+              Join
+            </button>
           ) : (
             <button onClick={handleLogout}>Logout</button>
           )}
           {!isLogin ? (
-            <button onClick={handleModalToggle}>Login</button>
+            <button
+              onClick={() => {
+                handleModalToggle();
+                handleModalType("LOGIN");
+              }}
+            >
+              Login
+            </button>
           ) : (
             <button onClick={handleRedirectProfile}>My Page</button>
           )}

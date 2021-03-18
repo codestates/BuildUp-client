@@ -5,6 +5,8 @@ import userInfoReducer from "./userInfoReducer";
 import accessTokenReducer from "./accessTokenReducer";
 import refreshTokenReducer from "./refreshTokenReducer";
 import modalStateReducer from "./modalStatusReducer";
+import modalTypeReducer from "./modalTypeReducer";
+import dateSelectorReducer from "./dateSelectorReducer";
 
 const rootReducer = combineReducers({
   loginStatusReducer,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   accessTokenReducer,
   refreshTokenReducer,
   modalStateReducer,
+  modalTypeReducer,
+  dateSelectorReducer,
 });
 
 export default rootReducer;
