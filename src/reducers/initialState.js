@@ -8,4 +8,6 @@ export const initialState = {
   accessToken: null,
   refreshToken: null,
   modalStatus: false,
+  modalType: null,
+  dateSelector: { year: "", month: "", day: "" },
 };

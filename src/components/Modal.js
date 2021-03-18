@@ -1,43 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../actions/index";
+import Login from "./modals/Login";
+import SignUp from "./modals/SignUp";
+import TodoManager from "./modals/TodoManager";
 
 function Modal() {
   const dispatch = useDispatch();
   const modalState = useSelector((state) => state.modalStateReducer);
+  const modalTypeState = useSelector((state) => state.modalTypeReducer);
   const isModalOpen = modalState.modalStatus;
+  const { modalType } = modalTypeState;
 
   const handleModalToggle = () => {
     dispatch(toggleModal());
   };
 
-  useEffect(() => {
-    // ComponentDidMount, Update
-    // Component Unmount
-    return () => {};
-  });
+  // TODO Modal Type에 따라 Body를 변경합니다.
+  let modalBody = "";
+  if (modalType === "LOGIN")
+    modalBody = <Login handleModalToggle={handleModalToggle} />;
+  else if (modalType === "SIGNUP")
+    modalBody = <SignUp handleModalToggle={handleModalToggle} />;
+  else if (modalType === "TODOMANAGER")
+    modalBody = <TodoManager handleModalToggle={handleModalToggle} />;
+
   return (
     <div id="modal-container" className={isModalOpen ? "deactive" : "active"}>
-      <span>Modal</span>
-      <button onClick={handleModalToggle}>확인</button>
+      {modalBody}
     </div>
   );
 }
-
-// class Modal extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { isOpen: false };
-//     this.toggleWindow = this.toggleWindow.bind(this);
-//   }
-
-//   toggleWindow() {
-//     this.setState({ isOpen: !this.state.isOpen });
-//   }
-
-//   render() {
-//     return <div></div>;
-//   }
-// }
 
 export default Modal;
