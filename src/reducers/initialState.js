@@ -1,4 +1,10 @@
 export const initialState = {
-  key1: "VALUE",
-  key2: "VALUE",
+  userInfo: {
+    username: "KIMCODING",
+    email: "KIMCODING@naver.com",
+  },
+  todoItems: [],
+  loginStatus: false,
+  accessToken: null,
+  refreshToken: null,
 };
