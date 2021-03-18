@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal, setModalType } from "../actions/index";
 import { useHistory } from "react-router";
+import {
+  setUserInfo,
+  toggleLoginStatus,
+  setAccessToken,
+  setRefreshToken,
+} from "../actions/index";
+require("dotenv").config();
 
 export default function MainPage() {
   const dispatch = useDispatch();
@@ -26,7 +33,12 @@ export default function MainPage() {
     dispatch(setModalType(type));
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    dispatch(setUserInfo(null, null));
+    dispatch(toggleLoginStatus());
+    dispatch(setAccessToken(null));
+    dispatch(setRefreshToken(null));
+  };
 
   return (
     <div id="main-page">

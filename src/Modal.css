@@ -1,5 +1,20 @@
-#modal-container.deactive {
+#modal-container {
+  padding: 20px;
+
+  width: 400px;
+  height: 600px;
+  max-height: 100%;
+  max-width: 100%;
   display: block;
+
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+
+  animation: in 0.4s ease-out;
+  border-radius: 4px;
+  background-color: grey;
 }
 
 #modal-container.active {

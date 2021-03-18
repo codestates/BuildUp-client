@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Profile from "../components/Profile";
 import ProfilePassword from "../components/ProfilePassword";
-require("dotenv").config();
 
 export default function MyPage() {
   return (

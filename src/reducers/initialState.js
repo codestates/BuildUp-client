@@ -1,7 +1,7 @@
 export const initialState = {
   userInfo: {
-    username: "KIMCODING",
-    email: "KIMCODING@naver.com",
+    username: null,
+    email: null,
   },
   todoItems: [],
   loginStatus: false,
