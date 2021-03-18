@@ -7,4 +7,5 @@ export const initialState = {
   loginStatus: false,
   accessToken: null,
   refreshToken: null,
+  modalStatus: false,
 };
