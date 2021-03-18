@@ -19,8 +19,21 @@ body {
 #main-page header {
   border: green solid 1px;
   display: flex;
-  flex: 0.5;
+  flex: 0;
   flex-direction: row;
+}
+#main-page #button-box {
+  margin-left: auto;
+  display: flex;
+  height: 50%;
+}
+#main-page .main-btn {
+  font-size: large;
+  font-weight: bold;
+  margin-right: 5px;
+  margin-top: auto;
+  width: 100px;
+  height: 40px;
 }
 
 #main-page section {
@@ -38,18 +51,25 @@ body {
 
 #top-h,
 #top-l {
-  flex: 1;
+  flex: 2;
 }
 #welcome-box {
-  flex: 1;
+  flex: 2;
 }
 #welcome-box .welcome-text {
-  align-items: center;
+  text-align: center;
+  font-size: 5rem;
 }
 
-#btn-beta-box {
-  flex: 1;
+#btn-demo-box {
+  display: flex;
+  flex: 2;
+  justify-content: center;
 }
-#btn-beta-box .btn-beta {
+#btn-demo-box .btn-demo {
   align-items: center;
+  font-weight: bolder;
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
 }

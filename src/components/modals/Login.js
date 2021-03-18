@@ -53,8 +53,33 @@ function Login(props) {
   };
 
   return (
-    <>
+    <div id="modal-login">
       <div id="modal-header">
+
+        <div id="modal-header-login">
+          <h4>로그인 페이지</h4>
+
+          <button
+            onClick={props.handleModalToggle}
+            className="modal-login-close"
+          >
+            &times;
+          </button>
+        </div>
+        <div id="modal-section">
+          <div>
+            <input type="text" className="loginId" placeholder="username" />
+          </div>
+          <div>
+            <input type="password" className="loginPw" placeholder="password" />
+          </div>
+          <div>
+            <label>자동 로그인</label>
+            <input type="checkbox"></input>
+          </div>
+        </div>
+        <div id="modal-footer">
+          <button className="login-btn">로그인</button>
         <span></span>
         <button onClick={props.handleModalToggle}>X</button>
       </div>
@@ -77,16 +102,21 @@ function Login(props) {
             defaultChecked={true}
             onChange={handleInputValue("AUTOLOGIN")}
           ></input>
+
         </div>
-        <div>
+        <div id="social-box">
           <button>GitHub</button>
           <button>Google</button>
         </div>
       </div>
+
+    </div>
+
       <div id="modal-footer">
         <button onClick={handleLogin}>확인</button>
       </div>
     </>
+
   );
 }
 

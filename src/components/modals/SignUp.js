@@ -45,7 +45,7 @@ function SignUp(props) {
   };
 
   return (
-    <>
+    <div id="modal-signup">
       <div id="modal-header">
         <span></span>
         <button onClick={props.handleModalToggle}>X</button>
@@ -53,6 +53,25 @@ function SignUp(props) {
       <div id="modal-section">
         <div>
           <span>Username</span>
+
+          <input type="text" placeholder="username"></input>
+        </div>
+        <div>
+          <span>Email</span>
+          <input type="text" placeholder="E-mail"></input>
+        </div>
+        <div>
+          <span>Confirm Email</span>
+          <input type="text" placeholder="confirm E-mail"></input>
+        </div>
+        <div>
+          <span>Password</span>
+          <input type="password" placeholder="Password"></input>
+        </div>
+        <div>
+          <span>confirm Password</span>
+          <input type="password" placeholder="confirm Password"></input>
+
           <input type="text" onChange={handleInputValue("USERNAME")}></input>
         </div>
         <div>
@@ -81,7 +100,7 @@ function SignUp(props) {
       <div id="modal-footer">
         <button onClick={handleSignUp}>확인</button>
       </div>
-    </>
+    </div>
   );
 }
 
