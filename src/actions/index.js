@@ -4,6 +4,7 @@ const axios = require("axios");
 export const ACTIONS = {
   // User
   SET_USERINFO: "SET_USERINFO",
+  TOGGLE_LOGINSTATUS: "TOGGLE_LOGINSTATUS",
   // Token
   SET_ACCESSTOKEN: "SET_ACCESSTOKEN",
   SET_REFRESHTOKEN: "SETREFRESHTOKEN",
@@ -37,6 +38,12 @@ export const setUserInfo = (username, email) => {
   return {
     type: ACTIONS.SET_USERINFO,
     payload: { username, email },
+  };
+};
+
+export const toggleLoginStatus = () => {
+  return {
+    type: ACTIONS.TOGGLE_LOGINSTATUS,
   };
 };
 
