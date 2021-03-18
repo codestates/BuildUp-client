@@ -1,0 +1,7 @@
+#modal-container.deactive {
+  display: block;
+}
+
+#modal-container.active {
+  display: none;
+}

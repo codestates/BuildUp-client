@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
-  background-image: url("/src/images/sur.jpg");
+  /* background-image: url("/src/images/sur.jpg"); */
   background-size: cover;
 }
 

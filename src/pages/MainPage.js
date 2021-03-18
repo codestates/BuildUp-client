@@ -1,7 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../actions/index";
+import { useHistory } from "react-router";
 
 export default function MainPage() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const modalState = useSelector((state) => state.modalStateReducer);
+  const loginState = useSelector((state) => state.loginStatusReducer);
+  const isModalOpen = modalState.modalStatus;
+  const isLogin = loginState.loginStatus;
+
+  const handleRedirectProfile = () => {
+    history.push("/profile");
+  };
+
+  const handleModalToggle = () => {
+    if (!isModalOpen) {
+      dispatch(toggleModal());
+    }
+  };
+
+  const handleLogout = () => {};
+
   return (
     <div id="main-page">
       <header id="header">
@@ -9,8 +31,16 @@ export default function MainPage() {
           <h1>Build Up</h1>
         </div>
         <div id="button-box">
-          <button>Login</button>
-          <button>Join</button>
+          {!isLogin ? (
+            <button onClick={handleModalToggle}>Join</button>
+          ) : (
+            <button onClick={handleLogout}>Logout</button>
+          )}
+          {!isLogin ? (
+            <button onClick={handleModalToggle}>Login</button>
+          ) : (
+            <button onClick={handleRedirectProfile}>My Page</button>
+          )}
         </div>
       </header>
       <section>

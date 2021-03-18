@@ -10,15 +10,9 @@ import "./MainPage.css";
 import "./Modal.css";
 
 function App() {
-  const [isModalOpen, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!isModalOpen);
-  };
-
   return (
     <React.Fragment>
-      <Modal toggleModal={toggleModal} />
+      <Modal />
       <Router>
         <Switch>
           <Route exact path="/">
