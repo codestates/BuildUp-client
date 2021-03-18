@@ -1,5 +1,79 @@
 #modal-container.deactive {
-  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* background-color: rgba(249, 249, 249, 0.85);
+  z-index: 100; */
+}
+
+#modal-login {
+  width: 330px;
+  height: 450px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  outline: olive solid 1px;
+}
+
+#modal-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#modal-header-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#modal-header-login .modal-login-close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: white;
+  border: 0;
+}
+.modal-login-close {
+  font-wight: bold;
+  color: #000;
+}
+#modal-header .loginId,
+.loginPw {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+}
+
+#modal-login .login-btn {
+  font-size: 14px;
+  padding: 13px 30px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  line-height: 1px;
+  border-radius: 3px;
+  border-style: none;
+}
+
+#modal-signup {
+  width: 250px;
+  height: 300px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
 }
 
 #modal-container.active {

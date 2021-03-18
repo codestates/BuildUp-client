@@ -41,11 +41,14 @@ export default function MainPage() {
                 handleModalToggle();
                 handleModalType("SIGNUP");
               }}
+              className="main-btn main-login-btn"
             >
               Join
             </button>
           ) : (
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="main-btn main-logout-btn">
+              Logout
+            </button>
           )}
           {!isLogin ? (
             <button
@@ -53,23 +56,27 @@ export default function MainPage() {
                 handleModalToggle();
                 handleModalType("LOGIN");
               }}
+              className="main-btn main-login-btn"
             >
               Login
             </button>
           ) : (
-            <button onClick={handleRedirectProfile}>My Page</button>
+            <button
+              onClick={handleRedirectProfile}
+              className="main-btn main-mypage-btn"
+            >
+              My Page
+            </button>
           )}
         </div>
       </header>
       <section>
         <div id="top-h"></div>
         <div id="welcome-box">
-          <h1 className="welcome-text">환영합니다.</h1>
+          <h3 className="welcome-text">환영합니다.</h3>
         </div>
-        <div id="btn-beta-box">
-          <button className="btn-beta">
-            <p>체험해보기</p>
-          </button>
+        <div id="btn-demo-box">
+          <button className="btn-demo">체험해보기</button>
         </div>
         <div id="top-l"></div>
       </section>
