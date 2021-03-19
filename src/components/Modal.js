@@ -25,8 +25,10 @@ function Modal() {
   else if (modalType === "TODOMANAGER")
     modalBody = <TodoManager handleModalToggle={handleModalToggle} />;
 
+  const className = isModalOpen ? "" : "active";
+
   return (
-    <div id="modal-container" className={isModalOpen ? "deactive" : "active"}>
+    <div id="modal-container" className={[className]}>
       {modalBody}
     </div>
   );

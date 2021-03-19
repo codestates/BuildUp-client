@@ -1,0 +1,24 @@
+.dayTodoItem {
+  height: 41px;
+  transition-duration: 0.4s;
+  list-style: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.grabbing {
+  cursor: grabbing;
+  /* transform: translateX(-10000px); */
+  /* color: rgba(0, 0, 0, 0); */
+}
+
+.move_stop {
+  transition-duration: 0s;
+}
+
+.move_down {
+  transform: translate(0, 41px);
+}
+
+.move_up {
+  transform: translate(0, -41px);
+}

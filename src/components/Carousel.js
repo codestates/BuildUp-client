@@ -1,38 +1,68 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import DayPage from "./carousels/DayPage";
 import WeekPage from "./carousels/WeekPage";
 import MonthPage from "./carousels/MonthPage";
 import "./temporary-CSS-for-Carousel.css";
 
 function Carousel() {
-  const items = [<DayPage />, <WeekPage />, <MonthPage />];
-  const [active, setActive] = useState(0);
+  const [pos, setPos] = useState(0);
   const [direction, setDirection] = useState("");
+  const [isValid, setValid] = useState(true);
+  const items = [<DayPage />, <WeekPage />, <MonthPage />];
+  let container = [];
 
-  const generateItems = () => {
+  const containerHandler = (items) => {
     const sorted = [];
-    for (let i = active - 1; i <= active + 1; i++) {
+    for (let i = pos - 1; i <= pos + 1; i++) {
       let idx = i;
       if (i < 0) idx = items.length + i;
-      else if (i > items.length - 1) idx = items.length - i;
-      sorted.push(items[idx]);
-    }
-    return sorted;
-  };
+      else if (i > items.length - 1) idx = i - items.length;
 
-  const handleMoveRight = () => {
-    let newActive = active;
-    --newActive < 0 ? setActive(items.length - 1) : setActive(newActive);
-    setDirection("left");
+      const item = (
+        <div className={["carousel-child", direction].join(" ")}>
+          {items[idx]}
+        </div>
+      );
+      sorted.push(item);
+    }
+    container = sorted;
   };
 
   const handleMoveLeft = () => {
-    let newActive = active;
-    ++newActive > items.length - 1 ? setActive(0) : setActive(newActive);
-    setDirection("right");
+    if (!isValid) return;
+    setValid(false);
+    setDirection("left");
+    containerHandler(items);
+
+    setTimeout(() => {
+      let newPos = pos;
+      --newPos < 0 ? setPos(items.length - 1) : setPos(newPos);
+      setDirection("");
+      containerHandler(items);
+      setTimeout(() => {
+        setValid(true);
+      }, 100);
+    }, 1000);
   };
+
+  const handleMoveRight = () => {
+    if (!isValid) return;
+    setValid(false);
+    setDirection("right");
+    containerHandler(items);
+
+    setTimeout(() => {
+      let newPos = pos;
+      ++newPos > items.length - 1 ? setPos(0) : setPos(newPos);
+      setDirection("");
+      containerHandler(items);
+      setTimeout(() => {
+        setValid(true);
+      }, 100);
+    }, 1000);
+  };
+
+  containerHandler(items);
 
   return (
     <div id="carousel-container" className="left">
@@ -41,9 +71,7 @@ function Carousel() {
           &#60;
         </button>
       </aside>
-      <TransitionGroup id="carousel-item-container" transitionName={direction}>
-        {generateItems()}
-      </TransitionGroup>
+      <div id="carousel-item-container">{container}</div>
       <aside id="carousel-aside" className="right">
         <button className="btn-carousel" id="right" onClick={handleMoveRight}>
           &#62;

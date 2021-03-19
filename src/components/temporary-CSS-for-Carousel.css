@@ -35,20 +35,38 @@ body {
 
 /* Carousel */
 #carousel-item-container {
+  position: relative;
+  left: -100%;
+  background: hotpink;
   width: 300%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .carousel-child {
   /* display: flex; */
-  width: 100%;
+  background: indianred;
+  width: 33.33333%;
   height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 200px;
   padding-right: 200px;
+
+  transition-duration: 0s;
+}
+
+.carousel-child.left {
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: translate(100%, 0);
+}
+
+.carousel-child.right {
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: translate(-100%, 0);
 }
 
 #day-container {
