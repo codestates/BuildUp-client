@@ -23,6 +23,10 @@ export default function MainPage() {
     history.push("/profile");
   };
 
+  const handleRedirectToMain = () => {
+    history.push("/");
+  };
+
   const handleModalToggle = () => {
     if (!isModalOpen) {
       dispatch(toggleModal());
@@ -40,57 +44,32 @@ export default function MainPage() {
     dispatch(setRefreshToken(null));
   };
 
-  return (
-    <div id="main-page">
+  return !isLogin ? (
+    <div id="main-page-before">
       <header id="header">
-        <div id="header-name">
-          <h1>Build Up</h1>
+        <div id="header-name" onClick={handleRedirectToMain}>
+          <label>Build Up</label>
         </div>
         <div id="button-box">
-          {!isLogin ? (
-            <div id="main-btn-box">
-              <button
-                onClick={() => {
-                  handleModalToggle();
-                  handleModalType("SIGNUP");
-                }}
-                className="main-btn main-login-btn"
-              >
-                Join
-              </button>
-            </div>
-          ) : (
-            <div id="main-btn-box">
-              <button
-                onClick={handleLogout}
-                className="main-btn main-logout-btn"
-              >
-                Logout
-              </button>
-            </div>
-          )}
-          {!isLogin ? (
-            <div id="main-btn-box">
-              <button
-                onClick={() => {
-                  handleModalToggle();
-                  handleModalType("LOGIN");
-                }}
-                className="main-btn main-login-btn"
-              >
-                Login
-              </button>
-            </div>
-          ) : (
-            <div id="main-btn-box">
-              <button
-                onClick={handleRedirectProfile}
-                className="main-btn main-mypage-btn"
-              >
-                My Page
-              </button>
-            </div>
-          )}
+          <button
+            onClick={() => {
+              handleModalToggle();
+              handleModalType("SIGNUP");
+            }}
+            className="main-btn main-login-btn"
+          >
+            Join
+          </button>
+
+          <button
+            onClick={() => {
+              handleModalToggle();
+              handleModalType("LOGIN");
+            }}
+            className="main-btn main-login-btn"
+          >
+            Login
+          </button>
         </div>
       </header>
       <section>
@@ -101,6 +80,36 @@ export default function MainPage() {
         <div id="btn-demo-box">
           <button className="btn-demo">체험해보기</button>
         </div>
+        <div id="top-l"></div>
+      </section>
+      <footer>
+        <div>dd</div>
+      </footer>
+    </div>
+  ) : (
+    <div id="main-page-after">
+      <header id="header">
+        <div id="header-name" onClick={handleRedirectToMain}>
+          <label>Build Up</label>
+        </div>
+        <div id="button-box">
+          <button onClick={handleLogout} className="main-btn main-logout-btn">
+            Logout
+          </button>
+          <button
+            onClick={handleRedirectProfile}
+            className="main-btn main-mypage-btn"
+          >
+            My Page
+          </button>
+        </div>
+      </header>
+      <section>
+        <div id="top-h"></div>
+        <div id="welcome-box">
+          <h3 className="welcome-text"></h3>
+        </div>
+        <div id="btn-demo-box"></div>
         <div id="top-l"></div>
       </section>
       <footer>
