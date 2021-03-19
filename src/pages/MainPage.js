@@ -48,37 +48,48 @@ export default function MainPage() {
         </div>
         <div id="button-box">
           {!isLogin ? (
-            <button
-              onClick={() => {
-                handleModalToggle();
-                handleModalType("SIGNUP");
-              }}
-              className="main-btn main-login-btn"
-            >
-              Join
-            </button>
+            <div id="main-btn-box">
+              <button
+                onClick={() => {
+                  handleModalToggle();
+                  handleModalType("SIGNUP");
+                }}
+                className="main-btn main-login-btn"
+              >
+                Join
+              </button>
+            </div>
           ) : (
-            <button onClick={handleLogout} className="main-btn main-logout-btn">
-              Logout
-            </button>
+            <div id="main-btn-box">
+              <button
+                onClick={handleLogout}
+                className="main-btn main-logout-btn"
+              >
+                Logout
+              </button>
+            </div>
           )}
           {!isLogin ? (
-            <button
-              onClick={() => {
-                handleModalToggle();
-                handleModalType("LOGIN");
-              }}
-              className="main-btn main-login-btn"
-            >
-              Login
-            </button>
+            <div id="main-btn-box">
+              <button
+                onClick={() => {
+                  handleModalToggle();
+                  handleModalType("LOGIN");
+                }}
+                className="main-btn main-login-btn"
+              >
+                Login
+              </button>
+            </div>
           ) : (
-            <button
-              onClick={handleRedirectProfile}
-              className="main-btn main-mypage-btn"
-            >
-              My Page
-            </button>
+            <div id="main-btn-box">
+              <button
+                onClick={handleRedirectProfile}
+                className="main-btn main-mypage-btn"
+              >
+                My Page
+              </button>
+            </div>
           )}
         </div>
       </header>

@@ -56,7 +56,9 @@ function Login(props) {
     <div id="modal-login">
       <div id="modal-login-box">
         <div id="modal-header-login">
-          <h4>로그인 페이지</h4>
+          <div>
+            <label>로그인 페이지</label>
+          </div>
           <button
             onClick={props.handleModalToggle}
             className="modal-login-close"
@@ -79,7 +81,7 @@ function Login(props) {
               />
             </div>
           </div>
-          <div>
+          <div id="auto-login">
             <label for="auto-login">자동 로그인</label>
             <input
               type="checkbox"
@@ -89,16 +91,20 @@ function Login(props) {
             />
           </div>
         </div>
-      </div>
 
-      <div id="modal-footer">
-        <button onClick={handleLogin}>확인</button>
-        <div id="social-box">
-          <div>
-            <button>GitHub</button>
+        <div id="modal-footer">
+          <div id="footer-login">
+            <button onClick={handleLogin} className="login-btn">
+              로그인
+            </button>
           </div>
-          <div>
-            <button>Google</button>
+          <div id="social-box">
+            <div id="gitHub-btn-box">
+              <button className="github-btn">GitHub</button>
+            </div>
+            <div id="google-btn-box">
+              <button className="google-btn">Google</button>
+            </div>
           </div>
         </div>
       </div>
