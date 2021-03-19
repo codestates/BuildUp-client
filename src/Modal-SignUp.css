@@ -1,0 +1,15 @@
+#modal-signup-box {
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-header-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#modal-footer {
+  margin-top: 20px;
+}

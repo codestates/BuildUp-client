@@ -1,1 +1,29 @@
+#modal-login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+#modal-header-login {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+#modal-header-login .modal-login-close {
+  margin-left: auto;
+}
+
+#auto-login {
+  margin-bottom: 10px;
+}
+
+#modal-footer button,
+#social-box button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+#social-box .github-btn-box {
+  background: rgba(0, 0, 0, 0.87);
+}
