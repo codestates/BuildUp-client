@@ -8,6 +8,7 @@ import {
   setAccessToken,
   setRefreshToken,
 } from "../actions/index";
+import Carousel from "../components/Carousel";
 require("dotenv").config();
 
 export default function MainPage() {
@@ -105,12 +106,18 @@ export default function MainPage() {
         </div>
       </header>
       <section>
-        <div id="top-h"></div>
-        <div id="welcome-box">
-          <h3 className="welcome-text"></h3>
-        </div>
-        <div id="btn-demo-box"></div>
-        <div id="top-l"></div>
+        {isLogin ? (
+          <Carousel />
+        ) : (
+          <React.Fragment>
+            <div id="top-h"></div>
+            <div id="welcome-box">
+              <h3 className="welcome-text"></h3>
+            </div>
+            <div id="btn-demo-box"></div>
+            <div id="top-l"></div>
+          </React.Fragment>
+        )}
       </section>
       <footer>
         <div>dd</div>

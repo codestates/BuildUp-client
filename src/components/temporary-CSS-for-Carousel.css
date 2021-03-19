@@ -1,0 +1,71 @@
+body {
+  overflow: hidden;
+}
+
+/* Aside */
+#carousel-aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  width: 80px;
+  height: 100%;
+  top: 0px;
+  z-index: 1000;
+}
+#carousel-aside.left {
+  left: 0px;
+}
+#carousel-aside.right {
+  right: 0px;
+}
+
+/* Btn */
+.btn-carousel {
+  background-color: inherit;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.btn-carousel:hover {
+  color: grey;
+}
+
+/* Carousel */
+#carousel-item-container {
+  width: 300%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-child {
+  /* display: flex; */
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+#day-container {
+  margin-left: 300px;
+  margin-right: 300px;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+}
+
+#week-container {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+}
+
+#week-todo-container {
+  display: flex;
+}
