@@ -48,8 +48,12 @@ function SignUp(props) {
     <div id="modal-signup">
       <div id="modal-signup-box">
         <div id="modal-header-signup">
-          <h4>회원가입 페이지</h4>
-          <button onClick={props.handleModalToggle}>&times;</button>
+          <div>
+            <label>회원가입 페이지</label>
+          </div>
+          <div>
+            <button onClick={props.handleModalToggle}>&times;</button>
+          </div>
         </div>
         <div id="modal-section">
           <div id="section-signup">
@@ -94,7 +98,9 @@ function SignUp(props) {
               />
             </div>
             <div>
-              <label for="confirm pwd">Confirm Password</label>
+              <label for="confirm pwd" required>
+                Confirm Password
+              </label>
               <input
                 type="password"
                 name="pwd"

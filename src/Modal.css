@@ -1,16 +1,17 @@
-#modal-container.active {
+#modal-container.deactive {
   position: fixed;
   z-index: 100;
   overflow: auto;
-  padding-top: 50px;
-  position: fixed;
+  border: black 1px solid;
+  cursor: pointer;
+  transform: translateY(50px);
 }
 
 #modal-container {
   padding: 20px;
 
   width: 400px;
-  height: 600px;
+  height: 60%;
   max-height: 100%;
   max-width: 100%;
   display: block;
@@ -29,7 +30,7 @@ input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -37,10 +38,15 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="password"]:focus {
+  font-size: large;
   background-color: #ddd;
   outline: none;
 }
 
-#modal-container.deactive {
+#modal-container.active {
   display: none;
+}
+button {
+  cursor: pointer;
+  border: none;
 }

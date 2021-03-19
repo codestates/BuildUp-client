@@ -26,7 +26,7 @@ function Modal() {
     modalBody = <TodoManager handleModalToggle={handleModalToggle} />;
 
   return (
-    <div id="modal-container" className={isModalOpen ? "" : "active"}>
+    <div id="modal-container" className={isModalOpen ? "deactive" : "active"}>
       {modalBody}
     </div>
   );
