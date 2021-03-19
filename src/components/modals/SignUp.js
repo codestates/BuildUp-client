@@ -46,59 +46,66 @@ function SignUp(props) {
 
   return (
     <div id="modal-signup">
-      <div id="modal-header">
-        <span></span>
-        <button onClick={props.handleModalToggle}>X</button>
-      </div>
-      <div id="modal-section">
-        <div>
-          <span>Username</span>
-
-          <input type="text" placeholder="username"></input>
+      <div id="modal-signup-box">
+        <div id="modal-header-signup">
+          <h4>회원가입 페이지</h4>
+          <button onClick={props.handleModalToggle}>&times;</button>
         </div>
-        <div>
-          <span>Email</span>
-          <input type="text" placeholder="E-mail"></input>
+        <div id="modal-section">
+          <div id="section-signup">
+            <div>
+              <label for="username" required>
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                onChange={handleInputValue("USERNAME")}
+              />
+            </div>
+            <div>
+              <label for="Email" required>
+                Email
+              </label>
+              <input
+                type="text"
+                name="Email"
+                onChange={handleInputValue("EMAIL")}
+              />
+            </div>
+            <div>
+              <label for="confirm Email" required>
+                Confirm Email
+              </label>
+              <input
+                type="text"
+                name="confirm Email"
+                onChange={handleInputValue("REEMAIL")}
+              />
+            </div>
+            <div>
+              <label for="pwd" required>
+                Password
+              </label>
+              <input
+                type="password"
+                name="pwd"
+                onChange={handleInputValue("PASSWORD")}
+              />
+            </div>
+            <div>
+              <label for="confirm pwd">Confirm Password</label>
+              <input
+                type="password"
+                name="pwd"
+                onChange={handleInputValue("REPASSWORD")}
+              />
+            </div>
+          </div>
         </div>
-        <div>
-          <span>Confirm Email</span>
-          <input type="text" placeholder="confirm E-mail"></input>
+        <div id="modal-footer">
+          <button onClick={handleSignUp}>확인</button>
         </div>
-        <div>
-          <span>Password</span>
-          <input type="password" placeholder="Password"></input>
-        </div>
-        <div>
-          <span>confirm Password</span>
-          <input type="password" placeholder="confirm Password"></input>
-
-          <input type="text" onChange={handleInputValue("USERNAME")}></input>
-        </div>
-        <div>
-          <span>Email</span>
-          <input type="text" onChange={handleInputValue("EMAIL")}></input>
-        </div>
-        <div>
-          <span>Confirm Email</span>
-          <input type="text" onChange={handleInputValue("REEMAIL")}></input>
-        </div>
-        <div>
-          <span>Password</span>
-          <input
-            type="password"
-            onChange={handleInputValue("PASSWORD")}
-          ></input>
-        </div>
-        <div>
-          <span>Confirm Password</span>
-          <input
-            type="password"
-            onChange={handleInputValue("REPASSWORD")}
-          ></input>
-        </div>
-      </div>
-      <div id="modal-footer">
-        <button onClick={handleSignUp}>확인</button>
       </div>
     </div>
   );

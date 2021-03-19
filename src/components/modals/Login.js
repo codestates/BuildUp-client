@@ -54,11 +54,9 @@ function Login(props) {
 
   return (
     <div id="modal-login">
-      <div id="modal-header">
-
+      <div id="modal-login-box">
         <div id="modal-header-login">
           <h4>로그인 페이지</h4>
-
           <button
             onClick={props.handleModalToggle}
             className="modal-login-close"
@@ -67,56 +65,44 @@ function Login(props) {
           </button>
         </div>
         <div id="modal-section">
-          <div>
-            <input type="text" className="loginId" placeholder="username" />
+          <div id="section-login">
+            <input
+              type="text"
+              onChange={handleInputValue("EMAIL")}
+              placeholder="Email"
+            />
+            <div>
+              <input
+                type="password"
+                onChange={handleInputValue("PASSWORD")}
+                placeholder="password"
+              />
+            </div>
           </div>
           <div>
-            <input type="password" className="loginPw" placeholder="password" />
+            <label for="auto-login">자동 로그인</label>
+            <input
+              type="checkbox"
+              name="auto-login"
+              defaultChecked={true}
+              onChange={handleInputValue("AUTOLOGIN")}
+            />
           </div>
-          <div>
-            <label>자동 로그인</label>
-            <input type="checkbox"></input>
-          </div>
-        </div>
-        <div id="modal-footer">
-          <button className="login-btn">로그인</button>
-        <span></span>
-        <button onClick={props.handleModalToggle}>X</button>
-      </div>
-      <div id="modal-section">
-        <div>
-          <span>Username</span>
-          <input type="text" onChange={handleInputValue("EMAIL")}></input>
-        </div>
-        <div>
-          <span>Password</span>
-          <input
-            type="password"
-            onChange={handleInputValue("PASSWORD")}
-          ></input>
-        </div>
-        <div>
-          <label>자동 로그인</label>
-          <input
-            type="checkbox"
-            defaultChecked={true}
-            onChange={handleInputValue("AUTOLOGIN")}
-          ></input>
-
-        </div>
-        <div id="social-box">
-          <button>GitHub</button>
-          <button>Google</button>
         </div>
       </div>
-
-    </div>
 
       <div id="modal-footer">
         <button onClick={handleLogin}>확인</button>
+        <div id="social-box">
+          <div>
+            <button>GitHub</button>
+          </div>
+          <div>
+            <button>Google</button>
+          </div>
+        </div>
       </div>
-    </>
-
+    </div>
   );
 }
 
