@@ -8,6 +8,8 @@ import "./App.css";
 import "./MyPage.css";
 import "./MainPage.css";
 import "./Modal.css";
+import "./Modal-Login.css";
+import "./Modal-SignUp.css";
 
 function App() {
   return (

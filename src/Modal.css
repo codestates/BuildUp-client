@@ -3,8 +3,6 @@
   z-index: 100;
   overflow: auto;
   border: black 1px solid;
-  cursor: pointer;
-  transform: translateY(50px);
 }
 
 #modal-container {

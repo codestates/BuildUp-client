@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalType } from "../../actions/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faEnvelope,
+  faUnlockAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
 require("dotenv").config();
 const axios = require("axios");
 const scheme = process.env.REACT_APP_SERVER_SCHEME;
@@ -52,59 +59,60 @@ function SignUp(props) {
             <label>회원가입 페이지</label>
           </div>
           <div>
-            <button onClick={props.handleModalToggle}>&times;</button>
+            <button
+              className="modal-signup-close"
+              onClick={props.handleModalToggle}
+            >
+              &times;
+            </button>
           </div>
         </div>
         <div id="modal-section">
           <div id="section-signup">
             <div>
-              <label for="username" required>
-                Username
-              </label>
+              <FontAwesomeIcon icon={faUser} size="2x" className="icon" />
               <input
                 type="text"
                 name="username"
                 onChange={handleInputValue("USERNAME")}
+                placeholder="Your username"
               />
             </div>
             <div>
-              <label for="Email" required>
-                Email
-              </label>
+              <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
               <input
                 type="text"
                 name="Email"
                 onChange={handleInputValue("EMAIL")}
+                placeholder="Your Email"
               />
             </div>
+
             <div>
-              <label for="confirm Email" required>
-                Confirm Email
-              </label>
+              <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
               <input
                 type="text"
                 name="confirm Email"
                 onChange={handleInputValue("REEMAIL")}
+                placeholder="Confirm Email"
               />
             </div>
             <div>
-              <label for="pwd" required>
-                Password
-              </label>
+              <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
                 type="password"
                 name="pwd"
                 onChange={handleInputValue("PASSWORD")}
+                placeholder="Password"
               />
             </div>
             <div>
-              <label for="confirm pwd" required>
-                Confirm Password
-              </label>
+              <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
                 type="password"
                 name="pwd"
                 onChange={handleInputValue("REPASSWORD")}
+                placeholder="Confirm Password"
               />
             </div>
           </div>
