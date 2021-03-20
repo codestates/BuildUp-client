@@ -15,3 +15,7 @@
 #modal-footer {
   margin-top: 20px;
 }
+#modal-header-signup {
+  border-bottom: 1px rgba(56, 56, 56, 0.281) solid;
+  box-shadow: rgba(56, 56, 56, 0.281);
+}

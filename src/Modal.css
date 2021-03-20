@@ -38,7 +38,7 @@ h2.active {
   padding: 20px;
 
   width: 400px;
-  height: 60%;
+  height: 70%;
   max-height: 100%;
   max-width: 100%;
   display: block;
@@ -52,6 +52,7 @@ h2.active {
   animation-duration: 0.4s;
   background-color: rgba(255, 255, 255, 0.911);
 }
+
 /*애니메이션 효과 */
 
 @keyframes animatetop {
@@ -73,37 +74,45 @@ input[type="password"] {
   border-radius: 4px;
   margin: 8px 0;
   outline: none;
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
   transition: 0.3s;
+  font-size: larger;
 }
 
 input[type="text"]:focus,
-input[type="password"] :focus {
+input[type="password"]:focus {
   border-color: dodgerBlue;
   box-shadow: 0 0 8px 0 dodgerBlue;
 }
-#input-icons .icon {
-  position: absolute;
+.input-icons {
+  position: relative;
+}
 
-  color: rgb(15, 15, 15);
+.input-icons input[type="text"],
+.input-icons input[type="password"] {
+  padding-left: 30px;
+}
+.input-icons .icon {
+  position: absolute;
+  color: #aaa;
+  left: 0;
+  top: 14px;
+  padding: 16px 8px;
   transition: 0.3s;
 }
 
-#input-icons {
-  width: 100%;
+.input-icons .icon:focus {
+  color: dodgerBlue;
 }
 
-.icon {
-  padding: 10px;
-  text-align: center;
-  margin-right: 30px;
+.input-icons.input-icon-bg .icon {
+  padding: 1px 5px;
+  border-radius: 4px 0 0 4px;
 }
 
-.input-field {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
+.input-icons .input-icon-bg input[type="text"]:focus + .icon {
+  color: dodgerBlue;
 }
 
 #modal-container.active {

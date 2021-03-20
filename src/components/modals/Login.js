@@ -6,6 +6,13 @@ import {
   toggleModal,
   setUserInfo,
 } from "../../actions/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faEnvelope,
+  faUnlockAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
 require("dotenv").config();
 
 const axios = require("axios");
@@ -61,12 +68,17 @@ function Login(props) {
         </div>
         <div id="modal-section">
           <div id="section-login">
-            <input
-              type="text"
-              onChange={handleInputValue("EMAIL")}
-              placeholder="Email"
-            />
-            <div>
+            <div className="input-icons input-icon-bg">
+              <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
+              <input
+                type="text"
+                onChange={handleInputValue("EMAIL")}
+                placeholder="Email"
+              />
+            </div>
+
+            <div className="input-icons input-icon-bg">
+              <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
                 type="password"
                 onChange={handleInputValue("PASSWORD")}
@@ -74,17 +86,26 @@ function Login(props) {
               />
             </div>
           </div>
-          <div id="auto-login">
-            <label for="auto-login">자동 로그인</label>
-            <input
-              type="checkbox"
-              name="auto-login"
-              defaultChecked={true}
-              onChange={handleInputValue("AUTOLOGIN")}
-            />
+          <div id="sub-login-box">
+            <div id="auto-login">
+              <label for="auto-login">자동 로그인</label>
+              <input
+                type="checkbox"
+                name="auto-login"
+                defaultChecked={true}
+                onChange={handleInputValue("AUTOLOGIN")}
+              />
+            </div>
+            <div id="find-password">
+              <input
+                type="button"
+                defaultChecked={true}
+                onChange={handleInputValue("AUTOLOGIN")}
+                value="비밀번호 찾기"
+              />
+            </div>
           </div>
         </div>
-
         <div id="modal-footer">
           <div id="footer-login">
             <button onClick={handleLogin} className="login-btn">
