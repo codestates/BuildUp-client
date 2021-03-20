@@ -10,15 +10,17 @@ body {
   position: absolute;
 
   width: 80px;
-  height: 100%;
+  height: 80%;
   top: 0px;
   z-index: 1000;
 }
 #carousel-aside.left {
   left: 0px;
+  margin-top: 45px;
 }
 #carousel-aside.right {
   right: 0px;
+  margin-top: 45px;
 }
 
 /* Btn */
@@ -35,20 +37,38 @@ body {
 
 /* Carousel */
 #carousel-item-container {
+  position: relative;
+  left: -100%;
+  background: hotpink;
   width: 300%;
   height: 100%;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
 }
 
 .carousel-child {
   /* display: flex; */
-  width: 100%;
+  background: rgb(218, 214, 214);
+  width: 33.33333%;
   height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 200px;
   padding-right: 200px;
+
+  transition-duration: 0s;
+}
+
+.carousel-child.left {
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: translate(100%, 0);
+}
+
+.carousel-child.right {
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: translate(-100%, 0);
 }
 
 #day-container {
@@ -62,10 +82,39 @@ body {
 
 #week-container {
   display: flex;
+  margin-left: 300px;
+  margin-right: 300px;
   align-items: center;
   min-height: 70vh;
 }
 
 #week-todo-container {
   display: flex;
+
+  max-height: 70vh;
+}
+
+#dayTodoItem {
+  height: 41px;
+  transition-duration: 0.4s;
+  list-style: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.grabbing {
+  cursor: grabbing;
+  /* transform: translateX(-10000px); */
+  /* color: rgba(0, 0, 0, 0); */
+}
+
+.move_stop {
+  transition-duration: 0s;
+}
+
+.move_down {
+  transform: translate(0, 41px);
+}
+
+.move_up {
+  transform: translate(0, -41px);
 }

@@ -55,32 +55,32 @@ function SignUp(props) {
     <div id="modal-signup">
       <div id="modal-signup-box">
         <div id="modal-header-signup">
-          <div>
-            <label>회원가입 페이지</label>
-          </div>
-          <div>
-            <button
-              className="modal-signup-close"
-              onClick={props.handleModalToggle}
-            >
-              &times;
-            </button>
-          </div>
+          <h2 className="active lineHover">Sign up</h2>
+          <h2 className="inactive lineHover">Login in</h2>
         </div>
         <div id="modal-section">
           <div id="section-signup">
-            <div>
-              <FontAwesomeIcon icon={faUser} size="2x" className="icon" />
+            <div id="input-icons">
+              <FontAwesomeIcon
+                icon={faUser}
+                size="2x"
+                className="icon"
+                aria-hidden="true"
+              />
+
               <input
+                className="input-field"
                 type="text"
                 name="username"
                 onChange={handleInputValue("USERNAME")}
                 placeholder="Your username"
               />
             </div>
-            <div>
+            <div id="input-icons">
               <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
+
               <input
+                className="input-field"
                 type="text"
                 name="Email"
                 onChange={handleInputValue("EMAIL")}
@@ -88,27 +88,31 @@ function SignUp(props) {
               />
             </div>
 
-            <div>
+            <div id="input-icons">
               <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
+
               <input
+                className="input-field"
                 type="text"
                 name="confirm Email"
                 onChange={handleInputValue("REEMAIL")}
                 placeholder="Confirm Email"
               />
             </div>
-            <div>
+            <div id="input-icons">
               <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
+                className="input-field"
                 type="password"
                 name="pwd"
                 onChange={handleInputValue("PASSWORD")}
                 placeholder="Password"
               />
             </div>
-            <div>
+            <div id="input-icons">
               <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
+                className="input-field"
                 type="password"
                 name="pwd"
                 onChange={handleInputValue("REPASSWORD")}
