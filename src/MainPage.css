@@ -30,7 +30,6 @@ body {
 }
 
 #main-page-before #header-name {
-  border: green solid 1px;
   margin-left: 15px;
   font-size: xx-large;
   font-weight: bolder;
@@ -43,13 +42,11 @@ body {
 
 /* flex 비율 설정 */
 #main-page-before section {
-  border: green solid 1px;
   display: flex;
   flex: 8;
   flex-direction: column;
 }
 #main-page-before footer {
-  border: green solid 1px;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -100,9 +97,6 @@ body {
   font-size: large;
   font-weight: bold;
   margin-right: 5px;
-  margin-top: auto;
-  width: 100px;
-  height: 40px;
   background: white;
   transition: 1s;
 }
@@ -141,8 +135,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
+  overflow: hidden;
   /* background-image: url("/src/images/sur.jpg"); */
   background-size: cover;
+  animation: bg 1s;
 }
 
 #main-page-after #header {
@@ -227,14 +223,13 @@ body {
   margin-top: auto;
   width: 100px;
   height: 40px;
-  background: white;
+  background: inherit;
   transition: 1s;
 }
 #main-page-after .main-btn:hover {
   background: rgba(183, 225, 230, 0.931);
   transition: 1s;
 }
-
 #main-page-after #header-name {
   transition: all 0.3s ease-in-out;
 }

@@ -39,7 +39,7 @@ body {
 #carousel-item-container {
   position: relative;
   left: -100%;
-  background: hotpink;
+  background: inherit;
   width: 300%;
   height: 100%;
   overflow: hidden;
@@ -48,7 +48,7 @@ body {
 
 .carousel-child {
   /* display: flex; */
-  background: rgb(218, 214, 214);
+  background: inherit;
   width: 33.33333%;
   height: 100%;
   padding-top: 50px;
@@ -72,8 +72,8 @@ body {
 }
 
 #day-container {
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 350px;
+  margin-right: 350px;
   min-height: 70vh;
 
   display: flex;

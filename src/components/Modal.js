@@ -37,7 +37,7 @@ function Modal() {
     loginbtn = document.querySelector(".main-login-btn");
   return (
     <div id="modal-container" className={[className]}>
-      <div>
+      <div id="modal-container-line">
         <button className="modal-signup-close" onClick={handleModalToggle}>
           &times;
         </button>

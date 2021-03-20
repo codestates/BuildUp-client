@@ -16,10 +16,23 @@
   margin-left: auto;
 }
 
+/* section 2*/
+
 #auto-login {
   margin-bottom: 10px;
 }
 
+#modal-header-login {
+  border-bottom: 1px rgba(56, 56, 56, 0.281) solid;
+  box-shadow: rgba(56, 56, 56, 0.281);
+}
+
+#sub-login-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* footer */
 #modal-footer button,
 #social-box button {
   width: 100%;

@@ -60,7 +60,7 @@ function SignUp(props) {
         </div>
         <div id="modal-section">
           <div id="section-signup">
-            <div id="input-icons">
+            <div className="input-icons input-icon-bg">
               <FontAwesomeIcon
                 icon={faUser}
                 size="2x"
@@ -76,7 +76,7 @@ function SignUp(props) {
                 placeholder="Your username"
               />
             </div>
-            <div id="input-icons">
+            <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
 
               <input
@@ -88,7 +88,7 @@ function SignUp(props) {
               />
             </div>
 
-            <div id="input-icons">
+            <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
 
               <input
@@ -99,7 +99,7 @@ function SignUp(props) {
                 placeholder="Confirm Email"
               />
             </div>
-            <div id="input-icons">
+            <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
                 className="input-field"
@@ -109,7 +109,7 @@ function SignUp(props) {
                 placeholder="Password"
               />
             </div>
-            <div id="input-icons">
+            <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
                 className="input-field"
