@@ -111,8 +111,9 @@ const DayTodoItemList = () => {
               key={index}
               data-order={index}
               data-content={val.content}
+              data-createdat={val.createdAt}
               className={["dayTodoItem", classNames, move_stop].join(" ")}
-              isDrag={isDrag}
+              isdrag={isDrag ? 1 : 0}
               //! onDragStart: Element를 드래그하기 시작할 때
               onDragStart={_onDragStart}
               // ! onDragEnd: Element의 드래그를 끝낼 때
