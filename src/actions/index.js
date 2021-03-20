@@ -81,6 +81,8 @@ export const setModalType = (type) => {
 // -------------Modal--------------- //
 
 export const setDateSelector = (year, month, day) => {
+  console.log("DAY-SELECTOR:", year, month, day);
+
   return {
     type: ACTIONS.SET_DATESELECTOR,
     payload: { year, month, day },

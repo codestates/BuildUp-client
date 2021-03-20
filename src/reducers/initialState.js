@@ -1,9 +1,12 @@
+const data = require("../Data");
+
 export const initialState = {
   userInfo: {
     username: null,
     email: null,
   },
-  todoItems: [],
+  // todoItems: [],
+  todoItems: data.data,
   loginStatus: false,
   accessToken: null,
   refreshToken: null,

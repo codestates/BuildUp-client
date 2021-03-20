@@ -36,7 +36,7 @@ function DayPage() {
         <button className="day-btn-add-todo">새로운 TODO 추가하기</button>
       </div>
       <div id="day-todo-container">
-        <DayTodoItemList />
+        <DayTodoItemList pos={time} />
       </div>
     </section>
   );

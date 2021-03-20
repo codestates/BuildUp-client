@@ -1,7 +1,3 @@
-body {
-  overflow: hidden;
-}
-
 /* Aside */
 #carousel-aside {
   display: flex;
@@ -9,7 +5,7 @@ body {
   align-items: center;
   position: absolute;
 
-  width: 80px;
+  width: 150px;
   height: 80%;
   top: 0px;
   z-index: 1000;
@@ -48,13 +44,14 @@ body {
 
 .carousel-child {
   /* display: flex; */
+  overflow: hidden;
   background: inherit;
   width: 33.33333%;
   height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-left: 0px;
+  padding-right: 0px;
 
   transition-duration: 0s;
 }
@@ -72,8 +69,9 @@ body {
 }
 
 #day-container {
-  margin-left: 350px;
-  margin-right: 350px;
+  margin-left: 500px;
+  margin-right: 500px;
+  max-height: 70vh;
   min-height: 70vh;
 
   display: flex;
@@ -82,9 +80,10 @@ body {
 
 #week-container {
   display: flex;
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 150px;
+  margin-right: 150px;
   align-items: center;
+  max-height: 70vh;
   min-height: 70vh;
 }
 
@@ -92,6 +91,7 @@ body {
   display: flex;
 
   max-height: 70vh;
+  min-height: 70vh;
 }
 
 #dayTodoItem {
@@ -118,4 +118,3 @@ body {
 .move_up {
   transform: translate(0, -41px);
 }
-
