@@ -56,15 +56,8 @@ function Login(props) {
     <div id="modal-login">
       <div id="modal-login-box">
         <div id="modal-header-login">
-          <div>
-            <label>로그인 페이지</label>
-          </div>
-          <button
-            onClick={props.handleModalToggle}
-            className="modal-login-close"
-          >
-            &times;
-          </button>
+          <h2 className="inactive lineHover">Sign Up</h2>
+          <h2 className="active lineHover">Login In</h2>
         </div>
         <div id="modal-section">
           <div id="section-login">

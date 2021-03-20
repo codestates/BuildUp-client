@@ -57,7 +57,7 @@ export default function MainPage() {
               handleModalToggle();
               handleModalType("SIGNUP");
             }}
-            className="main-btn main-login-btn"
+            className="main-btn main-signin-btn"
           >
             Join
           </button>
@@ -106,18 +106,7 @@ export default function MainPage() {
         </div>
       </header>
       <section>
-        {isLogin ? (
-          <Carousel />
-        ) : (
-          <React.Fragment>
-            <div id="top-h"></div>
-            <div id="welcome-box">
-              <h3 className="welcome-text"></h3>
-            </div>
-            <div id="btn-demo-box"></div>
-            <div id="top-l"></div>
-          </React.Fragment>
-        )}
+        <Carousel />
       </section>
       <footer>
         <div>dd</div>

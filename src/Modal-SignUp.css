@@ -8,14 +8,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
-}
-
-#section-signup i {
-  position: absolute;
-}
-.icon {
-  padding: 10px;
-  min-width: 40px;
+  margin-left: 55px;
+  margin-right: 55px;
 }
 
 #modal-footer {
