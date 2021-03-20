@@ -32,7 +32,7 @@ function Modal() {
   else if (modalType === "TODOMANAGER")
     modalBody = <TodoManager handleModalToggle={handleModalToggle} />;
 
-  const className = isModalOpen ? "" : "active";
+  const className = isModalOpen ? "active" : "deactive";
   let signinbtn = document.querySelector(".main-signin-btn"),
     loginbtn = document.querySelector(".main-login-btn");
   return (

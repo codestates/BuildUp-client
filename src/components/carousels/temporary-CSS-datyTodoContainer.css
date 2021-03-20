@@ -1,8 +1,12 @@
 .dayTodoItem {
-  height: 41px;
+  margin: 15px;
+  margin-right: 40px;
+  padding: 10px;
   transition-duration: 0.4s;
   list-style: none;
+
   color: rgba(0, 0, 0, 1);
+  background-color: grey;
 }
 
 .grabbing {
@@ -15,10 +19,16 @@
   transition-duration: 0s;
 }
 
-.move_down {
+/* .move_down {
   transform: translate(0, 41px);
 }
 
 .move_up {
   transform: translate(0, -41px);
+} */
+
+.day-todo-container-ul {
+  overflow-y: scroll;
+  height: 50vh;
+  min-height: 50vh;
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./temporary-CSS-datyTodoContainer.css";
-import { js_date } from "../../utilities/index.js";
+import "./temporary-CSS-todoManager.css";
 
 const _initGrabData = {
   target: null,
@@ -11,31 +10,30 @@ const _initGrabData = {
   updateList: [],
 };
 
-const DayTodoItemList = (props) => {
+const TodoManagerListContainer = () => {
   // const [lists, setLists] = useState([_SocialNetworks]);
   const [lists, setLists] = useState([]);
   const [grab, setGrab] = useState(_initGrabData);
   const [isDrag, setIsDrag] = useState(false);
-  const [time, setTime] = useState(props.pos);
 
+  const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
+  const { dateSelector } = dateSelectorState;
   const todoItems = todoItemsState.todoItems;
 
   useEffect(() => {
-    const [year, month, day] = [
-      js_date.getYear(time),
-      js_date.getMonth(time),
-      js_date.getDay(time),
-    ];
+    const year = `${dateSelector.year}`.padStart(4, "0");
+    const month = `${dateSelector.month}`.padStart(2, "0");
+    const day = `${dateSelector.day}`.padStart(2, "0");
+
     const curPos = `${year}-${month}-${day}`;
 
     const sorted = todoItems.filter((el) => {
       if (el.date === curPos) return true;
       return false;
     });
-
     setLists(sorted);
-  }, [time, todoItems]);
+  }, [todoItems, dateSelector]);
 
   const _onDragOver = (e) => {
     e.preventDefault();
@@ -115,45 +113,42 @@ const DayTodoItemList = (props) => {
   };
 
   return (
-    <React.Fragment>
-      {/* ! onDragOver: 드래그를 내렸을 때 발생하는 이벤트, Event.target은 덮어씌워진 Element(자신)  */}
-      <ul className="day-todo-container-ul" onDragOver={_onDragOver}>
-        {lists.map((val, index) => {
-          let classNames = "";
+    <ul id="todo-manager-container" onDragOver={_onDragOver}>
+      {lists.map((val, index) => {
+        let classNames = "";
 
-          grab.move_up.includes(index) && (classNames = "move_up");
-          grab.move_down.includes(index) && (classNames = "move_down");
+        grab.move_up.includes(index) && (classNames = "move_up");
+        grab.move_down.includes(index) && (classNames = "move_down");
 
-          let move_stop = isDrag ? "" : "move_stop";
+        let move_stop = isDrag ? "" : "move_stop";
 
-          return (
-            <li
-              key={index}
-              data-order={index}
-              data-content={val.content}
-              data-date={val.date}
-              className={["dayTodoItem", classNames, move_stop].join(" ")}
-              isdrag={isDrag ? 1 : 0}
-              //! onDragStart: Element를 드래그하기 시작할 때
-              onDragStart={_onDragStart}
-              // ! onDragEnd: Element의 드래그를 끝낼 때
-              onDragEnd={_onDragEnd}
-              // ! onDragEnter: Draggable Element가 자신의 (event.target은 자신)범위 안으로 들어갔을 때
-              onDragEnter={_onDragEnter}
-              // ! onDragLeave: Draggable Element가 자신의 (event.target은 자신)범위 밖으로 나갔을 때
-              onDragLeave={_onDragLeave}
-              draggable
-            >
-              <input type="checkbox" />
-              Order:"{index}", Primary Key "{val.id}", "{val.content}".
-            </li>
-          );
-        })}
-      </ul>
-    </React.Fragment>
+        return (
+          <div
+            key={index}
+            data-order={index}
+            data-content={val.content}
+            data-date={val.date}
+            className={["todo-manager-item", classNames, move_stop].join(" ")}
+            isdrag={isDrag ? 1 : 0}
+            //! onDragStart: Element를 드래그하기 시작할 때
+            onDragStart={_onDragStart}
+            // ! onDragEnd: Element의 드래그를 끝낼 때
+            onDragEnd={_onDragEnd}
+            // ! onDragEnter: Draggable Element가 자신의 (event.target은 자신)범위 안으로 들어갔을 때
+            onDragEnter={_onDragEnter}
+            // ! onDragLeave: Draggable Element가 자신의 (event.target은 자신)범위 밖으로 나갔을 때
+            onDragLeave={_onDragLeave}
+            draggable
+          >
+            <input type="checkbox"></input>
+            Primary Key "{val.id}", "{val.content}".
+          </div>
+        );
+      })}
+    </ul>
   );
 };
 
-export default DayTodoItemList;
+export default TodoManagerListContainer;
 
 // const _SocialNetworks = data.data;

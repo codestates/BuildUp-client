@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal, setModalType } from "../actions/index";
-import { useHistory } from "react-router";
 import {
+  toggleModal,
+  setModalType,
   setUserInfo,
   toggleLoginStatus,
   setAccessToken,
   setRefreshToken,
 } from "../actions/index";
+import { useHistory } from "react-router";
 import Carousel from "../components/Carousel";
 require("dotenv").config();
 
