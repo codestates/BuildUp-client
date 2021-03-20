@@ -18,24 +18,78 @@ function ProfilePassword() {
     history.push("/profile");
   };
 
+  const handleRedirectPassword = () => {
+    history.push("/profile/password");
+  };
+
   return (
     <div id="profile-container">
-      <div>
-        <span>현재 비밀번호</span>
-        <input type="password" placeholder="내용을 입력하세요"></input>
+      <div className="profile-header-profile">
+        <div className="profile-header-btn">
+          <div
+            id="profile-title-name"
+            className="profile-title-name profile-title"
+            onClick={handleRedirectProfile}
+          >
+            <h2>Profile</h2>
+          </div>
+          <div
+            id="profile-pwchange-btn"
+            className="profile-pwchange-btn profile-title"
+            onClick={handleRedirectPassword}
+          >
+            <h2>Change Password</h2>
+          </div>
+        </div>
       </div>
-      <div>
-        <span>새로운 비밀번호</span>
-        <input type="password" placeholder="내용을 입력하세요"></input>
+      <div id="profile-body">
+        <section id="profile-section-b">
+          <div>
+            <span>현재 비밀번호</span>
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="현재 비밀번호"
+              className="profile-pwd this-pwd"
+            />
+          </div>
+
+          <div>
+            <span>새로운 비밀번호</span>
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="세로운 비밀번호"
+              className="profile-pwd change-pwd"
+            />
+          </div>
+
+          <div>
+            <span>새로운 비밀번호 확인</span>
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="새로운 비밀번호 확인"
+              className="profile-pwd confirm-pwd"
+            />
+          </div>
+        </section>
       </div>
-      <div>
-        <span>새로운 비밀번호 확인</span>
-        <input type="password" placeholder="내용을 입력하세요"></input>
-      </div>
-      <div>
-        <button onClick={handleChangePassword}>비밀번호 변경</button>
-        <button onClick={handleRedirectProfile}>취소</button>
-      </div>
+      <footer id="profile-footer">
+        <div className="pwd-change-btn-box">
+          <button onClick={handleChangePassword} className="pwd-change-btn">
+            비밀번호 변경
+          </button>
+        </div>
+        <div className="pwd-change-btn-box">
+          <button onClick={handleRedirectProfile} className="pwd-change-btn">
+            취소
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
