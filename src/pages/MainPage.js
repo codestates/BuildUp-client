@@ -49,7 +49,7 @@ export default function MainPage() {
     <div id="main-page-before">
       <header id="header">
         <div id="header-name" onClick={handleRedirectToMain}>
-          <label>Build Up</label>
+          <span>Build Up</span>
         </div>
         <div id="button-box">
           <button
@@ -91,7 +91,7 @@ export default function MainPage() {
     <div id="main-page-after">
       <header id="header">
         <div id="header-name" onClick={handleRedirectToMain}>
-          <label>Build Up</label>
+          <span>Build Up</span>
         </div>
         <div id="button-box">
           <button onClick={handleLogout} className="main-btn main-logout-btn">
