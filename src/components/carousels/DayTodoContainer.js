@@ -4,118 +4,43 @@ import "../temporary-CSS-for-Carousel.css";
 
 function WeekPage() {
   return (
-    <section id="week-container">
-      <div id="week-main">
-        <span id="week-title">03. 14 - 03. 20 WEEK</span>
-      </div>
-      <div id="week-todo-container">
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/14 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/15 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/16 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/17 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/18 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/19 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-        <div className="week-todo-subcontainer" key="date">
-          <div className="week-todo-subtitle">03/20 SUN</div>
-          <li key="1" order="1">
-            오늘 할일은 뭘까
-          </li>
-          <li key="2" order="2">
-            오늘 할일은 뭘까
-          </li>
-          <li key="3" order="3">
-            오늘 할일은 뭘까
-          </li>
-          <li key="4" order="4">
-            오늘 할일은 뭘까
-          </li>
-        </div>
-      </div>
-    </section>
+    <React.Fragment>
+      {/* ! onDragOver: 드래그를 내렸을 때 발생하는 이벤트, Event.target은 덮어씌워진 Element(자신)  */}
+      <ul onDragOver={_onDragOver}>
+        {lists.map((val, index) => {
+          let classNames = "";
+
+          grab.move_up.includes(index) && (classNames = "move_up");
+          grab.move_down.includes(index) && (classNames = "move_down");
+
+          let move_stop = isDrag ? "" : "move_stop";
+
+          return (
+            <li
+              key={index}
+              data-order={index}
+              data-content={val.content}
+              data-createdat={val.createdAt}
+              className={["dayTodoItem", classNames, move_stop].join(" ")}
+              isdrag={isDrag ? 1 : 0}
+              //! onDragStart: Element를 드래그하기 시작할 때
+              onDragStart={_onDragStart}
+              // ! onDragEnd: Element의 드래그를 끝낼 때
+              onDragEnd={_onDragEnd}
+              // ! onDragEnter: Draggable Element가 자신의 (event.target은 자신)범위 안으로 들어갔을 때
+              onDragEnter={_onDragEnter}
+              // ! onDragLeave: Draggable Element가 자신의 (event.target은 자신)범위 밖으로 나갔을 때
+              onDragLeave={_onDragLeave}
+              draggable
+            >
+              Primary Key값은 "{val.id}", 내용은 "{val.content}", order는 "
+              {index}" 입니다.
+            </li>
+          );
+        })}
+      </ul>
+    </React.Fragment>
+
   );
 }
 
