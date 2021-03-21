@@ -4220,3 +4220,34 @@ export const data = [
     ip_address: "84.17.186.68",
   },
 ];
+
+export const weatherData = {
+  coord: { lon: 126.9863, lat: 37.2675 },
+  weather: [
+    { id: 802, main: "Clouds", description: "scattered clouds", icon: "03d" },
+  ],
+  base: "stations",
+  main: {
+    temp: 279.48,
+    feels_like: 275.01,
+    temp_min: 279.15,
+    temp_max: 280.15,
+    pressure: 1014,
+    humidity: 42,
+  },
+  visibility: 10000,
+  wind: { speed: 2.57, deg: 20, gust: 7.2 },
+  clouds: { all: 40 },
+  dt: 1616318569,
+  sys: {
+    type: 1,
+    id: 5509,
+    country: "KR",
+    sunrise: 1616276074,
+    sunset: 1616319840,
+  },
+  timezone: 32400,
+  id: 1835553,
+  name: "Suwon-si",
+  cod: 200,
+};

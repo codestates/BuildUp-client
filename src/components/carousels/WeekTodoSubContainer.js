@@ -46,9 +46,6 @@ function WeekTodoSubContainer(props) {
       }
       return false;
     });
-
-    console.log(count);
-
     setLists(sorted);
   }, [time, todoItems]);
 

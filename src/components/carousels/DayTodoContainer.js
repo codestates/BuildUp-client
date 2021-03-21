@@ -37,11 +37,11 @@ const DayTodoItemList = (props) => {
     setLists(sorted);
   }, [time, todoItems]);
 
-  const _onDragOver = (e) => {
+  const handleDragOver = (e) => {
     e.preventDefault();
   };
 
-  const _onDragStart = (e) => {
+  const handleDragStart = (e) => {
     // ! HTML Element의 커스텀 속성은 e.target.{props}로 얻을 수 없다.
     // ! getAttribute 사용해야함. dataset은 그럴 필요가 없다. 이걸 쓰도록...
     setIsDrag(true);
@@ -57,7 +57,7 @@ const DayTodoItemList = (props) => {
     e.dataTransfer.setData("text/html", e.target);
   };
 
-  const _onDragEnd = (e) => {
+  const handleDragEnd = (e) => {
     setIsDrag(false);
     e.target.classList.remove("grabbing");
     e.dataTransfer.dropEffect = "move";
@@ -74,7 +74,7 @@ const DayTodoItemList = (props) => {
     e.target.style.visibility = "visible";
   };
 
-  const _onDragEnter = (e) => {
+  const handleDragEnter = (e) => {
     if (!isDrag) return;
     let grabPosition = Number(grab.target.dataset.order);
     let listPosition = grab.position;
@@ -107,7 +107,7 @@ const DayTodoItemList = (props) => {
       position: targetPosition,
     });
   };
-  const _onDragLeave = (e) => {
+  const handleDragLeave = (e) => {
     if (!isDrag) return;
     if (e.target === grab.target) {
       e.target.style.visibility = "hidden";
@@ -117,7 +117,7 @@ const DayTodoItemList = (props) => {
   return (
     <React.Fragment>
       {/* ! onDragOver: 드래그를 내렸을 때 발생하는 이벤트, Event.target은 덮어씌워진 Element(자신)  */}
-      <ul className="day-todo-container-ul" onDragOver={_onDragOver}>
+      <ul className="day-todo-container-ul" onDragOver={handleDragOver}>
         {lists.map((val, index) => {
           let classNames = "";
 
@@ -135,13 +135,13 @@ const DayTodoItemList = (props) => {
               className={["dayTodoItem", classNames, move_stop].join(" ")}
               isdrag={isDrag ? 1 : 0}
               //! onDragStart: Element를 드래그하기 시작할 때
-              onDragStart={_onDragStart}
+              onDragStart={handleDragStart}
               // ! onDragEnd: Element의 드래그를 끝낼 때
-              onDragEnd={_onDragEnd}
+              onDragEnd={handleDragEnd}
               // ! onDragEnter: Draggable Element가 자신의 (event.target은 자신)범위 안으로 들어갔을 때
-              onDragEnter={_onDragEnter}
+              onDragEnter={handleDragEnter}
               // ! onDragLeave: Draggable Element가 자신의 (event.target은 자신)범위 밖으로 나갔을 때
-              onDragLeave={_onDragLeave}
+              onDragLeave={handleDragLeave}
               draggable
             >
               <input type="checkbox" />
