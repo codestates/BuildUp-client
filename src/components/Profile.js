@@ -20,20 +20,20 @@ function Profile() {
     <div id="profile-container">
       <div className="profile-header-profile">
         <div className="profile-header-btn">
-          <div
+          <nav
             id="profile-title-name"
             className="profile-title-name profile-title"
             onClick={handleRedirectProfile}
           >
-            <h2>Profile</h2>
-          </div>
-          <div
+            <h2>프로필</h2>
+          </nav>
+          <nav
             id="profile-pwchange-btn"
             className="profile-pwchange-btn profile-title"
             onClick={handleRedirectPassword}
           >
-            <h2>Change Password</h2>
-          </div>
+            <h2>비밀번호 변경</h2>
+          </nav>
         </div>
       </div>
       <div id="profile-body">

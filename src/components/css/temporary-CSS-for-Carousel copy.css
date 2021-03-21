@@ -1,0 +1,68 @@
+body {
+  overflow: hidden;
+}
+#carousel-container {
+  display: flex;
+  flex-direction: row;
+}
+/* Aside */
+#carousel-aside {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  z-index: 1000;
+}
+#carousel-aside.left {
+  left: 5px;
+}
+#carousel-aside.right {
+  right: 5px;
+}
+
+/* Btn */
+.btn-carousel {
+  background-color: inherit;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.btn-carousel:hover {
+  color: grey;
+}
+
+/* Carousel */
+#carousel-item-container {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-child {
+  /* display: flex; */
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+#day-container {
+  margin-left: 300px;
+  margin-right: 300px;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
+#week-container {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+}
+
+#week-todo-container {
+  display: flex;
+}

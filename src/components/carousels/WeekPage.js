@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../temporary-CSS-for-Carousel.css";
+import "../css/temporary-CSS-for-Carousel.css";
 import { js_date } from "../../utilities/index.js";
 import WeekTodoSubContainer from "./WeekTodoSubContainer";
-import "./temporary-CSS-weekTodoContainer.css";
+import "../css/temporary-CSS-weekTodoContainer.css";
 
 function WeekPage() {
   const [time, setTime] = useState(new Date());

@@ -23,7 +23,7 @@ function ProfilePassword() {
   };
 
   return (
-    <div id="profile-container">
+    <div id="profile-container" className="profile-container">
       <div className="profile-header-profile">
         <div className="profile-header-btn">
           <div
@@ -31,14 +31,14 @@ function ProfilePassword() {
             className="profile-title-name profile-title"
             onClick={handleRedirectProfile}
           >
-            <h2>Profile</h2>
+            <h2>프로필</h2>
           </div>
           <div
             id="profile-pwchange-btn"
             className="profile-pwchange-btn profile-title"
             onClick={handleRedirectPassword}
           >
-            <h2>Change Password</h2>
+            <h2>비밀번호 변경</h2>
           </div>
         </div>
       </div>

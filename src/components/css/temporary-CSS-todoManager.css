@@ -1,0 +1,18 @@
+#week-container {
+  display: flex;
+}
+
+#todo-manager-container {
+  min-height: 30vh;
+  max-height: 30vh;
+  overflow-x: hidden;
+}
+
+.todo-manager-item {
+  margin: 10px;
+  margin-left: 0px;
+  padding: 5px;
+  background-color: grey;
+  transition-duration: 0.35s;
+  transition-timing-function: ease;
+}
