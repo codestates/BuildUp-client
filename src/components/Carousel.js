@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DayPage from "./carousels/DayPage";
 import WeekPage from "./carousels/WeekPage";
 import MonthPage from "./carousels/MonthPage";
-import "./temporary-CSS-for-Carousel.css";
+import "./css/temporary-CSS-for-Carousel.css";
 
 function Carousel() {
   const [pos, setPos] = useState(0);

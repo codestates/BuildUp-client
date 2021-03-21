@@ -10,7 +10,7 @@ function Sidebar(props) {
   };
 
   return (
-    <aside id="sidebar">
+    <div id="sidebar">
       <div
         id="header-name"
         className="sidebar-header-name"
@@ -21,7 +21,7 @@ function Sidebar(props) {
       <button className="sidebar-btn-back" onClick={handleRedirectToMain}>
         메인 페이지로 돌아가기
       </button>
-    </aside>
+    </div>
   );
 }
 
