@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./temporary-CSS-todoManager.css";
+import "../css/temporary-CSS-todoManager.css";
 
 const _initGrabData = {
   target: null,

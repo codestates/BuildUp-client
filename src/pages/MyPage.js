@@ -11,11 +11,11 @@ export default function MyPage() {
     history.push("/");
   };
   return (
-    <div id="myPage-body">
-      <header id="myPage-header">
+    <div id="myPage-box" className="myPage-box">
+      <aside id="myPage-aside">
         <Sidebar />
-      </header>
-      <section id="myPage">
+      </aside>
+      <section id="myPage-section" className="myPage-section">
         <Router>
           <Switch>
             <Route exact path="/profile">

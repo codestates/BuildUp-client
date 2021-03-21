@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../temporary-CSS-for-Carousel.css";
+import "../css/temporary-CSS-for-Carousel.css";
 import { js_date } from "../../utilities/index.js";
 import {
   toggleModal,
   setModalType,
   setDateSelector,
 } from "../../actions/index";
-import "./temporary-CSS-weekTodoContainer.css";
+import "../css/temporary-CSS-weekTodoContainer.css";
 
 function WeekTodoSubContainer(props) {
   // TODO 아래 변수를 조정하여 화면에 노출되는 최대 TODO 갯수를 조정할 수 있습니다.
