@@ -132,7 +132,12 @@ const DayTodoItemList = (props) => {
               data-order={index}
               data-content={val.content}
               data-date={val.date}
-              className={["dayTodoItem", classNames, move_stop].join(" ")}
+              className={[
+                "dayTodoItem",
+                classNames,
+                move_stop,
+                "cursor-move",
+              ].join(" ")}
               isdrag={isDrag ? 1 : 0}
               //! onDragStart: Element를 드래그하기 시작할 때
               onDragStart={handleDragStart}

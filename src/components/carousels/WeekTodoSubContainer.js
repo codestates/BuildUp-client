@@ -11,7 +11,7 @@ import "../css/temporary-CSS-weekTodoContainer.css";
 
 function WeekTodoSubContainer(props) {
   // TODO 아래 변수를 조정하여 화면에 노출되는 최대 TODO 갯수를 조정할 수 있습니다.
-  const MAX_ELEMENTS_COUNT = 5;
+  const MAX_ELEMENTS_COUNT = 8;
 
   const dispatch = useDispatch();
   const [time, setTime] = useState(props.pos);
@@ -37,7 +37,10 @@ function WeekTodoSubContainer(props) {
 
     const count = {};
 
-    const sorted = todoItems.filter((el) => {
+    const tempStore = Object.assign([], todoItems);
+    tempStore.sort((a, b) => a.order - b.order);
+
+    const sorted = tempStore.filter((el) => {
       if (el.date === curPos) {
         if (count[el.date] >= MAX_ELEMENTS_COUNT) return false;
         if (!count[el.date]) count[el.date] = 1;
@@ -76,8 +79,11 @@ function WeekTodoSubContainer(props) {
       {lists.map((el, idx) => {
         return (
           <div className="week-todo-subcontainer-item">
-            <input type="checkbox" />
-            <li key={`${el.id}`} data-order={`${el.order}`}>
+            <li
+              key={`${el.id}`}
+              data-order={`${el.order}`}
+              className={el.checked ? "checked" : ""}
+            >
               {el.content}
             </li>
           </div>

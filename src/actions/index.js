@@ -13,6 +13,9 @@ export const ACTIONS = {
   SET_MODALTYPE: "SET_MODALTYPE",
   // Date Selector
   SET_DATESELECTOR: "SET_DATESELECTOR",
+  // TODO
+  CREATE_TODOLIST: "CREATE_TODOLIST",
+  UPDATE_TODOLIST: "UPDATE_TODOLIST",
 };
 
 // Action Creator Funcs
@@ -90,5 +93,18 @@ export const setDateSelector = (year, month, day) => {
 };
 
 // -------------TodoList--------------- //
-
 export const getTodoList = (accessToken) => {};
+
+export const createTodoList = ({ order, content, date }) => {
+  return {
+    type: ACTIONS.CREATE_TODOLIST,
+    payload: { order, content, date },
+  };
+};
+
+export const updateTodoList = ({ id, order, content, checked }) => {
+  return {
+    type: ACTIONS.UPDATE_TODOLIST,
+    payload: { id, order, content, checked },
+  };
+};

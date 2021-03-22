@@ -14,14 +14,14 @@ function Modal() {
   const loginState = useSelector((state) => state.loginStatusReducer);
   const isLogin = loginState.loginStatus;
 
-  useEffect(() => {
-    const handleEventClose = (e) => {
-      if (e.keyCode === 27 && isModalOpen) {
-        dispatch(toggleModal());
-      }
-    };
-    window.addEventListener("keydown", handleEventClose);
-  }, [isModalOpen, dispatch]);
+  // useEffect(() => {
+  //   const handleEventClose = (e) => {
+  //     if (e.keyCode === 27 && isModalOpen) {
+  //       dispatch(toggleModal());
+  //     }
+  //   };
+  //   window.addEventListener("keydown", handleEventClose);
+  // }, [isModalOpen, dispatch]);
 
   const handleModalToggle = () => {
     dispatch(toggleModal());
