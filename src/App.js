@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import Modal from "./components/Modal";
-import "./App.css";
-import "./MyPage.css";
-import "./MainPage.css";
-import "./Modal.css";
-import "./Modal-Login.css";
-import "./Modal-SignUp.css";
+import "./css/App.css";
+import "./css/MyPage.css";
+import "./css/MainPage.css";
+import "./css/Modal.css";
+import "./css/Modal-Login.css";
+import "./css/Modal-SignUp.css";
 
 function App() {
   return (
