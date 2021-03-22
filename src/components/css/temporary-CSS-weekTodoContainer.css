@@ -24,7 +24,7 @@
   flex-direction: column;
   padding: 0.8rem;
   overflow: hidden;
-  /* border-right: 1px solid var(--main-color-carousel-lightgrey); */
+  border-right: 1px solid var(--main-color-carousel-lightgrey);
   transition: 0.3s;
 }
 
