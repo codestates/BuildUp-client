@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDateSelector } from "../../actions/index";
 import { js_date } from "../../utilities/index.js";
 import TodoManagerListContainer from "./TodoManagerListContainer";
+import { createTodoList } from "../../actions/index";
 
 function TodoManager(props) {
   const dispatch = useDispatch();
@@ -11,6 +12,10 @@ function TodoManager(props) {
   const { dateSelector } = dateSelectorState;
   const [text, setText] = useState("");
   const [isTextareaActive, setTextarea] = useState("false");
+  const [word, setWord] = useState("");
+  const [maxOrder, setMaxorder] = useState(0);
+
+  useEffect(() => {}, [dateSelector]);
 
   const handleDateChangerLeft = () => {
     const { year, month, day } = dateSelector;
@@ -48,16 +53,26 @@ function TodoManager(props) {
       ),
     );
   };
+  const handleAddTodo = () => {
+    let { year, month, day } = dateSelector;
+    year = year.toString().padStart(4, "0");
+    month = month.toString().padStart(2, "0");
+    day = day.toString().padStart(2, "0");
+    const date = `${year}-${month}-${day}`;
+
+    dispatch(createTodoList({ content: word, date, order: maxOrder + 1 }));
+    toggleTextarea();
+  };
+
+  const handleMaxOrder = (number) => {
+    setMaxorder(number);
+  };
   const handleRemoveTodo = () => {};
   const handleSendNewTodo = () => {
     // TODO 1. 타당성 검사
-
     // TODO 2. 이상 없으면 새로운 TODO 추가(Req)
-
     // TODO 3. 새로운 TODO 목록 수신(Res)
-
     // TODO 4. 이상 없으면 원래 창으로 복귀
-    toggleTextarea();
   };
 
   const toggleTextarea = () => {
@@ -74,15 +89,20 @@ function TodoManager(props) {
         <button onClick={handleDateChangerRight}>&#62;</button>
       </div>
       <div id="modal-section">
-        <TodoManagerListContainer />
+        <TodoManagerListContainer handleMaxOrder={handleMaxOrder} />
       </div>
       {/* Footer */}
       <div id="modal-footer">
         {!isTextareaActive ? (
           <>
-            <textarea></textarea>
+            <textarea
+              onChange={(e) => {
+                console.log(e.target.value);
+                setWord(e.target.value);
+              }}
+            ></textarea>
             <div>
-              <button onClick={handleSendNewTodo}>확인</button>
+              <button onClick={handleAddTodo}>확인</button>
               <button onClick={toggleTextarea}>취소</button>
             </div>
           </>

@@ -77,3 +77,15 @@ button {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
+
+.checked {
+  text-decoration: line-through;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}

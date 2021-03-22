@@ -5,8 +5,23 @@ const host = process.env.REACT_APP_SERVER_HOST;
 const port = process.env.REACT_APP_SERVER_PORT;
 const api_key = process.env.REACT_APP_SERVER_APIKEY;
 
-export const getUserInfo = (callback) => {
-  axios.get(`${scheme}://${host}:${port}/user/info`, {});
+export const useFecth = (
+  endPoint,
+  method,
+  data,
+  callback1,
+  callback2 = (err) => console.log(err),
+) => {
+  // ! ENDPOINT, METHOD, DATA, CALLBACK1, CALLBACK2(ERR)
+  const url = `${scheme}://${host}:${port}${endPoint}`;
+  axios({
+    url,
+    method,
+    data,
+    withCredentials: true,
+  })
+    .then((data) => callback1(data))
+    .catch((err) => callback2(err));
 };
 
 // --------- 현재 시간을 기준으로 년/월/일을 얻을 수 있는 메서드 --------- //
