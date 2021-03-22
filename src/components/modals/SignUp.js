@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { setModalType } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -57,7 +56,7 @@ function SignUp(props) {
         <div id="modal-header-signup" className="disable-select">
           <h2 className="active lineHover">Sign up</h2>
           <h2 className="inactive lineHover" onClick={props.handleModalType}>
-            Login in
+            Sign in
           </h2>
         </div>
         <div id="modal-section">

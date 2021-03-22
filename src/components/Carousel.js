@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DayPage from "./carousels/DayPage";
 import WeekPage from "./carousels/WeekPage";
 import MonthPage from "./carousels/MonthPage";

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-for-Carousel.css";
 import { js_date } from "../../utilities/index.js";
 import WeekTodoSubContainer from "./WeekTodoSubContainer";
 import "../css/temporary-CSS-weekTodoContainer.css";
+import { startOfWeek, addDays, format } from "date-fns";
 
 function WeekPage() {
   const [time, setTime] = useState(new Date());
@@ -49,20 +49,38 @@ function WeekPage() {
     };
   }, [day]);
 
+  const renderDays = () => {
+    const dateFormat = "MM. dd. eee";
+    const days = [];
+    let startDate = startOfWeek(new Date());
+
+    for (let i = 0; i < 7; i++) {
+      days.push(
+        <div className="week-todo-subtitle" key={i}>
+          {format(addDays(startDate, i), dateFormat)}
+        </div>,
+      );
+    }
+    return days;
+  };
+
   return (
     <section id="week-container" className="disable-select week-title-font">
       <div id="week-main-title">
         <span id="week-title" className="week-title-font">
-          03. 14 - 03. 20 WEEK
+          Week
         </span>
       </div>
       <div id="week-todo-container">
-        {}
-        {weekArr.map((el, idx) => {
-          return (
-            <WeekTodoSubContainer pos={el} key={idx}></WeekTodoSubContainer>
-          );
-        })}
+        <div id="week-todo-subtitle-container">{renderDays()}</div>
+
+        <div id="week-todo-container-lists">
+          {weekArr.map((el, idx) => {
+            return (
+              <WeekTodoSubContainer pos={el} key={idx}></WeekTodoSubContainer>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

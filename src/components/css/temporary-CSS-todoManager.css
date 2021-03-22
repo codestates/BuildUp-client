@@ -1,19 +1,37 @@
-#week-container {
-  display: flex;
-}
-
 #todo-manager-container {
   min-height: 30vh;
   max-height: 30vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  /* border-bottom: 1px solid var(--main-color-grey); */
 }
 
 .todo-manager-item {
-  margin: 10px;
-  margin-left: 0px;
-  padding: 5px;
-  background-color: grey;
+  display: flex;
+  margin: 0.6rem;
+  margin-left: -2.5rem;
+  padding: 0;
+  padding-top: 0.2rem;
+  padding-bottom: 0.6rem;
+
+  border-bottom: solid 1px #cbcaca;
   transition-duration: 0.35s;
   transition-timing-function: ease;
+}
+
+textarea {
+  margin-bottom: 1rem;
+  height: 3.5rem;
+  border: 0.12rem solid var(--main-color-grey);
+  border-radius: 0.4rem;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  margin-bottom: 1rem;
+  height: 3.5rem;
+  border: 0.12rem solid var(--main-color-hightlight-sub);
+  border-radius: 0.4rem;
+  outline: none;
+  box-shadow: 0 0px 1rem 0 var(--main-color-hightlight);
 }

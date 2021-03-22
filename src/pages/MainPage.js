@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleModal,
@@ -50,7 +49,7 @@ export default function MainPage() {
     <div id="main-page-before">
       <header id="header">
         <div id="header-name" onClick={handleRedirectToMain}>
-          <span>Build Up</span>
+          <span>Buildup</span>
         </div>
         <div id="button-box">
           <button
@@ -79,9 +78,9 @@ export default function MainPage() {
         <div id="welcome-box">
           <h3 className="welcome-text">환영합니다.</h3>
         </div>
-        <div id="btn-demo-box" className="btn-demo-box">
+        {/* <div id="btn-demo-box" className="btn-demo-box">
           <button className="btn-demo">체험해보기</button>
-        </div>
+        </div> */}
         <div id="top-l"></div>
       </section>
       <footer>
@@ -93,7 +92,7 @@ export default function MainPage() {
     <div id="main-page-after">
       <header id="header">
         <div id="header-name" onClick={handleRedirectToMain}>
-          <span>Build Up</span>
+          <span>Buildup</span>
         </div>
         <div id="button-box">
           <button onClick={handleLogout} className="main-btn main-logout-btn">
@@ -103,7 +102,7 @@ export default function MainPage() {
             onClick={handleRedirectProfile}
             className="main-btn main-mypage-btn"
           >
-            My Page
+            Profile
           </button>
         </div>
       </header>

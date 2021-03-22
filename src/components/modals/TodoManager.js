@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setDateSelector } from "../../actions/index";
 import { js_date } from "../../utilities/index.js";
@@ -15,7 +14,10 @@ function TodoManager(props) {
   const [word, setWord] = useState("");
   const [maxOrder, setMaxorder] = useState(0);
 
-  useEffect(() => {}, [dateSelector]);
+  useEffect(() => {
+    const el = document.getElementById("todo-manager-container");
+    el.scrollTo(0, 0);
+  }, [dateSelector]);
 
   const handleDateChangerLeft = () => {
     const { year, month, day } = dateSelector;
@@ -62,6 +64,9 @@ function TodoManager(props) {
 
     dispatch(createTodoList({ content: word, date, order: maxOrder + 1 }));
     toggleTextarea();
+
+    const el = document.getElementById("todo-manager-container");
+    el.scrollTo(0, el.scrollHeight);
   };
 
   const handleMaxOrder = (number) => {
@@ -81,12 +86,13 @@ function TodoManager(props) {
   return (
     <>
       <div id="modal-header">
-        <span></span>
-        <button onClick={handleDateChangerLeft}>&#60;</button>
-        <span>
-          {dateSelector.month}월{dateSelector.day}일
-        </span>
-        <button onClick={handleDateChangerRight}>&#62;</button>
+        <div id="modal-header-daySelector">
+          <button onClick={handleDateChangerLeft}>&#60;</button>
+          <span>
+            {dateSelector.month}월 {dateSelector.day}일
+          </span>
+          <button onClick={handleDateChangerRight}>&#62;</button>
+        </div>
       </div>
       <div id="modal-section">
         <TodoManagerListContainer handleMaxOrder={handleMaxOrder} />
@@ -108,8 +114,7 @@ function TodoManager(props) {
           </>
         ) : (
           <>
-            <button onClick={toggleTextarea}>+</button>
-            <span>새로운 TODO 추가</span>
+            <button onClick={toggleTextarea}>새로운 TODO 작성하기</button>
           </>
         )}
       </div>

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import MonthCalendar from "./MonthCalendar";
 import "../css/temporary-CSS-monthTodoContainer.css";
 import "../css/temporary-CSS-for-Carousel.css";
@@ -29,8 +28,9 @@ function MonthPage() {
     <section id="month-container" className="disable-select">
       <div id="month-main">
         <span id="month-header">{js_date.getMonth(time, "label")}</span>
-        {renderDays()}
       </div>
+      <div id="month-main-days">{renderDays()}</div>
+
       <MonthCalendar />
     </section>
   );

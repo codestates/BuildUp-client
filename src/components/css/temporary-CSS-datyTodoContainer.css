@@ -1,47 +1,83 @@
 #day-container #day-main {
+  flex: 1;
   align-items: center;
   text-align: center;
-  max-height: 8vh;
-  min-height: 8vh;
+  margin-bottom: 1rem;
 }
 #day-main #day-title {
-  font-weight: bolder;
-  font-size: 4em;
-  color: white;
+  font-size: 4rem;
+  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  filter: drop-shadow(0 0 100rem, black);
+  color: var(--main-color-hightlight);
+  opacity: 0.98;
 }
 
 #day-todo-container {
-  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  background-color: var(--main-color-carousel-white);
+  align-items: center;
+  border-radius: 0.5rem;
 }
 #day-button-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.5rem;
   align-items: center;
   text-align: center;
-  margin: 5 px;
-  padding: 15px;
 }
 .day-btn-add-todo {
-  padding: 10px 50px;
-  background-color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1em;
-  transition: 0.3s linear;
+  flex: 1;
+  padding: 0.8rem;
+  width: 100%;
 }
-.day-btn-add-todo:hover {
-  transition: 0.3s linear;
-  background-color: black;
-  color: white;
+
+.day-textarea {
+  flex: 8;
+  margin: 0.5rem;
+
+  border: 0.12rem solid var(--main-color-grey);
+  border-radius: 0.4rem;
+  transition: 0.3s;
+}
+
+.day-textarea:focus {
+  border: 0.12rem solid var(--main-color-hightlight-sub);
+  outline: none;
+  box-shadow: 0 0px 1rem 0 var(--main-color-hightlight);
+}
+
+.day-btn-confirm-cancel {
+  flex: 1;
+  margin: 0.1rem;
+  padding: 0.8rem;
+  padding-right: 0.3rem;
+  padding-left: 0.3rem;
 }
 
 .dayTodoItem {
-  margin: 15px;
-  padding: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
+  margin-right: 1.5rem;
+  margin-left: 0.4rem;
+  font-size: 1.1rem;
   transition-duration: 0.4s;
   list-style: none;
+  border-bottom: solid 1px var(--main-color-grey);
 
   color: rgba(0, 0, 0, 1);
-  background-color: rgba(255, 187, 0, 0.335);
-  border-radius: 13px;
 }
 
 .grabbing {
@@ -64,5 +100,8 @@
 
 .day-todo-container-ul {
   overflow-y: scroll;
-  padding: 0px 0px 0px 10px;
+  padding-top: 1rem;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0rem;
 }

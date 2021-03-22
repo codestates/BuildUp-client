@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 require("dotenv").config();
 
 function Sidebar(props) {
@@ -19,7 +20,8 @@ function Sidebar(props) {
         <span>Build Up</span>
       </div>
       <button className="sidebar-btn-back" onClick={handleRedirectToMain}>
-        메인 페이지로 돌아가기
+        <FontAwesomeIcon icon={faHome} size="1x" className="icon" />
+        &nbsp; 메인 페이지로 돌아가기
       </button>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   setDateSelector,
 } from "../../actions/index";
 import "../css/temporary-CSS-weekTodoContainer.css";
+import { format } from "date-fns";
 
 function WeekTodoSubContainer(props) {
   // TODO 아래 변수를 조정하여 화면에 노출되는 최대 TODO 갯수를 조정할 수 있습니다.
@@ -66,16 +67,35 @@ function WeekTodoSubContainer(props) {
     dispatch(setDateSelector(newYear, newMonth, newDay));
   };
 
+  const isSelectedDay = (time) => {
+    let date = dateSelectorState.dateSelector;
+    let curYear = date.year;
+    let curMonth = date.month;
+    let curDay = date.day;
+
+    const dataFormat = "yyyy-MM-dd";
+    date = format(time, dataFormat);
+    date = date.split("-");
+    const [year, month, day] = date;
+
+    if (
+      curYear === Number(year) &&
+      curMonth === Number(month) &&
+      curDay === Number(day)
+    )
+      return true;
+    return false;
+  };
+
   return (
     <div
-      className="week-todo-subcontainer"
+      className={[
+        "week-todo-subcontainer",
+        isSelectedDay(time) ? "selected" : "",
+      ].join(" ")}
       key="idx"
       onClick={handleModalTodoManager}
     >
-      <div className="week-todo-subtitle">
-        {js_date.getMonth(props.pos)}. {js_date.getDay(props.pos)}.{" "}
-        {js_date.getLabel(props.pos)}
-      </div>
       {lists.map((el, idx) => {
         return (
           <div className="week-todo-subcontainer-item">
