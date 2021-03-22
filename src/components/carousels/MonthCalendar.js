@@ -19,7 +19,6 @@ import {
   addDays,
 } from "date-fns";
 
-
 function Calendar() {
   // TODO 아래 변수를 조정하여 화면에 노출되는 최대 TODO 갯수를 조정할 수 있습니다.
   const MAX_ELEMENTS_COUNT = 2;
@@ -146,3 +145,4 @@ function Calendar() {
 }
 
 export default Calendar;
+

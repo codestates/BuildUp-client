@@ -24,72 +24,91 @@ function ProfilePassword() {
 
   return (
     <div id="profile-container" className="profile-container">
-      <div className="profile-header-profile">
-        <div className="profile-header-btn">
-          <div
+      <header className="profile-header-box">
+        <div className="profile-header-nav">
+          <nav
             id="profile-title-name"
-            className="profile-title-name profile-title"
+            className="profile-title-name profile-title outbox"
             onClick={handleRedirectProfile}
           >
-            <h2>프로필</h2>
-          </div>
-          <div
-            id="profile-pwchange-btn"
-            className="profile-pwchange-btn profile-title"
+            <h2 className="inactive font-color">프로필</h2>
+          </nav>
+          <nav
+            id="profile-title-pwchange"
+            className="profile-title-pwchange profile-title inbox"
             onClick={handleRedirectPassword}
           >
-            <h2>비밀번호 변경</h2>
-          </div>
+            <h2 className="active font-color">비밀번호 변경</h2>
+          </nav>
         </div>
-      </div>
-      <div id="profile-body">
-        <section id="profile-section-b">
+      </header>
+
+      <section id="profile-section-b" className="profile-section-same">
+        <div id="change-password-box">
           <div>
-            <span>현재 비밀번호</span>
-          </div>
-          <div>
+            <div>
+              <label for="before-pwd" className="change-pwd-font">
+                현재 비밀번호
+              </label>
+            </div>
             <input
               type="password"
+              name="before-pwd"
               placeholder="현재 비밀번호"
               className="profile-pwd this-pwd"
             />
           </div>
 
           <div>
-            <span>새로운 비밀번호</span>
-          </div>
-          <div>
+            <div>
+              <label for="new-pwd" className="change-pwd-font">
+                새로운 비밀번호
+              </label>
+            </div>
             <input
               type="password"
+              name="new-pwd"
               placeholder="세로운 비밀번호"
               className="profile-pwd change-pwd"
             />
           </div>
 
           <div>
-            <span>새로운 비밀번호 확인</span>
-          </div>
-          <div>
+            <div>
+              <label for="chk-new-pwd" className="change-pwd-font">
+                새로운 비밀번호 확인
+              </label>
+            </div>
             <input
               type="password"
+              name="chk-new-pwd"
               placeholder="새로운 비밀번호 확인"
               className="profile-pwd confirm-pwd"
             />
           </div>
-        </section>
-      </div>
-      <footer id="profile-footer">
-        <div className="pwd-change-btn-box">
-          <button onClick={handleChangePassword} className="pwd-change-btn">
-            비밀번호 변경
-          </button>
         </div>
-        <div className="pwd-change-btn-box">
-          <button onClick={handleRedirectProfile} className="pwd-change-btn">
-            취소
-          </button>
-        </div>
-      </footer>
+
+        <footer id="profile-footer">
+          <div id="footer-btn-box" className="footer-btn-box">
+            <div className="pwd-change-btn-box">
+              <button
+                onClick={handleChangePassword}
+                className="pwd-change-btn footer-btn-font"
+              >
+                비밀번호 변경
+              </button>
+            </div>
+            <div className="pwd-change-btn-box">
+              <button
+                onClick={handleRedirectProfile}
+                className="pwd-change-btn footer-btn-font"
+              >
+                취소
+              </button>
+            </div>
+          </div>
+        </footer>
+      </section>
     </div>
   );
 }
