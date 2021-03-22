@@ -50,9 +50,11 @@ function WeekPage() {
   }, [day]);
 
   return (
-    <section id="week-container" className="disable-select">
-      <div id="week-main">
-        <span id="week-title">03. 14 - 03. 20 WEEK</span>
+    <section id="week-container" className="disable-select week-title-font">
+      <div id="week-main-title">
+        <span id="week-title" className=>
+          03. 14 - 03. 20 WEEK
+        </span>
       </div>
       <div id="week-todo-container">
         {}

@@ -1,6 +1,7 @@
 .row {
   display: flex;
-  height: 12vh;
+  height: 12.5vh;
+  max-width: 100vw;
 }
 
 .col {
@@ -11,8 +12,11 @@
 #month-todo-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 0px;
+  padding: 10px 0px 10px 0px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -30,10 +34,10 @@
 }
 
 .month-todo-days {
-  max-width: 100%;
-  min-width: 100%;
+  /* max-width: 100%;
+  min-width: 100%; */
   height: 3rem;
-  padding: 0.2rem;
+  padding: 10px;
   background-color: rgba(20, 20, 20, 0.8);
   color: rgba(220, 220, 220, 1);
   align-items: center;
@@ -46,11 +50,10 @@
 }
 
 .cell {
-  flex: 1;
   position: relative;
   height: 100%;
   /* flex: 1; */
-  padding: 0.5rem;
+  padding: 0.7rem;
   border-right: 1px solid rgba(20, 20, 20, 0.2);
   transition: 0.25s;
   transition-timing-function: ease;
@@ -76,3 +79,5 @@
 .month-todo-item {
   font-size: 12px;
 }
+
+/* row.. date options*/

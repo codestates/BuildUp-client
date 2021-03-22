@@ -17,45 +17,44 @@ function Profile() {
   };
 
   return (
-    <div id="profile-container">
-      <div className="profile-header-profile">
-        <div className="profile-header-btn">
+    <div id="profile-container" className="profile-container">
+      <div className="profile-header-box">
+        <header className="profile-header-nav">
           <nav
             id="profile-title-name"
-            className="profile-title-name profile-title"
+            className="profile-title-name profile-title inbox"
             onClick={handleRedirectProfile}
           >
-            <h2>프로필</h2>
+            <h2 className="active font-color">프로필</h2>
           </nav>
           <nav
-            id="profile-pwchange-btn"
-            className="profile-pwchange-btn profile-title"
+            id="profile-title-pwchange"
+            className="profile-title-pwchange profile-title outbox"
             onClick={handleRedirectPassword}
           >
-            <h2>비밀번호 변경</h2>
+            <h2 className="inactive font-color">비밀번호 변경</h2>
           </nav>
+        </header>
+      </div>
+
+      <section id="profile-section-a" className="profile-section-same">
+        <div>
+          <div id="profile-label-box">
+            <label className="profile-label-name">Display Username</label>
+          </div>
+          <div id="profile-info-box">
+            <span className="profile-info-name">{userInfo.username}</span>
+          </div>
         </div>
-      </div>
-      <div id="profile-body">
-        <section id="profile-section-a">
-          <div>
-            <div id="profile-label-box">
-              <label className="profile-label-name">Display Username</label>
-            </div>
-            <div id="profile-info-box">
-              <span className="profile-info-name">{userInfo.username}</span>
-            </div>
+        <div>
+          <div id="profile-label-box">
+            <label className="profile-label-name">Display Email</label>
           </div>
-          <div>
-            <div id="profile-label-box">
-              <label className="profile-label-name">Display Email</label>
-            </div>
-            <div id="profile-info-box">
-              <span className="profile-info-name">{userInfo.email}</span>
-            </div>
+          <div id="profile-info-box">
+            <span className="profile-info-name">{userInfo.email}</span>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

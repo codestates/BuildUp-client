@@ -6,13 +6,13 @@
   filter: drop-shadow(0 0 0.3rem grey);
 }
 /* login, signUP seletor */
-h2.inactive {
-  color: #acacac;
+.lineHover.inactive {
+  color: #5a5a5a;
 }
 
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+.lineHover.active {
+  color: #ffffff;
+  border-bottom: 3px solid #00a4d6;
 }
 
 .lineHover:after {
@@ -27,7 +27,7 @@ h2.active {
 }
 
 .lineHover:hover {
-  color: #0d0d0d;
+  color: #66666665;
   cursor: pointer;
 }
 
@@ -52,7 +52,7 @@ h2.active {
   top: 0.8rem;
   right: 0.5rem;
   overflow: auto;
-  background-color: rgba(250, 250, 250, 0.8);
+  background-color: rgba(250, 250, 250, 0.527);
 }
 
 /*애니메이션 효과 */
@@ -127,3 +127,4 @@ button {
   cursor: pointer;
   border: none;
 }
+
