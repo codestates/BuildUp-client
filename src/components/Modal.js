@@ -12,8 +12,16 @@ function Modal() {
   const isModalOpen = modalState.modalStatus;
   const { modalType } = modalTypeState;
   const loginState = useSelector((state) => state.loginStatusReducer);
-
   const isLogin = loginState.loginStatus;
+
+  useEffect(() => {
+    const handleEventClose = (e) => {
+      if (e.keyCode === 27 && isModalOpen) {
+        dispatch(toggleModal());
+      }
+    };
+    window.addEventListener("keydown", handleEventClose);
+  }, [isModalOpen, dispatch]);
 
   const handleModalToggle = () => {
     dispatch(toggleModal());
@@ -26,15 +34,27 @@ function Modal() {
   // TODO Modal Type에 따라 Body를 변경합니다.
   let modalBody = "";
   if (modalType === "LOGIN")
-    modalBody = <Login handleModalToggle={handleModalToggle} />;
+    modalBody = (
+      <Login
+        handleModalToggle={handleModalToggle}
+        handleModalType={() => {
+          handleModalType("SIGNUP");
+        }}
+      />
+    );
   else if (modalType === "SIGNUP")
-    modalBody = <SignUp handleModalToggle={handleModalToggle} />;
+    modalBody = (
+      <SignUp
+        handleModalToggle={handleModalToggle}
+        handleModalType={() => {
+          handleModalType("LOGIN");
+        }}
+      />
+    );
   else if (modalType === "TODOMANAGER")
     modalBody = <TodoManager handleModalToggle={handleModalToggle} />;
 
   const className = isModalOpen ? "active" : "deactive";
-  let signinbtn = document.querySelector(".main-signin-btn"),
-    loginbtn = document.querySelector(".main-login-btn");
   return (
     <div id="modal-container" className={[className]}>
       <div id="modal-container-line">

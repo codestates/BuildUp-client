@@ -25,6 +25,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <div className="bg-image"></div>
     </React.Fragment>
   );
 }

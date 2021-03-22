@@ -87,6 +87,7 @@ export default function MainPage() {
       <footer>
         <div></div>
       </footer>
+      <div className="bg-image"></div>
     </div>
   ) : (
     <div id="main-page-after">
@@ -112,6 +113,7 @@ export default function MainPage() {
       <footer>
         <div></div>
       </footer>
+      <div className="bg-image"></div>
     </div>
   );
 }
