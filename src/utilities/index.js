@@ -12,6 +12,20 @@ export const getUserInfo = (callback) => {
 // --------- 현재 시간을 기준으로 년/월/일을 얻을 수 있는 메서드 --------- //
 
 const dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+const monthLabel = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export const js_date = {
   getYear: (date, type = "string") => {
@@ -21,6 +35,7 @@ export const js_date = {
 
   getMonth: (date, type = "string") => {
     if (type === "number") return date.getMonth() + 1;
+    if (type === "label") return monthLabel[date.getMonth()];
     const month = date.getMonth() + 1;
     return month.toString().padStart(2, "0");
   },
