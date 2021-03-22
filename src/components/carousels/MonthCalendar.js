@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { js_date } from "../../utilities/index";
 import "../css/temporary-CSS-for-Carousel.css";
@@ -148,11 +148,10 @@ function Calendar() {
       );
       days = [];
     }
-    return <div className="body">{rows}</div>;
+    return rows;
   };
 
   return <div id="month-todo-container">{renderCells()}</div>;
 }
 
 export default Calendar;
-

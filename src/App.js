@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import Modal from "./components/Modal";

@@ -158,7 +158,6 @@ const TodoManagerListContainer = (props) => {
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
     dispatch(updateTodoList({ id, content, order, checked }));
-    // item.checked = bool;
 
     // TODO: LIST에도 체크 여부를 전달해야 한다.
     const year = `${dateSelector.year}`.padStart(4, "0");

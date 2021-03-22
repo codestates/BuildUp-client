@@ -1,34 +1,50 @@
 #week-todo-container {
-  background-color: inherit;
+  display: flex;
+  flex: 2;
+  /* background-color: inherit; */
+  flex-direction: column;
+  /* border-radius: 0.4rem; */
+  /* padding: 0px 1px 0px 1px; */
+}
 
-  border-radius: 5px;
-  padding: 0px 1px 0px 1px;
+#week-todo-subtitle-container {
+  display: flex;
+}
+
+#week-todo-container-lists {
+  background-color: var(--main-color-carousel-white);
+  display: flex;
+  flex: 1;
+  padding: 0.6rem;
 }
 
 .week-todo-subcontainer {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  padding: 5px;
-  min-width: 14%;
+  padding: 0.8rem;
   overflow: hidden;
-  background-color: rgba(255, 174, 0, 0.205);
-  border-radius: 10px;
-  margin: 1px 1px 1px 1px;
-  border: 1px black solid;
+  /* border-right: 1px solid var(--main-color-carousel-lightgrey); */
+  transition: 0.3s;
+}
+
+.week-todo-subcontainer:last-child {
+  border-right: none;
 }
 
 .week-todo-subcontainer-item {
   display: flex;
-  background-color: rgb(32, 141, 10);
-  border-radius: 5px;
-  padding: 10px 5px;
-  margin: 20px 0px;
+  padding: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--main-color-carousel-lightgrey);
 }
 
 .week-todo-subtitle {
+  flex: 1;
   text-align: center;
   font-size: 1.5em;
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-  border-bottom: 3px solid green;
+  background-color: var(--main-color-carousel-subtitlebg);
+  color: var(--main-color-carousel-title);
+  padding: 0.5rem;
 }

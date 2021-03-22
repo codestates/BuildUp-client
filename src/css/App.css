@@ -4,17 +4,43 @@
   overflow: hidden;
 }
 
+:root {
+  --main-color-white: #fff;
+  --main-color-lightgrey: #eeeeee;
+  --main-color-grey: #cbcaca;
+  --main-color-hightlight: #466269;
+  --main-color-highlight-lighter: #637074;
+  --main-color-hightlight-sub: #6991a0;
+
+  --main-color-carousel-white: rgba(250, 246, 241, 0.849);
+  --main-color-carousel-lightgrey: rgba(20, 20, 20, 0.2);
+  --main-color-carousel-hightlight: rgba(25, 29, 29, 0.7);
+  --main-color-carousel-title: rgba(240, 240, 240, 0.85);
+  --main-color-carousel-subtitlebg: rgba(43, 62, 66, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Noto Sans KR", sans-serif;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
 .bg-image {
   margin: 0;
   padding: 0;
 
   position: absolute;
   background-image: linear-gradient(
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(100, 100, 100, 0.5) 20%,
-      rgba(180, 180, 180, 0.2) 50%,
-      rgba(180, 180, 180, 0.4) 80%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(18, 26, 21, 0.5) 0%,
+      rgba(92, 93, 88, 0.3) 20%,
+      rgba(180, 174, 174, 0.1) 50%,
+      rgba(151, 145, 137, 0.3) 80%,
+      rgba(30, 39, 37, 0.712) 100%
     ),
     url("../wallpaper5.jpg");
 
@@ -30,9 +56,8 @@
 
   z-index: -99999;
 
-  /* transform: scale(1.1); */
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
+  /* filter: blur(2px);
+  -webkit-filter: blur(2px); */
 }
 
 .App {
@@ -46,7 +71,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: var(--main-color-grey);
   border-radius: 10px;
 }
 
@@ -57,7 +82,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: var(--main-color-grey);
   border-radius: 10px;
 }
 
@@ -70,16 +95,32 @@
 }
 
 button {
+  background-color: var(--main-color-hightlight);
+  font-size: 1rem;
+  color: #fff;
   outline: none;
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+  border-radius: 1.5rem;
+  transition: 0.3s;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+button:hover {
+  background-color: var(--main-color-hightlight-sub);
 }
 
 .checked {
   text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .cursor-move {
@@ -88,4 +129,56 @@ button {
 
 input[type="checkbox"] {
   cursor: pointer;
+  width: 1.2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 1.2rem;
+  /* border: 1px solid black; */
+  /* border-radius: 10rem; */
+  background-color: var(--main-color-white);
+  outline: none;
+  transition: 0.2s;
+}
+
+input[type="checkbox"]:hover {
+  background-color: var(--main-color-lightgrey);
+  transition: 0.5s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--main-color-hightlight-sub);
+}
+
+input[type="checkbox"]:checked::after {
+  margin-left: 0.4rem;
+  margin-top: 0.1rem;
+  width: 0.23rem;
+  height: 0.7rem;
+  border: solid var(--main-color-white);
+  border-width: 0 0.13rem 0.13rem 0;
+
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  content: "";
+  display: inline-block;
+}
+
+input[type="checkbox"]::after {
+  margin-left: 0.4rem;
+  margin-top: 0.1rem;
+  width: 0.23rem;
+  height: 0.7rem;
+  border: solid var(--main-color-white);
+  border-width: 0;
+
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  content: "";
+  display: inline-block;
 }

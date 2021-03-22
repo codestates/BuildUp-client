@@ -12,55 +12,65 @@
 /* Profile Main Page Same Option*/
 @media all and (min-width: 630px) {
   #myPage-box {
-    box-sizing: border-box;
     display: flex;
     margin: 0px;
     padding: 0px;
-    /* background-image: url("/src/images/sur.jpg"); */
+
+    background-image: linear-gradient(
+        rgba(18, 26, 21, 0.5) 0%,
+        rgba(92, 93, 88, 0.3) 20%,
+        rgba(180, 174, 174, 0.1) 50%,
+        rgba(151, 145, 137, 0.3) 80%,
+        rgba(30, 39, 37, 0.712) 100%
+      ),
+      url("../wallpaper5.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+
+    z-index: -99999;
   }
 
   .myPage-box {
+    flex: 5;
     flex-direction: row;
     flex-wrap: wrap;
-    min-height: 100vh;
+    height: 100vh;
   }
 
   #myPage-aside {
+    padding-top: 1.3rem;
+    flex: 3;
     display: flex;
-    flex-basis: 200px;
-    flex-grow: 10px;
     flex-direction: column;
+    background-color: var(--main-color-carousel-white);
   }
 
   #myPage-section {
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    box-sizing: border-box;
-    align-items: center;
-    border-radius: 30px 0px 0px 30px;
-
-    background-color: rgba(179, 178, 178, 0.822);
-  }
-  .myPage-section {
-    padding: calc(var(--section-padding) + 100vw - 100%);
+    flex: 20;
+    flex-direction: row;
+    background-color: transparent;
   }
 
   .profile-section-same {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    padding: 50px 50px 30px 50px;
+    background-color: var(--main-color-carousel-white);
+    padding: 3rem;
+    padding-bottom: 2rem;
   }
   /* profile box */
   #profile-container {
+    margin-left: 5rem;
+    margin-right: 30rem;
+    margin-top: 5rem;
     box-sizing: border-box;
+    flex: 1;
+
     display: flex;
     flex-direction: column;
-    width: 60%;
-    padding-top: 100px;
-    /* background-color: rgba(17, 17, 17, 0.109); */
   }
   @media screen and (max-width: 800px) {
     .profile-container {
@@ -80,12 +90,12 @@
 
   .profile-header-nav .profile-title-name,
   .profile-header-nav .profile-title-pwchange {
-    font-size: 1.2em;
     cursor: pointer;
   }
   /*nav name bottom line*/
   .profile-header-nav .profile-title .active {
-    border-bottom: 3px solid #00a4d6;
+    border-bottom: 3px solid var(--main-color-hightlight-sub);
+    color: var(--main-color-carousel-subtitlebg);
   }
 
   .profile-header-nav .profile-title .inactive {
@@ -106,113 +116,108 @@
   }
 
   .profile-title.inbox {
-    background-color: rgb(195, 194, 194);
   }
   .profile-title.outbox {
-    background-color: inherit;
   }
 
   .profile-title:hover {
-    background-color: rgb(143, 143, 143);
-    opacity: 0.5;
+    opacity: 0.7;
   }
   /* different option (profile, profilepassword option)*/
   #profile-section-a {
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0.5rem;
     animation: clickAnimation 0.5s ease-in;
+    box-shadow: 0rem 1rem 1rem 0rem rgba(50, 50, 50, 0.4);
   }
   /*profile-header-effect*/
 
+  #sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    align-items: left;
+  }
+
+  .sidebar-btn-back {
+    padding: 0.4rem;
+    margin-top: 1rem;
+    border-radius: 0rem;
+    color: var(--main-color-hightlight);
+    transition: 0.6s;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .sidebar-btn-back:hover {
+    background-color: white;
+    color: var(--main-color-hightlight);
+  }
+
   #sidebar .sidebar-header-name {
-    margin-left: 15px;
-    margin-right: 30px;
-    padding: 10px;
-    font-size: xx-large;
-    font-weight: bolder;
-    color: rgb(255, 255, 255);
-    opacity: 1;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Dancing Script", cursive;
+    color: var(--main-color-hightlight);
     transition: 0.6s;
     cursor: pointer;
   }
-  #sidebar .sidebar-header-name:hover {
-    opacity: 0.5;
-    transition: 0.6s;
+
+  #sidebar .sidebar-header-name :hover {
+    color: var(--main-color-hightlight-sub);
   }
 
   /* show info */
   #profile-label-box {
-    margin: 10px 10px 10px 10px;
+    /* margin: 10px 10px 10px 10px; */
     border-top: 1.5px solid rgba(0, 0, 0, 0.116);
-    padding-top: 15px;
+    padding-top: 0.7rem;
   }
 
   #profile-info-box {
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
+    padding-left: 0.8rem;
   }
 
   #profile-label-box .profile-label-name {
-    font-size: 30px;
-    font-weight: bolder;
+    font-size: 1.2rem;
+    color: rgb(78, 85, 87);
   }
 
   #profile-info-box .profile-info-name {
-    font-size: 25px;
+    font-size: 1.1rem;
   }
 
-  /* profile-password-change */
   #profile-section-b {
     animation: clickAnimation 0.5s ease-in;
-
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0.5rem;
   }
 
   #profile-section-b .profile-pwd {
-    width: 50%;
+    width: 58%;
   }
-  #profile-footer {
-    background-color: white;
 
-    padding: 20px;
-  }
   #profile-footer .footer-btn-box {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-top: 20px;
-    margin-right: 10px;
   }
 
   .pwd-change-btn-box {
-    margin-left: 20px;
   }
   .pwd-change-btn-box .pwd-change-btn {
-    font-size: 25px;
+    margin: 0.5rem;
+    padding: 0.8rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .change-pwd-font {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  #profile-footer .pwd-change-btn {
-    margin-right: 5px;
-    background: white;
-    cursor: pointer;
-    transition: 5s;
-    padding: 10px 40px;
-    border-radius: 30px 30px 30px 30px;
-    background-color: rgba(0, 0, 255, 0.342);
-  }
-  #profile-footer .pwd-change-btn:hover {
-    background: rgb(0, 132, 255);
-    transition: 0.5s;
+    font-size: 1.2rem;
+    color: rgb(78, 85, 87);
+    font-weight: 500;
   }
 
   .pwd-change-btn-box .footer-btn-font {
-    color: white;
-    font-weight: bold;
-    font-size: 1.5em;
   }
 
   .pwd-change-btn-box .footer-btn-font:hover {

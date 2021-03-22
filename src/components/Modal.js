@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal, setModalType } from "../actions/index";
 import Login from "./modals/Login";

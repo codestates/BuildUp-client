@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Profile() {
   const history = useHistory();

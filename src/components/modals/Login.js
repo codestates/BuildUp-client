@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   setAccessToken,
   toggleLoginStatus,
@@ -7,11 +7,7 @@ import {
   setUserInfo,
 } from "../../actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faEnvelope,
-  faUnlockAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 
 require("dotenv").config();
 
@@ -33,7 +29,6 @@ function Login(props) {
   };
 
   const handleLogin = () => {
-    console.log(process.env);
     // 0. 빈 곳 있는지 확인
     // 1. Validation Test 통과하지 않을경우 에러 메시지 출력 + Return
     // 2. Send Request to Server
@@ -66,7 +61,7 @@ function Login(props) {
           <h2 className="inactive lineHover" onClick={props.handleModalType}>
             Sign up
           </h2>
-          <h2 className="active lineHover">Login in</h2>
+          <h2 className="active lineHover">Sign in</h2>
         </div>
         <div id="modal-section">
           <div id="section-login">
@@ -99,12 +94,12 @@ function Login(props) {
               />
             </div>
             <div id="find-password">
-              <input
+              {/* <input
                 type="button"
                 defaultChecked={true}
                 onChange={handleInputValue("AUTOLOGIN")}
                 value="비밀번호 찾기"
-              />
+              /> */}
             </div>
           </div>
         </div>
