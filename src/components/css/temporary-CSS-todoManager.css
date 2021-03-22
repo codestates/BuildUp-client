@@ -6,6 +6,7 @@
   min-height: 30vh;
   max-height: 30vh;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .todo-manager-item {
