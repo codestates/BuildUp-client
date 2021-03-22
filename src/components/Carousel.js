@@ -66,14 +66,22 @@ function Carousel() {
 
   return (
     <div id="carousel-container" className="left">
-      <aside id="carousel-aside" className="left">
-        <button className="btn-carousel" id="left" onClick={handleMoveLeft}>
+      <aside id="carousel-aside" className="left ">
+        <button
+          className="btn-carousel aside-btn-box"
+          id="left"
+          onClick={handleMoveLeft}
+        >
           &#60;
         </button>
       </aside>
       <div id="carousel-item-container">{container}</div>
-      <aside id="carousel-aside" className="right">
-        <button className="btn-carousel" id="right" onClick={handleMoveRight}>
+      <aside id="carousel-aside" className="right ">
+        <button
+          className="btn-carousel aside-btn-box"
+          id="right"
+          onClick={handleMoveRight}
+        >
           &#62;
         </button>
       </aside>
