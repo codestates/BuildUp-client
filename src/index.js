@@ -12,6 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <div className="bg-image"></div>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root"),

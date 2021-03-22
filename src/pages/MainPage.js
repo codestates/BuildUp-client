@@ -85,8 +85,9 @@ export default function MainPage() {
         <div id="top-l"></div>
       </section>
       <footer>
-        <div>dd</div>
+        <div></div>
       </footer>
+      <div className="bg-image"></div>
     </div>
   ) : (
     <div id="main-page-after">
@@ -110,8 +111,9 @@ export default function MainPage() {
         <Carousel />
       </section>
       <footer>
-        <div>dd</div>
+        <div></div>
       </footer>
+      <div className="bg-image"></div>
     </div>
   );
 }
