@@ -1,6 +1,7 @@
 :root {
   --sidebar-width: 200px;
   --sidebar-padding: 30px;
+  --section-padding: 10px;
   --body-max-width: 920px;
   --body-padding-top: 38px;
   --header-bottom-margin: 50px;
@@ -9,9 +10,10 @@
   --box-padding: 46px;
 }
 /* Profile Main Page Same Option*/
-@media screen and (min-width: 300px) {
-  /* 모바일에 사용될 스트일 시트를 여기에 작성합니다. */
-
+@media all and (min-width: 630px),
+  all and (min-width: 60%),
+  all and (min-width: 80%),
+  all and (min-width: 100%) {
   #myPage-box {
     box-sizing: border-box;
     display: flex;
@@ -20,6 +22,7 @@
     /* background-image: url("/src/images/sur.jpg"); */
     background-size: cover;
   }
+
   .myPage-box {
     flex-direction: row;
     flex-wrap: wrap;
@@ -38,28 +41,29 @@
     flex: 1;
     flex-direction: column;
     box-sizing: border-box;
+    align-items: center;
+    border-radius: 30px 0px 0px 30px;
 
-    border-radius: 30px 30px 30px 30px;
-
-    background-color: rgba(128, 128, 128, 0.397);
+    background-color: rgba(179, 178, 178, 0.822);
   }
-  @media screen and (max-width: 300px),
-    screen and(max-height: 500px),
-    screen and (max-width: 800px),
-    screen and (max-width: 100vw) {
-    .myPage-section {
-      padding: calc((50px + 100vw) - 100%);
-    }
+  .myPage-section {
+    padding: calc(var(--section-padding) + 100vw - 100%);
   }
 
+  .profile-section-same {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 50px 50px 30px 50px;
+  }
   /* profile box */
   #profile-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
-    border-radius: 10px;
-    background-color: white;
+    width: 60%;
+    padding-top: 100px;
+    /* background-color: rgba(17, 17, 17, 0.109); */
   }
   @media screen and (max-width: 800px) {
     .profile-container {
@@ -71,22 +75,54 @@
       flex-basis: 50%;
     }
   }
-  .profile-header-btn {
+  .profile-header-nav {
     display: flex;
     flex-direction: row;
     margin-bottom: 0px;
   }
-  /* different option */
-  .profile-header-btn .profile-title-name,
-  .profile-header-btn .profile-pwchange-btn {
-    margin-left: 45px;
+
+  .profile-header-nav .profile-title-name,
+  .profile-header-nav .profile-title-pwchange {
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  /*nav name bottom line*/
+  .profile-header-nav .profile-title .active {
+    border-bottom: 3px solid #00a4d6;
   }
 
+  .profile-header-nav .profile-title .inactive {
+    color: #ffffff91;
+  }
+
+  .font-color {
+    color: rgb(0, 0, 0);
+  }
+
+  /*nav name box */
+  .profile-title {
+    border-radius: 15px 15px 0px 0px;
+
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px 30px;
+  }
+
+  .profile-title.inbox {
+    background-color: rgb(195, 194, 194);
+  }
+  .profile-title.outbox {
+    background-color: inherit;
+  }
+
+  .profile-title:hover {
+    background-color: rgb(143, 143, 143);
+    opacity: 0.5;
+  }
+  /* different option (profile, profilepassword option)*/
   #profile-section-a {
-    display: flex;
-    flex-direction: column;
-    border: 1px red solid;
-    margin: 30px;
+    border-radius: 0px 0px 20px 20px;
+    animation: clickAnimation 0.5s ease-in;
   }
   /*profile-header-effect*/
 
@@ -96,10 +132,14 @@
     padding: 10px;
     font-size: xx-large;
     font-weight: bolder;
-    transition: all 0.3s ease-in-out;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    transition: 0.6s;
+    cursor: pointer;
   }
   #sidebar .sidebar-header-name:hover {
-    transform: scale(1.3);
+    opacity: 0.5;
+    transition: 0.6s;
   }
 
   /* show info */
@@ -125,22 +165,25 @@
 
   /* profile-password-change */
   #profile-section-b {
-    display: flex;
-    flex-direction: column;
-    border: 1px red solid;
-    margin: 30px;
-    padding-left: 10px;
+    animation: clickAnimation 0.5s ease-in;
+
+    border-radius: 0px 0px 20px 20px;
   }
 
   #profile-section-b .profile-pwd {
     width: 50%;
   }
   #profile-footer {
-    border: 1px red solid;
-    margin: 30px;
+    background-color: white;
+
+    padding: 20px;
+  }
+  #profile-footer .footer-btn-box {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 10px;
   }
 
   .pwd-change-btn-box {
@@ -150,15 +193,47 @@
     font-size: 25px;
   }
 
-  #profile-footer .pwd-change-btn {
-    font-size: large;
+  .change-pwd-font {
+    font-size: 18px;
     font-weight: bold;
+  }
+
+  #profile-footer .pwd-change-btn {
     margin-right: 5px;
     background: white;
-    transition: 1s;
+    cursor: pointer;
+    transition: 5s;
+    padding: 10px 40px;
+    border-radius: 30px 30px 30px 30px;
+    background-color: rgba(0, 0, 255, 0.342);
   }
   #profile-footer .pwd-change-btn:hover {
-    background: rgba(183, 225, 230, 0.931);
-    transition: 1s;
+    background: rgb(0, 132, 255);
+    transition: 0.5s;
+  }
+
+  .pwd-change-btn-box .footer-btn-font {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .pwd-change-btn-box .footer-btn-font:hover {
+    transition: 0.5s;
+    opacity: 0.5;
+  }
+}
+
+/*btn click animation */
+
+@keyframes clickAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -32,6 +32,10 @@ body {
   margin-left: 15px;
   font-size: xx-large;
   font-weight: bolder;
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  transition: 0.6s;
+  cursor: pointer;
 }
 
 #main-page-before #button-box {
@@ -63,8 +67,7 @@ body {
   align-items: center;
   font-size: 7rem;
   animation: text-fadein 1s;
-  margin: 0px;
-  padding: 50px;
+  color: rgba(240, 240, 240, 0.9);
 }
 
 #btn-demo-box {
@@ -97,26 +100,22 @@ body {
 /* 버튼 설정*/
 
 #main-page-before .main-btn {
-  font-size: 1.4em;
-  font-weight: bold;
-  padding: 10px;
-  margin-right: 5px;
-  background: inherit;
-  transition: 1s;
-  color: white;
-  opacity: 1;
-}
-#main-page-before .main-btn:hover {
-  background: rgba(183, 225, 230, 0.931);
-  transition: 1s;
-  opacity: 0.7;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  background: none;
+  color: rgba(240, 240, 240, 0.9);
 }
 
-#main-page-before #header-name {
-  transition: all 0.3s ease-in-out;
+#main-page-before .main-btn:hover {
+  color: rgba(255, 255, 255, 1);
+  transition: 0.6s;
 }
+
 #main-page-before #header-name:hover {
-  transform: scale(1.3);
+  opacity: 0.5;
+  transition: 0.6s;
 }
 
 #btn-demo-box .btn-demo {
@@ -144,8 +143,7 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
-  /* background-image: url("/src/images/sur.jpg"); */
-  background-size: cover;
+
   animation: bg 1s;
 }
 
@@ -163,6 +161,10 @@ body {
   margin-left: 15px;
   font-size: xx-large;
   font-weight: bolder;
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  transition: 0.6s;
+  cursor: pointer;
 }
 
 #main-page-after #button-box {
@@ -212,24 +214,20 @@ body {
 /* 버튼 설정*/
 
 #main-page-after .main-btn {
-  font-size: large;
-  font-weight: bold;
-  margin-right: 5px;
-  margin-top: auto;
-  width: 100px;
-  height: 40px;
-  background: inherit;
-  transition: 1s;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  background: none;
+  color: rgba(240, 240, 240, 0.9);
 }
 #main-page-after .main-btn:hover {
-  background: rgba(183, 225, 230, 0.931);
-  transition: 1s;
+  opacity: 0.5;
+  transition: 0.6s;
 }
-#main-page-after #header-name {
-  transition: all 0.3s ease-in-out;
-}
+
 #main-page-after #header-name:hover {
-  transform: scale(1.3);
+  color: rgba(240, 240, 240, 0.9);
 }
 
 #btn-demo-box .btn-demo {

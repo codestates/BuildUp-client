@@ -48,10 +48,10 @@
   background: inherit;
   width: 33.33333%;
   height: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 0;
+  padding-right: 0;
 
   transition-duration: 0s;
 }
@@ -69,8 +69,6 @@
 }
 
 #day-container {
-  margin-left: 500px;
-  margin-right: 500px;
   max-height: 70vh;
   min-height: 70vh;
 
@@ -80,11 +78,23 @@
 
 #week-container {
   display: flex;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 10rem;
+  margin-right: 10rem;
   align-items: center;
   max-height: 70vh;
   min-height: 70vh;
+}
+
+#month-container {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 10rem;
+  margin-right: 10rem;
+  align-items: center;
+  border-radius: 0.6rem;
+
+  height: 75vh;
 }
 
 #week-todo-container {
@@ -103,7 +113,7 @@
 }
 
 #dayTodoItem {
-  height: 41px;
+  height: 4rem;
   transition-duration: 0.4s;
   list-style: none;
   color: rgba(0, 0, 0, 1);

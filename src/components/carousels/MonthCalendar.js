@@ -2,42 +2,146 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { js_date } from "../../utilities/index";
 import "../css/temporary-CSS-for-Carousel.css";
+import "../css/temporary-CSS-monthTodoContainer.css";
+import {
+  setDateSelector,
+  toggleModal,
+  setModalType,
+} from "../../actions/index";
+
+import {
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  format,
+  isSameMonth,
+  addDays,
+} from "date-fns";
 
 function Calendar() {
+  // TODO 아래 변수를 조정하여 화면에 노출되는 최대 TODO 갯수를 조정할 수 있습니다.
+  const MAX_ELEMENTS_COUNT = 2;
+
+  const dispatch = useDispatch();
   const [time, setTime] = useState(new Date());
-  const [day, setDay] = useState(js_date.getDay(time));
-  const [weekArr, setWeekArr] = useState([]);
+  const [month, setMonth] = useState(js_date.getMonth(time));
 
-  const getWeekArr = (time) => {
-    const idx = js_date.getLabel(time, "number");
+  const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
+  const todoItemsState = useSelector((state) => state.toDoItemsReducer);
+  const { dateSelector } = dateSelectorState;
+  const todoItems = todoItemsState.todoItems;
 
-    const [year, month, day] = [
-      js_date.getYear(time, "number"),
-      js_date.getMonth(time, "number"),
-      js_date.getDay(time, "number"),
-    ];
+  const modalState = useSelector((state) => state.modalStateReducer);
+  const modalTypeState = useSelector((state) => state.modalTypeReducer);
+  const isModalOpen = modalState.modalStatus;
+  const { modalType } = modalTypeState;
+
+  const isSelectedDay = (date) => {
+    date = date.split("-");
+    const [year, month, day] = date;
+
+    if (
+      Number(year) === dateSelector.year &&
+      Number(month) === dateSelector.month &&
+      Number(day) === dateSelector.day
+    )
+      return true;
+    return false;
   };
 
-  return (
-    <div id="month-todo-container">
-      <li key="1" order="1">
-        <button>X</button>
-        <span>오늘 나는 잠을 잘 잤다.</span>
-      </li>
-      <li key="2" order="2">
-        <button>X</button>
-        <span>오늘 나는 잠을 잘 잤다.</span>
-      </li>
-      <li key="3" order="3">
-        <button>X</button>
-        <span>오늘 나는 잠을 잘 잤다.</span>
-      </li>
-      <li key="4" order="4">
-        <button>X</button>
-        <span>오늘 나는 잠을 잘 잤다.</span>
-      </li>
-    </div>
-  );
+  const handleDateSelector = (e) => {
+    if (!e.target.dataset.date) return;
+    if (!isModalOpen) dispatch(toggleModal());
+    if (modalType !== "TODOMANAGER") dispatch(setModalType("TODOMANAGER"));
+
+    const date = e.target.dataset.date.split("-");
+    const [year, month, day] = date;
+
+    dispatch(setDateSelector(year, month, day));
+  };
+
+  const renderTodo = (date) => {
+    const count = {};
+
+    const sorted = todoItems.filter((el) => {
+      if (el.date === date) {
+        if (count[el.date] >= MAX_ELEMENTS_COUNT) return false;
+        if (!count[el.date]) count[el.date] = 1;
+        else count[el.date]++;
+        return true;
+      }
+      return false;
+    });
+
+    return sorted.map((el, idx) => {
+      return (
+        <li
+          className={["disable-select", "month-todo-item"].join(" ")}
+          data-date={date}
+          onClick={handleDateSelector}
+          key={idx}
+        >
+          {el.content}
+        </li>
+      );
+    });
+  };
+
+  const renderCells = () => {
+    const monthStart = startOfMonth(time);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart);
+    const endDate = endOfWeek(monthEnd);
+
+    const rows = [];
+    let days = [];
+    let day = startDate;
+    let formattedDate = "";
+    let propsDate = "";
+
+    while (day <= endDate) {
+      for (let i = 0; i < 7; i++) {
+        formattedDate = format(day, "d");
+        propsDate = format(day, "yyyy-MM-dd");
+        days.push(
+          <div
+            onClick={handleDateSelector}
+            data-date={propsDate}
+            className={[
+              "col",
+              "cell",
+              !isSameMonth(day, monthStart)
+                ? "disabled"
+                : isSelectedDay(propsDate)
+                ? "selected"
+                : "",
+            ].join(" ")}
+            key={day}
+          >
+            <span
+              className={["number", "disable-select"].join(" ")}
+              data-date={propsDate}
+              onClick={handleDateSelector}
+            >
+              {formattedDate}
+            </span>
+            {renderTodo(propsDate)}
+          </div>,
+        );
+        day = addDays(day, 1);
+      }
+      rows.push(
+        <div className="row" key={day}>
+          {days}
+        </div>,
+      );
+      days = [];
+    }
+    return <div className="body">{rows}</div>;
+  };
+
+  return <div id="month-todo-container">{renderCells()}</div>;
 }
 
 export default Calendar;
