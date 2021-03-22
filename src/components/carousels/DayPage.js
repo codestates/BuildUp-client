@@ -26,18 +26,18 @@ function DayPage() {
 
   return (
     <section id="day-container">
-      <div id="day-main">
+      <header id="day-main">
         <span id="day-title">
           {js_date.getMonth(time)}. {js_date.getDay(time)}.{" "}
           {js_date.getLabel(time).toUpperCase()}
         </span>
-      </div>
-      <div id="day-button-container">
-        <button className="day-btn-add-todo">새로운 TODO 추가하기</button>
-      </div>
-      <div id="day-todo-container">
+      </header>
+      <section id="day-todo-container">
+        <div id="day-button-container">
+          <button className="day-btn-add-todo">새로운 TODO 추가하기</button>
+        </div>
         <DayTodoItemList pos={time} />
-      </div>
+      </section>
     </section>
   );
 }
