@@ -16,6 +16,7 @@ export const ACTIONS = {
   // TODO
   CREATE_TODOLIST: "CREATE_TODOLIST",
   UPDATE_TODOLIST: "UPDATE_TODOLIST",
+  //Google SignIn
 };
 
 // Action Creator Funcs
