@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import DayPage from "./carousels/DayPage";
 import WeekPage from "./carousels/WeekPage";
 import MonthPage from "./carousels/MonthPage";
+import Summary from "./carousels/Summary";
 import "./css/temporary-CSS-for-Carousel.css";
 
 function Carousel() {
   const [pos, setPos] = useState(0);
   const [direction, setDirection] = useState("");
   const [isValid, setValid] = useState(true);
-  const items = [<DayPage />, <WeekPage />, <MonthPage />];
+  const items = [<Summary />, <DayPage />, <WeekPage />, <MonthPage />];
   let container = [];
 
   const containerHandler = (items) => {

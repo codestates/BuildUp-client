@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
+import NotFound from "./pages/NotFound";
+import BadRequest from "./pages/BadRequest";
 import Modal from "./components/Modal";
 import "./css/App.css";
 import "./css/MyPage.css";
@@ -21,6 +23,8 @@ const url = `${scheme}://${host}:${port}$/todo/update`;
 function App() {
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
   const todoItems = todoItemsState.todoItems;
+  const loginState = useSelector((state) => state.loginStatusReducer);
+  const isLogin = loginState.loginStatus;
 
   useEffect(() => {
     return () => {
@@ -39,8 +43,9 @@ function App() {
           <Route exact path="/">
             <MainPage />
           </Route>
-          <Route exact patch="/profile">
-            <MyPage />
+          <Route path="/profile">{isLogin ? <MyPage /> : <BadRequest />}</Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </Router>

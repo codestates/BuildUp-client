@@ -48,7 +48,7 @@
   color: var(--main-color-carousel-title);
   padding: 0.5rem;
 }
-.week-todo-subcontainer {
+/* .week-todo-subcontainer {
   min-width: 14%;
   max-width: 14%;
   overflow: hidden;
@@ -60,4 +60,4 @@
   margin-left: 5px;
   margin-right: 5px;
   background-color: grey;
-}
+} */

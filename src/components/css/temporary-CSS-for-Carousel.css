@@ -115,6 +115,20 @@
     box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
   }
 
+  #summary-container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background-color: var(--main-color-carousel-white);
+    box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
+  }
+
   #week-container #week-main-title {
     /* border-radius: 0.5rem; */
     color: var(--main-color-hightlight);
