@@ -9,6 +9,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 
+import { Router } from "react-router";
+
 require("dotenv").config();
 
 const axios = require("axios");
@@ -68,6 +70,7 @@ function Login(props) {
             <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faEnvelope} size="2x" className="icon" />
               <input
+                className="input-field"
                 type="text"
                 onChange={handleInputValue("EMAIL")}
                 placeholder="Email"
@@ -77,6 +80,7 @@ function Login(props) {
             <div className="input-icons input-icon-bg">
               <FontAwesomeIcon icon={faUnlockAlt} size="2x" className="icon" />
               <input
+                className="input-field"
                 type="password"
                 onChange={handleInputValue("PASSWORD")}
                 placeholder="password"
@@ -110,9 +114,7 @@ function Login(props) {
             </button>
           </div>
           <div id="social-box">
-            <div id="gitHub-btn-box">
-              <button className="github-btn">GitHub</button>
-            </div>
+            <div id="gitHub-btn-box"></div>
             <div id="google-btn-box">
               <button className="google-btn">Google</button>
             </div>

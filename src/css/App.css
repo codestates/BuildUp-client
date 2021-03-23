@@ -11,12 +11,23 @@
   --main-color-hightlight: #466269;
   --main-color-highlight-lighter: #637074;
   --main-color-hightlight-sub: #6991a0;
-
+  --main-color-input-area: rgb(160, 158, 158);
+  --main-color-lightgrey: rgba(20, 20, 20, 0.2);
+  --main-color-hightlight: rgba(25, 29, 29, 0.7);
   --main-color-carousel-white: rgba(250, 246, 241, 0.849);
   --main-color-carousel-lightgrey: rgba(20, 20, 20, 0.2);
   --main-color-carousel-hightlight: rgba(25, 29, 29, 0.7);
   --main-color-carousel-title: rgba(240, 240, 240, 0.85);
   --main-color-carousel-subtitlebg: rgba(43, 62, 66, 0.8);
+  --sidebar-width: 200px;
+  --sidebar-padding: 30px;
+  --section-padding: 10px;
+  --body-max-width: 920px;
+  --body-padding-top: 38px;
+  --header-bottom-margin: 50px;
+  --add-button-gradient-height: 15px;
+  --border-radius: 5px;
+  --box-padding: 46px;
 }
 
 html {

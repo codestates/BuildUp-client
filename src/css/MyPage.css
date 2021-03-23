@@ -1,14 +1,3 @@
-:root {
-  --sidebar-width: 200px;
-  --sidebar-padding: 30px;
-  --section-padding: 10px;
-  --body-max-width: 920px;
-  --body-padding-top: 38px;
-  --header-bottom-margin: 50px;
-  --add-button-gradient-height: 15px;
-  --border-radius: 5px;
-  --box-padding: 46px;
-}
 /* Profile Main Page Same Option*/
 @media all and (min-width: 630px) {
   #myPage-box {
