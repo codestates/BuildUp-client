@@ -216,7 +216,8 @@ const TodoManagerListContainer = (props) => {
               onClick={handleCheckboxEvent}
               checked={val.checked}
             />
-            {val.id}, {val.order}, {val.content}
+            &nbsp;
+            {val.order}. {val.content} / PK:{val.id}
           </div>
         );
       })}

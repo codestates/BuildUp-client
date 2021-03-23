@@ -76,7 +76,7 @@ export default function MainPage() {
       <section>
         <div id="top-h"></div>
         <div id="welcome-box">
-          <h3 className="welcome-text">환영합니다.</h3>
+          <h3 className="welcome-text">환영합니다</h3>
         </div>
         {/* <div id="btn-demo-box" className="btn-demo-box">
           <button className="btn-demo">체험해보기</button>

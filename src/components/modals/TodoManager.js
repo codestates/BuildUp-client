@@ -63,6 +63,7 @@ function TodoManager(props) {
     const date = `${year}-${month}-${day}`;
 
     dispatch(createTodoList({ content: word, date, order: maxOrder + 1 }));
+    setMaxorder(maxOrder + 1);
     toggleTextarea();
 
     const el = document.getElementById("todo-manager-container");
