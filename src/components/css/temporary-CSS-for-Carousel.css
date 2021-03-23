@@ -94,10 +94,9 @@
 
   #day-container {
     display: flex;
-    flex: 1;
     flex-direction: row;
-    margin-left: 35rem;
-    margin-right: 35rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
     height: 80vh;
     align-items: center;
     justify-content: space-evenly;
