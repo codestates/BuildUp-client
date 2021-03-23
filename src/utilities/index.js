@@ -145,3 +145,15 @@ export const getWeatherCode = (code) => {
   // * 600번대: 6(눈)
   else return 8;
 };
+
+// --------- 유효성 검사 메서드입니다 --------- //
+
+export const isValidEamil = (str) => {};
+
+export const isValidPassword = (str) => {
+  // ! 비밀번호는 8자 이상, 20자 이하로 작성해야 합니다.
+  // ! 비밀번호는 특수문자(공백, 줄바꿈 포함)이 없어야합니다.
+  // ! 비밀번호는 영문, 숫자, 특수문자 중 2가지 이상을 혼합해야 합니다.
+};
+
+export const isValidID = (str) => {};

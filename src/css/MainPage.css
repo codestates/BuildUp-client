@@ -67,7 +67,7 @@ body {
   align-items: center;
   font-size: 7rem;
   animation: text-fadein 1s;
-  color: rgba(240, 240, 240, 0.9);
+  color: rgba(245, 245, 245, 0.95);
 }
 
 #btn-demo-box {

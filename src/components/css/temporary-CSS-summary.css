@@ -1,0 +1,74 @@
+#summary-main-container {
+  display: flex;
+  flex-direction: row;
+  flex: 3;
+  width: 100%;
+  padding: 1rem;
+}
+
+.summary-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+  border-right: 1.5px solid grey;
+  padding: 2rem;
+}
+
+.summary-item:last-child {
+  border-right: none;
+}
+
+.percent {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 12rem;
+  font-weight: 700;
+  padding-bottom: 8rem;
+  color: rgba(22, 48, 53, 0.8);
+  /* 퍼센트 크기에 따라 텍스트가 채워지는 효과를 만들어보도록 하자 */
+  /* background-color: red; */
+  /* background-clip: text; */
+  overflow: hidden;
+}
+
+.mini-percent {
+  background-clip: none;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--main-color-hightlight);
+}
+
+.header {
+  justify-content: center;
+  flex: 0.5;
+  padding-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--main-color-hightlight);
+}
+
+.count {
+  flex: 1;
+  padding-bottom: 5rem;
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--main-color-hightlight);
+}
+
+.detail {
+  flex: 1;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--main-color-hightlight);
+}
+
+#suammary-footer {
+  flex: 1;
+  border-top: 1.5px solid grey;
+  width: 100%;
+  text-align: center;
+}
