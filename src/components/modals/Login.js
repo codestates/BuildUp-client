@@ -6,7 +6,6 @@ import {
   toggleModal,
   setUserInfo,
 } from "../../actions/index";
-import { jwt_isExpired } from "../../utilities/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 

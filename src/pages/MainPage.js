@@ -6,8 +6,11 @@ import {
   toggleLoginStatus,
   setAccessToken,
   setRefreshToken,
+  getTodoList,
 } from "../actions/index";
 import { useHistory } from "react-router";
+import { useEffect } from "react";
+import { fetch_custom } from "../utilities/index";
 import Carousel from "../components/Carousel";
 require("dotenv").config();
 
@@ -17,8 +20,29 @@ export default function MainPage() {
 
   const modalState = useSelector((state) => state.modalStateReducer);
   const loginState = useSelector((state) => state.loginStatusReducer);
+  const todoItemsState = useSelector((state) => state.toDoItemsReducer);
+  const accessTokenState = useSelector((state) => state.accessTokenReducer);
   const isModalOpen = modalState.modalStatus;
   const isLogin = loginState.loginStatus;
+  const todoItems = todoItemsState.todoItems;
+  const accessToken = accessTokenState.accessToken;
+
+  useEffect(() => {
+    console.log("MAINPAGE USEEFFECT가 작동하고 있습니다");
+    if (isLogin) {
+      if (todoItems.length === 0) {
+        const loadItems = async () => {
+          const items = await fetch_custom.getTodoInfo(accessToken);
+          console.log(items);
+          dispatch(getTodoList(items));
+        };
+        loadItems();
+      } else {
+        dispatch(setAccessToken(""));
+        dispatch(getTodoList([]));
+      }
+    }
+  }, [isLogin]);
 
   const handleRedirectProfile = () => {
     history.push("/profile");

@@ -19,6 +19,7 @@ const toDoItemsReducer = (state = initialState, action) => {
         todoItems: [...state.todoItems, item],
       });
     }
+
     case ACTIONS.UPDATE_TODOLIST: {
       // payload is {id, content, order, checked}
       const newItems = Object.assign([], state.todoItems);
@@ -40,6 +41,13 @@ const toDoItemsReducer = (state = initialState, action) => {
         todoItems: newItems,
       });
     }
+
+    case ACTIONS.GET_TODOLIST: {
+      return Object.assign({}, state, {
+        todoItems: action.payload.items,
+      });
+    }
+
     default:
       return state;
   }

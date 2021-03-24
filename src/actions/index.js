@@ -16,6 +16,7 @@ export const ACTIONS = {
   // TODO
   CREATE_TODOLIST: "CREATE_TODOLIST",
   UPDATE_TODOLIST: "UPDATE_TODOLIST",
+  GET_TODOLIST: "GET_TOSOLIST",
   //Google SignIn
 };
 
@@ -94,7 +95,12 @@ export const setDateSelector = (year, month, day) => {
 };
 
 // -------------TodoList--------------- //
-export const getTodoList = (accessToken) => {};
+export const getTodoList = (todoItems) => {
+  return {
+    type: ACTIONS.GET_TODOLIST,
+    payload: { items: todoItems },
+  };
+};
 
 export const createTodoList = ({ id, order, content, date }) => {
   return {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-datyTodoContainer.css";
-import { jwt_isExpired } from "../../utilities/index.js";
+import { fetch_custom } from "../../utilities/index.js";
 import { updateTodoList } from "../../actions/index";
 import { format } from "date-fns";
 
@@ -20,8 +20,8 @@ const DayTodoItemList = (props) => {
   const [isDrag, setIsDrag] = useState(false);
 
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
-  const todoItems = todoItemsState.todoItems;
   const accessTokenState = useSelector((state) => state.accessTokenReducer);
+  const todoItems = todoItemsState.todoItems;
   const accessToken = accessTokenState.accessToken;
 
   useEffect(() => {
@@ -134,6 +134,12 @@ const DayTodoItemList = (props) => {
       const { id, content, checked, order } = item;
       if (order === idx) continue;
       dispatch(updateTodoList({ id, content, checked, order: idx }));
+      fetch_custom.updateTodo(accessToken, {
+        id,
+        content,
+        isChecked: checked,
+        order: idx,
+      });
     }
   };
 
@@ -152,6 +158,12 @@ const DayTodoItemList = (props) => {
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
     dispatch(updateTodoList({ id, content, order, checked }));
+    fetch_custom.updateTodo(accessToken, {
+      id,
+      content,
+      order,
+      isChecked: checked,
+    });
 
     // TODO: LIST에도 체크 여부를 전달해야 한다.
     let date = format(props.pos, "yyyy-MM-dd").split("-");

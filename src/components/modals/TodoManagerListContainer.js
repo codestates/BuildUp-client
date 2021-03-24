@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-todoManager.css";
 import { updateTodoList } from "../../actions/index";
+import { fetch_custom } from "../../utilities/index";
 
 const _initGrabData = {
   target: null,
@@ -20,8 +21,10 @@ const TodoManagerListContainer = (props) => {
 
   const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
+  const accessTokenState = useSelector((state) => state.accessTokenReducer);
   const { dateSelector } = dateSelectorState;
   const todoItems = todoItemsState.todoItems;
+  const accessToken = accessTokenState.accessToken;
 
   useEffect(() => {
     const year = `${dateSelector.year}`.padStart(4, "0");
@@ -138,6 +141,12 @@ const TodoManagerListContainer = (props) => {
       const { id, content, checked, order } = item;
       if (order === idx) continue;
       dispatch(updateTodoList({ id, content, checked, order: idx }));
+      fetch_custom.updateTodo(accessToken, {
+        id,
+        content,
+        isChecked: checked,
+        order: idx,
+      });
     }
   };
 
@@ -158,6 +167,12 @@ const TodoManagerListContainer = (props) => {
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
     dispatch(updateTodoList({ id, content, order, checked }));
+    fetch_custom.updateTodo(accessToken, {
+      id,
+      content,
+      order,
+      isChecked: checked,
+    });
 
     // TODO: LIST에도 체크 여부를 전달해야 한다.
     const year = `${dateSelector.year}`.padStart(4, "0");
