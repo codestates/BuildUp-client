@@ -22,7 +22,11 @@ export default function BadRequest() {
   return (
     <div id="main-page-before">
       <header id="header">
-        <div id="header-name" onClick={handleRedirectToMain}>
+        <div
+          id="main-header-name"
+          className="main-header-name"
+          onClick={handleRedirectToMain}
+        >
           <span>Buildup</span>
         </div>
       </header>
