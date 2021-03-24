@@ -71,8 +71,8 @@ function SignUp(props) {
     <div id="modal-signup">
       <div id="modal-signup-box">
         <div id="modal-header-signup" className="disable-select">
-          <h2 className="active lineHover">Sign up</h2>
-          <h2 className="inactive lineHover" onClick={props.handleModalType}>
+          <h2 className="active authOption">Sign up</h2>
+          <h2 className="inactive authOption" onClick={props.handleModalType}>
             Sign in
           </h2>
         </div>

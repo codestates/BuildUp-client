@@ -9,7 +9,7 @@ export default function BuildUpTime() {
     const timer = setInterval(() => {
       //1 분마다 현재 데이터를 업데이트한다.
       setDate(new Date());
-    }, 60 * 1000);
+    }, (60 * 1000) / 1000);
 
     return () => {
       clearInterval(timer); // 마운트 해제시 호출되지 않도록 타이머를 지우는 기능
@@ -17,13 +17,17 @@ export default function BuildUpTime() {
   }, []);
 
   const day = today.toLocaleDateString(locale, { weekday: "long" });
-  const date = `${day}, ${today.getDate()} ${today.toLocaleDateString(locale, {
+  const date = `${today.toLocaleDateString(locale, {
     month: "long",
-  })}\n\n`;
+  })}, ${today.getDate()}, ${day}`;
 
   const hour = today.getHours();
-  const wish = `Good ${
-    (hour < 12 && "Morning") || (hour < 17 && "Afternoon") || "Evening"
+  const min = today.getMinutes();
+  const sec = today.getSeconds();
+  const wish = `대충 ${
+    (hour < 12 && "오전 아무말") ||
+    (hour < 17 && "오후 아무말") ||
+    "저녁 아무말"
   }`;
 
   const time = today.toLocaleTimeString(locale, {
@@ -33,11 +37,12 @@ export default function BuildUpTime() {
   });
 
   return (
-    <span className="time">
+    <span className="time-zone">
       <section>
-        <article className="time-day-clock">
-          {day} {time}
+        <article className="time-clock">
+          {time}:{sec}
         </article>
+        <article className="time-date">{date}</article>
         <article className="time-message">{wish}</article>
       </section>
     </span>

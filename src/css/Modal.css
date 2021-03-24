@@ -7,31 +7,67 @@
     filter: drop-shadow(0 0 0.3rem grey);
   }
   /* login, signUP seletor */
-  .lineHover {
-    color: #5a5a5a;
+
+  .authOption.active {
+    color: #272727fa;
     transition: 0.1s;
-  }
-
-  .lineHover.active {
-    color: #5a5a5a;
-    border-bottom: 3px solid var(--main-color-hightlight-sub);
-  }
-
-  .lineHover:after {
-    display: block;
-    left: 0;
-    bottom: -10px;
-    width: 0;
-    height: 2px;
-  }
-
-  .lineHover:hover {
-    color: #66666665;
     cursor: pointer;
   }
 
-  .lineHover:hover:after {
-    width: 100%;
+  .authOption.active::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .authOption.active:hover {
+    color: #272727fa;
+  }
+
+  .authOption.active:hover:after {
+    transform: scaleX(1);
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+  }
+
+  .authOption.inactive {
+    color: var(--main-color-lightgrey);
+  }
+
+  .authOption.inactive::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .authOption.inactive:hover {
+    color: #272727fa;
+  }
+  .authOption.inactive:hover:after {
+    transform: scaleX(1);
+  }
+  /* .authOption {
+    color: #000;
+  }
+  .authOption.active:after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-grey);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .active:focus:after {
+    transform: scaleX(1);
+  } */
+  .modal-close-btn {
+    position: absolute;
+    box-sizing: border-box;
+    right: 10px;
+    top: 10px;
+    font-size: 1em;
+    border-radius: 7px;
+    font-weight: bold;
   }
 
   /* container */
@@ -45,7 +81,6 @@
     padding: 1rem;
 
     width: 400px;
-    height: 70%;
     max-height: 100%;
     max-width: 100%;
     display: block;
@@ -73,30 +108,9 @@
   }
 } */
 
-  /* input 창 옵션 */
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    border: 2px solid var(--main-color-input-area);
-    border-radius: 15px;
-    margin: 0.6rem 0;
-    outline: none;
-    padding: 15px;
-    box-sizing: border-box;
-    transition: 0.3s ease;
-    font-size: 1rem;
-    /* font-size: larger; */
-  }
-
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: var(--main-color-hightlight-sub);
-    box-shadow: 0 0 8px 0 var(--main-color-hightlight-sub);
-  }
   .input-icons {
     position: relative;
   }
-
   .input-icons input[type="text"],
   .input-icons input[type="password"] {
     padding-left: 35px;
@@ -105,7 +119,7 @@
     position: absolute;
     color: #aaa;
     left: 0;
-    top: 21px;
+    top: 19px;
     transition: 0.3s;
     padding: 1px 5px;
     margin-left: 5px;
@@ -114,16 +128,6 @@
   .input-icons .icon:focus {
     /* color: dodgerBlue; */
     color: var(--main-color-hightlight-sub);
-  }
-  #modal-container.deactive {
-    color: rgba(255, 255, 255, 0.5);
-    top: -100vh;
-    transition: 0.6s ease;
-    /* display: none; */
-  }
-  button {
-    cursor: pointer;
-    border: none;
   }
 
   #modal-header-daySelector {
@@ -143,15 +147,15 @@
     padding-right: 0.3rem;
   }
 
-  textarea {
-    resize: none;
-    width: 100%;
-    font-size: 1.4rem;
-    font-weight: 100;
-  }
-
   #auto-login {
     display: flex;
     text-align: center;
   }
+}
+
+#modal-container.deactive {
+  color: rgba(255, 255, 255, 0.5);
+  top: -100vh;
+  transition: 0.6s ease;
+  /* display: none; */
 }

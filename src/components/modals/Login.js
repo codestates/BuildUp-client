@@ -70,10 +70,10 @@ function Login(props) {
     <div id="modal-login">
       <div id="modal-login-box">
         <div id="modal-header-login" className="disable-select">
-          <h2 className="inactive lineHover" onClick={props.handleModalType}>
+          <h2 className="inactive authOption" onClick={props.handleModalType}>
             Sign up
           </h2>
-          <h2 className="active lineHover">Sign in</h2>
+          <h2 className="active authOption">Sign in</h2>
         </div>
         <div id="modal-section">
           <div id="section-login">
