@@ -68,18 +68,22 @@ export default function MainPage() {
   return !isLogin ? (
     <div id="main-page-before">
       <header id="header">
-        <div id="header-name" onClick={handleRedirectToMain}>
+        <div
+          id="main-header-name"
+          className="main-header-name"
+          onClick={handleRedirectToMain}
+        >
           <span>Buildup</span>
         </div>
-        <div id="button-box">
+        <div id="button-box" className="button-box">
           <button
             onClick={() => {
               handleModalToggle();
               handleModalType("SIGNUP");
             }}
-            className="main-btn main-signin-btn"
+            className="main-btn main-signup-btn"
           >
-            Join
+            회원가입
           </button>
 
           <button
@@ -89,21 +93,21 @@ export default function MainPage() {
             }}
             className="main-btn main-login-btn"
           >
-            Login
+            로그인
           </button>
         </div>
       </header>
       <section>
-        <div id="top-h"></div>
-        <div id="welcome-box">
+        <article id="top-h"></article>
+        <article id="welcome-box">
           <h3 className="welcome-text">환영합니다</h3>
-        </div>
+        </article>
         {/* <div id="btn-demo-box" className="btn-demo-box">
           <button className="btn-demo">체험해보기</button>
         </div> */}
-        <div id="main-clock">
+        <article id="main-clock">
           <BuildUpTime />
-        </div>
+        </article>
         <div id="top-l"></div>
       </section>
       <footer>
@@ -114,18 +118,22 @@ export default function MainPage() {
   ) : (
     <div id="main-page-after">
       <header id="header">
-        <div id="header-name" onClick={handleRedirectToMain}>
+        <div
+          id="main-header-name"
+          className="main-header-name"
+          onClick={handleRedirectToMain}
+        >
           <span>Buildup</span>
         </div>
-        <div id="button-box">
-          <button onClick={handleLogout} className="main-btn main-logout-btn">
-            Logout
-          </button>
+        <div id="button-box" className="button-box">
           <button
             onClick={handleRedirectProfile}
-            className="main-btn main-mypage-btn"
+            className="main-btn main-profile-btn"
           >
-            Profile
+            프로필
+          </button>
+          <button onClick={handleLogout} className="main-btn main-logout-btn">
+            로그아웃
           </button>
         </div>
       </header>
