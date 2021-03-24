@@ -1,14 +1,15 @@
 import { initialState } from "./initialState";
+import { jwt_isExpired, fetch_custom } from "../utilities/index";
 import { ACTIONS } from "../actions";
+const axios = require("axios");
 
 const toDoItemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTIONS.CREATE_TODOLIST: {
-      // TODO: UPDATE는 UMONUT이후 일괄적으로 보내도 상관없지만,
-      // TODO: ADD는 KEY값을 받아와야하므로 꼭 서버와 통신해야한다.
+      // TODO: 서버와 통신후 결과값만 받아옵니다.
       const newItems = Object.assign([], state.todoItems);
       let item = {
-        key: Math.random() * 10000,
+        id: action.payload.id,
         order: action.payload.order,
         checkd: false,
         content: action.payload.content,

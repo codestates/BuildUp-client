@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-datyTodoContainer.css";
-import { js_date } from "../../utilities/index.js";
+import { jwt_isExpired } from "../../utilities/index.js";
 import { updateTodoList } from "../../actions/index";
 import { format } from "date-fns";
 
@@ -21,6 +21,8 @@ const DayTodoItemList = (props) => {
 
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
   const todoItems = todoItemsState.todoItems;
+  const accessTokenState = useSelector((state) => state.accessTokenReducer);
+  const accessToken = accessTokenState.accessToken;
 
   useEffect(() => {
     let date = format(props.pos, "yyyy-MM-dd").split("-");

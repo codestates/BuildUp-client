@@ -2,15 +2,14 @@ const data = require("../Data");
 
 export const initialState = {
   userInfo: {
-    username: null,
-    email: null,
+    username: "",
+    email: "",
   },
-  // todoItems: [],
-  todoItems: data.data,
+  todoItems: [],
+  // todoItems: data.data,
   loginStatus: false,
-  accessToken: null,
-  refreshToken: null,
+  accessToken: "",
   modalStatus: false,
-  modalType: null,
+  modalType: "",
   dateSelector: { year: "", month: "", day: "" },
 };

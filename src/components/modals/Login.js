@@ -6,10 +6,9 @@ import {
   toggleModal,
   setUserInfo,
 } from "../../actions/index";
+import { jwt_isExpired } from "../../utilities/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
-
-import { Router } from "react-router";
 
 require("dotenv").config();
 
@@ -23,6 +22,7 @@ function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAutoLogin, setAutoLogin] = useState("");
+  const [alert, setAlert] = useState("");
 
   const handleInputValue = (key) => (e) => {
     if (key === "EMAIL") setEmail(e.target.value);
@@ -31,13 +31,19 @@ function Login(props) {
   };
 
   const handleLogin = () => {
-    // 0. 빈 곳 있는지 확인
-    // 1. Validation Test 통과하지 않을경우 에러 메시지 출력 + Return
-    // 2. Send Request to Server
+    // TODO 공백란이 있는지 확인
+    if (!email || !password) {
+      setAlert("이메일 주소와 비밀번호를 입력하세요.");
+      return;
+    }
+
+    // TODO 2. 아이디와 비밀번호 유효성 검사
+
+    // TODO 3. Send Request to Server
     axios
       .post(`${scheme}://${host}:${port}/user/login`, { email, password })
       .then((data) => {
-        const token = data.data.accessToken;
+        const token = data.data.data.accessToken;
         dispatch(setAccessToken(token));
         dispatch(toggleModal());
         dispatch(toggleLoginStatus());
@@ -50,10 +56,15 @@ function Login(props) {
         });
       })
       .then((data) => {
-        const { username, email } = data.data;
+        const { username, email } = data.data.data;
         dispatch(setUserInfo(username, email));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const status = err.response.request.status;
+        if (status === 401) setAlert("유효하지 않은 계정입니다.");
+        else if (status === 400) setAlert("비밀번호가 일치하지 않습니다.");
+        console.log(err);
+      });
   };
 
   return (
@@ -108,6 +119,7 @@ function Login(props) {
           </div>
         </div>
         <div id="modal-footer">
+          <div id="alert">{alert}</div>
           <div id="footer-login">
             <button onClick={handleLogin} className="login-btn">
               로그인

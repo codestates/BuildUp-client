@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDateSelector } from "../../actions/index";
-import { js_date } from "../../utilities/index.js";
+import { js_date, jwt_isExpired, fetch_custom } from "../../utilities/index.js";
 import TodoManagerListContainer from "./TodoManagerListContainer";
-import { createTodoList } from "../../actions/index";
+import { createTodoList, setAccessToken } from "../../actions/index";
 
 function TodoManager(props) {
   const dispatch = useDispatch();
+  const accessTokenState = useSelector((state) => state.accessTokenReducer);
+  const accessToken = accessTokenState.accessToken;
   const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
   const { dateSelector } = dateSelectorState;
-  const [text, setText] = useState("");
+
   const [isTextareaActive, setTextarea] = useState("false");
   const [word, setWord] = useState("");
   const [maxOrder, setMaxorder] = useState(0);
+  const [alert, setAlert] = useState("");
 
   useEffect(() => {
     const el = document.getElementById("todo-manager-container");
@@ -55,14 +58,33 @@ function TodoManager(props) {
       ),
     );
   };
-  const handleAddTodo = () => {
+  const handleAddTodo = async () => {
     let { year, month, day } = dateSelector;
     year = year.toString().padStart(4, "0");
     month = month.toString().padStart(2, "0");
     day = day.toString().padStart(2, "0");
     const date = `${year}-${month}-${day}`;
 
-    dispatch(createTodoList({ content: word, date, order: maxOrder + 1 }));
+    //
+    // TODO: 1. 토큰이 만료되었는지 확인한다
+    const isExpired = jwt_isExpired(accessToken);
+
+    // TODO: 2. 토큰이 만료되었으면 새로운 토큰을 요청한다.
+    if (isExpired) {
+      const token = await fetch_custom.getAccessToken(accessToken);
+      await dispatch(setAccessToken(token));
+    }
+
+    // TODO 3. 새로 생성할 TODO를 서버에 전송하여 Primary Key를 받는다.
+    const data = { order: maxOrder + 1, content: word, now: date };
+    const PK = await fetch_custom.createTodo(accessToken, data);
+    // TODO 4. 클라이언트 측에도 업데이트 사항을 REDUX STORE에 반영한다.
+
+    await dispatch(
+      createTodoList({ order: maxOrder + 1, content: word, date, id: PK }),
+    );
+
+    //
     setMaxorder(maxOrder + 1);
     toggleTextarea();
 

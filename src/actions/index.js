@@ -96,10 +96,10 @@ export const setDateSelector = (year, month, day) => {
 // -------------TodoList--------------- //
 export const getTodoList = (accessToken) => {};
 
-export const createTodoList = ({ order, content, date }) => {
+export const createTodoList = ({ id, order, content, date }) => {
   return {
     type: ACTIONS.CREATE_TODOLIST,
-    payload: { order, content, date },
+    payload: { id, order, content, date },
   };
 };
 
