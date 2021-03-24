@@ -84,7 +84,8 @@
     padding: 15px;
     box-sizing: border-box;
     transition: 0.3s ease;
-    font-size: larger;
+    font-size: 1rem;
+    /* font-size: larger; */
   }
 
   input[type="text"]:focus,

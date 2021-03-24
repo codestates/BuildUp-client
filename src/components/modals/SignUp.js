@@ -7,6 +7,7 @@ import {
   faEnvelope,
   faUnlockAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { set } from "date-fns";
 
 require("dotenv").config();
 const axios = require("axios");
@@ -21,6 +22,7 @@ function SignUp(props) {
   const [reEmail, setReEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [alert, setAlert] = useState("");
 
   const handleInputValue = (key) => (e) => {
     if (key === "USERNAME") setUsername(e.target.value);
@@ -31,9 +33,18 @@ function SignUp(props) {
   };
 
   const handleSignUp = () => {
-    // 1. 빈 곳 있는지 확인
-    // 2. Validation Test(이메일, 비밀번호 일치, 조건확인)
-    // 3. Send Request
+    // TODO 빈 곳 있는지 확인
+    if (!username || !email || !reEmail || !password || !rePassword) {
+      setAlert("모든 항목을 입력해야 합니다.");
+      return;
+    }
+    // TODO 비밀번호 / 이메일주소 일치여부 확인
+    if (email !== reEmail || password !== rePassword) {
+      setAlert("이메일 주소 또는 비밀번호가 일치하지 않습니다.");
+      return;
+    }
+    // TODO 아이디, 이메일, 비밀번호 유효성 검사
+    // TODO Send Request
     axios
       .post(`${scheme}://${host}:${port}/user/signup`, {
         username,
@@ -41,11 +52,17 @@ function SignUp(props) {
         password,
       })
       .then((data) => {
-        console.log(data);
+        // TODO 계정 중복여부 확인
+        if (
+          data.status === 200 &&
+          data.data === "이미 존재하는 이메일 입니다."
+        ) {
+          setAlert("이미 가입한 이메일 주소입니다.");
+          return;
+        }
         dispatch(setModalType("LOGIN"));
       })
       .catch((err) => {
-        // 중복된 이메일일 경우 별도 에러메시지 출력
         console.log(err);
       });
   };
@@ -123,6 +140,7 @@ function SignUp(props) {
           </div>
         </div>
         <div id="modal-footer">
+          <div id="alert">{alert}</div>
           <button onClick={handleSignUp}>확인</button>
         </div>
       </div>

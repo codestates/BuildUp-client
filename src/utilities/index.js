@@ -1,30 +1,114 @@
 require("dotenv").config();
 const axios = require("axios");
+const jwt = require("jsonwebtoken");
+const parseJSON = require("date-fns/parseJSON");
+const addMinutes = require("date-fns/addMinutes");
 const scheme = process.env.REACT_APP_SERVER_SCHEME;
 const host = process.env.REACT_APP_SERVER_HOST;
 const port = process.env.REACT_APP_SERVER_PORT;
 const api_key = process.env.REACT_APP_SERVER_APIKEY;
+const accessSecret = process.env.REACT_APP_SERVER_ACCESS_SECRET;
+const URL = `${scheme}://${host}:${port}`;
 
-export const useFecth = (
-  endPoint,
-  method,
-  data,
-  callback1,
-  callback2 = (err) => console.log(err),
-) => {
-  // ! ENDPOINT, METHOD, DATA, CALLBACK1, CALLBACK2(ERR)
-  const url = `${scheme}://${host}:${port}${endPoint}`;
-  axios({
-    url,
-    method,
-    data,
-    withCredentials: true,
-  })
-    .then((data) => callback1(data))
-    .catch((err) => callback2(err));
+console.log(accessSecret);
+
+// --------- Fetch API --------- //
+export const fetch_custom = {
+  getUserInfo: (token) => {
+    // * RETURN: data = {username, email}
+    const result = axios
+      .get(`${URL}/user/info`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((data) => {
+        const { username, email } = data.data.data;
+        return { username, email };
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+
+  getTodoInfo: (token) => {
+    // * RETURN: data = [todoItems...]
+    const result = axios
+      .get(`${URL}/todo/info`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((data) => {
+        const items = data.data.data;
+        // console.log(items);
+        return items;
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+  createTodo: (token, data) => {
+    // * RETURN: id(PK);
+
+    const result = axios
+      .post(
+        `${URL}/todo/create`,
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
+      )
+      .then((data) => {
+        const pk = data.data.data.id;
+        return pk;
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+  getAccessToken: (token) => {
+    // * RETURN: NEW ACCESSTOKEN
+    const result = axios
+      .get(`${URL}/user/refreshtokenrequest`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((data) => {
+        console.log(data);
+        const token = data.data.access_token;
+        return token;
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+};
+
+// --------- DECODE ACCESS WEB TOKEN --------- //
+
+export const jwt_isExpired = (token) => {
+  // ! TRUE: EXPIRED, FALSE: NOT EXPIRED
+  if (!token) return true;
+
+  const decoded = jwt.verify(token, accessSecret);
+  const createdAt = parseJSON(decoded.createdAt);
+  const curTime = addMinutes(new Date(), -30);
+
+  if (createdAt >= curTime) return true;
+  else return false;
 };
 
 // --------- 현재 시간을 기준으로 년/월/일을 얻을 수 있는 메서드 --------- //
+// ! date-fns의 format을 사용하세요
+// ! 일부 스크립트에 남아있어 리펙토링 이전까지 남겨둡니다.
 
 const dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 const monthLabel = [
@@ -67,7 +151,7 @@ export const js_date = {
   },
 };
 
-// --------- 데이터베이스의 생성날짜에서 년/월/일을 얻는 메서드 --------- //
+// --------- YYYY-MM-DD 포멧에서 년/월/일을 얻는 메서드 --------- //
 
 export const db_date = {
   // DB 날짜의 형식을 YYYY-MM-DD로 잡았을 때 기준입니다.
@@ -93,7 +177,9 @@ export const db_date = {
   },
 };
 
-// --------- 위치정보 확인 서비스 --------- //
+// --------- 구글 위치정보 확인 서비스 --------- //
+// TODO: 사용자 위치정보를 확인하기 전 기본 배경화면으로 설정합니다.
+// TODO: 사용자가 위치정보를 허용하면, Openweather API정보로 서버의 날씨별 이미지 URL을 얻으세요.
 
 export const geoInit = () => {
   var startPos;
@@ -156,4 +242,7 @@ export const isValidPassword = (str) => {
   // ! 비밀번호는 영문, 숫자, 특수문자 중 2가지 이상을 혼합해야 합니다.
 };
 
-export const isValidID = (str) => {};
+export const isValidID = (str) => {
+  // !아이디는 대소문자 구분없이 영문 + 숫자로 작성해야 합니다.
+  // ! 아이디는 5자 이상, 15자 이하여야 합니다.
+};
