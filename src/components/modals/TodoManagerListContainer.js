@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-todoManager.css";
-import { updateTodoList } from "../../actions/index";
+import { deleteTodoList, updateTodoList } from "../../actions/index";
 import { fetch_custom } from "../../utilities/index";
 
 const _initGrabData = {
@@ -18,6 +18,8 @@ const TodoManagerListContainer = (props) => {
   const [lists, setLists] = useState([]);
   const [grab, setGrab] = useState(_initGrabData);
   const [isDrag, setIsDrag] = useState(false);
+  const [editKey, setEditKey] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
@@ -41,6 +43,8 @@ const TodoManagerListContainer = (props) => {
       }
       return false;
     });
+
+    // useEffect(() => {});
 
     sorted.sort((a, b) => a.order - b.order);
 
@@ -90,6 +94,7 @@ const TodoManagerListContainer = (props) => {
   };
 
   const handleDragEnter = (e) => {
+    if (e.target.className.includes("notTarget")) return;
     if (e.target.value === "checkbox") return;
     if (!isDrag) return;
     let grabPosition = Number(grab.target.dataset.order);
@@ -123,7 +128,9 @@ const TodoManagerListContainer = (props) => {
       position: targetPosition,
     });
   };
+
   const handleDragLeave = (e) => {
+    if (e.target.className.includes("notTarget")) return;
     if (e.target.value === "checkbox") return;
     if (!isDrag) return;
     if (e.target === grab.target) {
@@ -150,9 +157,34 @@ const TodoManagerListContainer = (props) => {
     }
   };
 
-  const handleCheckboxEvent = (e) => {
-    if (e.target.value !== "checkbox") return;
-    const PK = Number(e.target.parentNode.dataset.key);
+  const handleUpdateTextarea = (e) => {
+    setEditText(e.target.value);
+  };
+
+  const handleDeleteTodo = (PK) => {
+    dispatch(deleteTodoList({ id: PK }));
+    fetch_custom.removeTodo(accessToken, { id: PK });
+
+    // TODO: LIST에도 체크 여부를 전달해야 한다.
+    const year = `${dateSelector.year}`.padStart(4, "0");
+    const month = `${dateSelector.month}`.padStart(2, "0");
+    const day = `${dateSelector.day}`.padStart(2, "0");
+
+    const curPos = `${year}-${month}-${day}`;
+
+    const sorted = todoItems.filter((el) => {
+      if (el.date === curPos) {
+        return true;
+      }
+      return false;
+    });
+
+    console.log(sorted);
+
+    setLists(sorted);
+  };
+
+  const handleCheckboxEvent = (PK) => {
     let index;
 
     for (let i = 0; i < todoItems.length; i++) {
@@ -191,6 +223,56 @@ const TodoManagerListContainer = (props) => {
     setLists(sorted);
   };
 
+  const handleEditText = (key) => {
+    setEditKey(key);
+    console.log(editKey);
+  };
+
+  const handleEditTextConfirm = (PK) => {
+    if (editText.length === 0) return;
+    let index;
+
+    for (let i = 0; i < todoItems.length; i++) {
+      const item = todoItems[i];
+      if (item.id === PK) {
+        index = i;
+        break;
+      }
+    }
+
+    const item = todoItems[index];
+    let { id, checked, order } = item;
+    dispatch(updateTodoList({ id, content: editText, order, checked }));
+    fetch_custom.updateTodo(accessToken, {
+      id,
+      content: editText,
+      order,
+      isChecked: checked,
+    });
+
+    // TODO: LIST에도 체크 여부를 전달해야 한다.
+    const year = `${dateSelector.year}`.padStart(4, "0");
+    const month = `${dateSelector.month}`.padStart(2, "0");
+    const day = `${dateSelector.day}`.padStart(2, "0");
+
+    const curPos = `${year}-${month}-${day}`;
+
+    const sorted = todoItems.filter((el) => {
+      if (el.date === curPos) {
+        return true;
+      }
+      return false;
+    });
+
+    setLists(sorted);
+    setEditText("");
+    handleExitEditText();
+  };
+
+  const handleExitEditText = () => {
+    setEditKey(null);
+  };
+
   return (
     <ul id="todo-manager-container" onDragOver={handleDragOver}>
       {lists.map((val, index) => {
@@ -225,14 +307,56 @@ const TodoManagerListContainer = (props) => {
             onDragLeave={handleDragLeave}
             draggable
           >
-            <input
-              type="checkbox"
-              value="checkbox"
-              onClick={handleCheckboxEvent}
-              checked={val.checked}
-            />
-            &nbsp;
-            {val.order}. {val.content} / PK:{val.id}
+            <div className={["button-container", "notTarget"].join(" ")}>
+              <input
+                type="checkbox"
+                value="checkbox"
+                onClick={() => {
+                  handleCheckboxEvent(val.id);
+                }}
+                checked={val.checked}
+              />
+              <button
+                className="notTarget"
+                onClick={() => {
+                  handleEditText(val.id);
+                }}
+              >
+                편집
+              </button>
+              <button
+                className="notTarget"
+                onClick={() => {
+                  handleDeleteTodo(val.id);
+                }}
+              >
+                삭제
+              </button>
+            </div>
+            <div className={["text-container", "notTarget"].join(" ")}>
+              {editKey === val.id ? (
+                <span className="notTarget">
+                  <textarea
+                    maxLength="100"
+                    className="notTarget"
+                    onChange={handleUpdateTextarea}
+                  ></textarea>
+                  <button
+                    className="notTarget"
+                    onClick={() => {
+                      handleEditTextConfirm(val.id);
+                    }}
+                  >
+                    확인
+                  </button>
+                  <button className="notTarget" onClick={handleExitEditText}>
+                    취소
+                  </button>
+                </span>
+              ) : (
+                <>{val.content}</>
+              )}
+            </div>
           </div>
         );
       })}

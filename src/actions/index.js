@@ -120,6 +120,6 @@ export const updateTodoList = ({ id, order, content, checked }) => {
 export const deleteTodoList = ({ id }) => {
   return {
     type: ACTIONS.DELETE_TODOLIST,
-    payload: { id },
+    payload: { id: id },
   };
 };

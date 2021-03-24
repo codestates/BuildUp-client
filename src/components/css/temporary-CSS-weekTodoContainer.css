@@ -35,10 +35,16 @@
 
 .week-todo-subcontainer-item {
   display: flex;
-  padding: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--main-color-carousel-lightgrey);
+  max-height: 12.5%;
+  min-height: 12.5%;
+}
+
+.week-todo-subcontainer > li {
+  display: inline;
+  word-break: normal;
 }
 
 .week-todo-subtitle {
@@ -49,16 +55,3 @@
   color: var(--main-color-carousel-title);
   padding: 0.5rem;
 }
-/* .week-todo-subcontainer {
-  min-width: 14%;
-  max-width: 14%;
-  overflow: hidden;
-}
-
-.week-todo-subcontainer-item {
-  padding: 10px;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: grey;
-} */

@@ -55,10 +55,11 @@ export const fetch_custom = {
       for (let i = 0; i < days.length; i++) {
         if (days[i][1] === el.date_id) {
           const date = days[i][0].slice(0, 10);
-          const item = { ...el, date };
+          const item = { ...el, date, checked: el.isChecked };
           return item;
         }
       }
+      return el;
     });
 
     return result;
@@ -116,17 +117,14 @@ export const fetch_custom = {
     // * RETURN: nothing;
 
     const result = axios
-      .delete(
-        `${URL}/todo/remove`,
-        { data },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
+      .delete(`${URL}/todo/remove`, {
+        data: { data },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-      )
+        withCredentials: true,
+      })
       .then((data) => {
         console.log(data);
       })
