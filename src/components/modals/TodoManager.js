@@ -58,7 +58,16 @@ function TodoManager(props) {
       ),
     );
   };
+
+  const handleCancelTodo = () => {
+    toggleTextarea();
+    setAlert("");
+  };
   const handleAddTodo = async () => {
+    if (word.length === 0) {
+      setAlert("TODO는 최소 1자 이상 입력해야 합니다.");
+      return;
+    }
     let { year, month, day } = dateSelector;
     year = year.toString().padStart(4, "0");
     month = month.toString().padStart(2, "0");
@@ -86,6 +95,7 @@ function TodoManager(props) {
 
     //
     setMaxorder(maxOrder + 1);
+    setAlert("");
     toggleTextarea();
 
     const el = document.getElementById("todo-manager-container");
@@ -95,14 +105,10 @@ function TodoManager(props) {
   const handleMaxOrder = (number) => {
     setMaxorder(number);
   };
-  const handleRemoveTodo = () => {};
-  const handleSendNewTodo = () => {
-    // TODO 1. 타당성 검사
-    // TODO 2. 이상 없으면 새로운 TODO 추가(Req)
-    // TODO 3. 새로운 TODO 목록 수신(Res)
-    // TODO 4. 이상 없으면 원래 창으로 복귀
-  };
 
+  const handleSetAlert = (text) => {
+    setAlert(text);
+  };
   const toggleTextarea = () => {
     setTextarea(!isTextareaActive);
   };
@@ -118,13 +124,18 @@ function TodoManager(props) {
         </div>
       </div>
       <div id="modal-section">
-        <TodoManagerListContainer handleMaxOrder={handleMaxOrder} />
+        <TodoManagerListContainer
+          handleMaxOrder={handleMaxOrder}
+          handleSetAlert={handleSetAlert}
+        />
       </div>
       {/* Footer */}
       <div id="modal-footer">
+        <div id="alert">{alert}</div>
         {!isTextareaActive ? (
           <>
             <textarea
+              maxLength="100"
               onChange={(e) => {
                 console.log(e.target.value);
                 setWord(e.target.value);
@@ -132,7 +143,7 @@ function TodoManager(props) {
             ></textarea>
             <div>
               <button onClick={handleAddTodo}>확인</button>
-              <button onClick={toggleTextarea}>취소</button>
+              <button onClick={handleCancelTodo}>취소</button>
             </div>
           </>
         ) : (

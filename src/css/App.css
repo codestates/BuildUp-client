@@ -211,7 +211,16 @@ input[type="checkbox"]::after {
   color: red;
 }
 
-/* input 창 옵션 */
+li {
+  white-space: normal;
+  word-wrap: break-word;
+  padding-left: 1rem;
+}
+
+textarea {
+  overflow-y: scroll;
+  
+ /* input 창 옵션 */
 input[type="text"],
 input[type="password"] {
   width: 100%;

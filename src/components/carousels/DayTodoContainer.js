@@ -86,6 +86,7 @@ const DayTodoItemList = (props) => {
   };
 
   const handleDragEnter = (e) => {
+    if (e.target.className.includes("notTarget")) return;
     if (!isDrag) return;
     let grabPosition = Number(grab.target.dataset.order);
     let listPosition = grab.position;
@@ -119,6 +120,7 @@ const DayTodoItemList = (props) => {
     });
   };
   const handleDragLeave = (e) => {
+    if (e.target.className.includes("notTarget")) return;
     if (!isDrag) return;
     if (e.target === grab.target) {
       e.target.style.visibility = "hidden";
@@ -186,6 +188,7 @@ const DayTodoItemList = (props) => {
       <ul className="day-todo-container-ul" onDragOver={handleDragOver}>
         {lists.map((val, index) => {
           let classNames = "";
+          let checkClassName = val.checked ? "checked" : "";
 
           grab.move_up.includes(index) && (classNames = "move_up");
           grab.move_down.includes(index) && (classNames = "move_down");
@@ -204,6 +207,8 @@ const DayTodoItemList = (props) => {
                 classNames,
                 move_stop,
                 "cursor-move",
+                "target",
+                checkClassName,
               ].join(" ")}
               isdrag={isDrag ? 1 : 0}
               //! onDragStart: Element를 드래그하기 시작할 때
@@ -221,8 +226,9 @@ const DayTodoItemList = (props) => {
                 value="checkbox"
                 onClick={handleCheckboxEvent}
                 checked={val.checked}
+                className="notTarget"
               />
-              &nbsp; {val.order}. {val.content} / PK: {val.id}.
+              <span className="notTarget">{val.content}</span>
             </li>
           );
         })}

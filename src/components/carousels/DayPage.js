@@ -76,6 +76,7 @@ function DayPage() {
             <>
               <textarea
                 className="day-textarea"
+                maxLength="100"
                 onChange={handleUpdateText}
               ></textarea>
               <button

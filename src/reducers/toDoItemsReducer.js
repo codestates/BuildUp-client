@@ -43,8 +43,9 @@ const toDoItemsReducer = (state = initialState, action) => {
     }
 
     case ACTIONS.DELETE_TODOLIST: {
-      // payload is {id, content, order, checked}
+      // payload is {id}
       const newItems = Object.assign([], state.todoItems);
+      console.log(newItems);
       let idx;
       for (let i = 0; i < state.todoItems.length; i++) {
         const item = state.todoItems[i];
@@ -54,12 +55,10 @@ const toDoItemsReducer = (state = initialState, action) => {
         }
       }
 
-      newItems[idx].content = action.payload.content;
-      newItems[idx].order = action.payload.order;
-      newItems[idx].checked = action.payload.checked;
+      newItems.splice(idx, 1);
 
       return Object.assign({}, state, {
-        todoItems: [...newItems.slice(0, idx - 1), ...newItems.slice(idx)],
+        todoItems: newItems,
       });
     }
 
