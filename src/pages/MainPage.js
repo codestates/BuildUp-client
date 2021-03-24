@@ -12,6 +12,7 @@ import { useHistory } from "react-router";
 import { useEffect } from "react";
 import { fetch_custom } from "../utilities/index";
 import Carousel from "../components/Carousel";
+import BuildUpTime from "../components/Time";
 require("dotenv").config();
 
 export default function MainPage() {
@@ -105,6 +106,9 @@ export default function MainPage() {
         {/* <div id="btn-demo-box" className="btn-demo-box">
           <button className="btn-demo">체험해보기</button>
         </div> */}
+        <div id="main-clock">
+          <BuildUpTime />
+        </div>
         <div id="top-l"></div>
       </section>
       <footer>

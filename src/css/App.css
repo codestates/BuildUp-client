@@ -5,6 +5,7 @@
 }
 
 :root {
+  --main-colco-text: rgba(245, 245, 245, 0.95);
   --main-color-white: #fff;
   --main-color-lightgrey: #eeeeee;
   --main-color-grey: #cbcaca;
