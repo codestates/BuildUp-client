@@ -5,7 +5,6 @@ import {
   setUserInfo,
   toggleLoginStatus,
   setAccessToken,
-  setRefreshToken,
   getTodoList,
 } from "../actions/index";
 import { useHistory } from "react-router";
@@ -34,16 +33,12 @@ export default function MainPage() {
       if (todoItems.length === 0) {
         const loadItems = async () => {
           const items = await fetch_custom.getTodoInfo(accessToken);
-          console.log(items);
-          dispatch(getTodoList(items));
+          await dispatch(getTodoList(items));
         };
         loadItems();
-      } else {
-        dispatch(setAccessToken(""));
-        dispatch(getTodoList([]));
       }
     }
-  }, [isLogin]);
+  }, [isLogin, todoItems, accessToken, dispatch]);
 
   const handleRedirectProfile = () => {
     history.push("/profile");
@@ -64,10 +59,10 @@ export default function MainPage() {
   };
 
   const handleLogout = () => {
-    dispatch(setUserInfo(null, null));
+    dispatch(setUserInfo("", ""));
     dispatch(toggleLoginStatus());
-    dispatch(setAccessToken(null));
-    dispatch(setRefreshToken(null));
+    dispatch(setAccessToken(""));
+    dispatch(getTodoList([]));
   };
 
   return !isLogin ? (
