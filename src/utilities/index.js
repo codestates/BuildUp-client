@@ -10,8 +10,6 @@ const api_key = process.env.REACT_APP_SERVER_APIKEY;
 const accessSecret = process.env.REACT_APP_SERVER_ACCESS_SECRET;
 const URL = `${scheme}://${host}:${port}`;
 
-console.log(accessSecret);
-
 // --------- Fetch API --------- //
 export const fetch_custom = {
   // ! ENDPOUNT: USER
@@ -34,9 +32,9 @@ export const fetch_custom = {
   },
 
   // ! ENDPOUNT: TODO
-  getTodoInfo: (token) => {
+  getTodoInfo: async (token) => {
     // * RETURN: data = [todoItems...]
-    const result = axios
+    const datas = await axios
       .get(`${URL}/todo/info`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -45,11 +43,24 @@ export const fetch_custom = {
         withCredentials: true,
       })
       .then((data) => {
-        const items = data.data.data;
-        // console.log(items);
-        return items;
+        const datas = data.data;
+        return datas;
       })
       .catch((err) => console.log(err));
+
+    const items = datas.data;
+    const days = datas.day;
+
+    const result = items.map((el) => {
+      for (let i = 0; i < days.length; i++) {
+        if (days[i][1] === el.date_id) {
+          const date = days[i][0].slice(0, 10);
+          const item = { ...el, date };
+          return item;
+        }
+      }
+    });
+
     return result;
   },
 
@@ -94,7 +105,7 @@ export const fetch_custom = {
         },
       )
       .then((data) => {
-        console.log(data);
+        console.log("data");
       })
       .catch((err) => console.log(err));
     return result;
@@ -105,7 +116,7 @@ export const fetch_custom = {
     // * RETURN: nothing;
 
     const result = axios
-      .put(
+      .delete(
         `${URL}/todo/remove`,
         { data },
         {

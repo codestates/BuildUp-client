@@ -17,6 +17,7 @@ export const ACTIONS = {
   CREATE_TODOLIST: "CREATE_TODOLIST",
   UPDATE_TODOLIST: "UPDATE_TODOLIST",
   GET_TODOLIST: "GET_TOSOLIST",
+  DELETE_TODOLIST: "REMOVE_TODOLIST",
   //Google SignIn
 };
 
@@ -113,5 +114,12 @@ export const updateTodoList = ({ id, order, content, checked }) => {
   return {
     type: ACTIONS.UPDATE_TODOLIST,
     payload: { id, order, content, checked },
+  };
+};
+
+export const deleteTodoList = ({ id }) => {
+  return {
+    type: ACTIONS.DELETE_TODOLIST,
+    payload: { id },
   };
 };

@@ -42,6 +42,27 @@ const toDoItemsReducer = (state = initialState, action) => {
       });
     }
 
+    case ACTIONS.DELETE_TODOLIST: {
+      // payload is {id, content, order, checked}
+      const newItems = Object.assign([], state.todoItems);
+      let idx;
+      for (let i = 0; i < state.todoItems.length; i++) {
+        const item = state.todoItems[i];
+        if (`${item.id}` === `${action.payload.id}`) {
+          idx = i;
+          break;
+        }
+      }
+
+      newItems[idx].content = action.payload.content;
+      newItems[idx].order = action.payload.order;
+      newItems[idx].checked = action.payload.checked;
+
+      return Object.assign({}, state, {
+        todoItems: [...newItems.slice(0, idx - 1), ...newItems.slice(idx)],
+      });
+    }
+
     case ACTIONS.GET_TODOLIST: {
       return Object.assign({}, state, {
         todoItems: action.payload.items,
