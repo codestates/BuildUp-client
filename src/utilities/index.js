@@ -14,6 +14,7 @@ console.log(accessSecret);
 
 // --------- Fetch API --------- //
 export const fetch_custom = {
+  // ! ENDPOUNT: USER
   getUserInfo: (token) => {
     // * RETURN: data = {username, email}
     const result = axios
@@ -32,6 +33,7 @@ export const fetch_custom = {
     return result;
   },
 
+  // ! ENDPOUNT: TODO
   getTodoInfo: (token) => {
     // * RETURN: data = [todoItems...]
     const result = axios
@@ -50,13 +52,15 @@ export const fetch_custom = {
       .catch((err) => console.log(err));
     return result;
   },
+
   createTodo: (token, data) => {
+    // * DATA: {content, order, now: date}
     // * RETURN: id(PK);
 
     const result = axios
       .post(
         `${URL}/todo/create`,
-        { data },
+        { data: data },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,6 +76,53 @@ export const fetch_custom = {
       .catch((err) => console.log(err));
     return result;
   },
+
+  updateTodo: (token, data) => {
+    // * DATA: {id, content, order, checked}
+    // * RETURN: nothing;
+
+    const result = axios
+      .put(
+        `${URL}/todo/update`,
+        { data: data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
+      )
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+
+  removeTodo: (token, data) => {
+    // * DATA: {id}
+    // * RETURN: nothing;
+
+    const result = axios
+      .put(
+        `${URL}/todo/remove`,
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
+      )
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+    return result;
+  },
+
   getAccessToken: (token) => {
     // * RETURN: NEW ACCESSTOKEN
     const result = axios

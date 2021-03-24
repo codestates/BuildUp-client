@@ -21,20 +21,8 @@ const port = process.env.REACT_APP_SERVER_PORT;
 const url = `${scheme}://${host}:${port}$/todo/update`;
 
 function App() {
-  const todoItemsState = useSelector((state) => state.toDoItemsReducer);
-  const todoItems = todoItemsState.todoItems;
   const loginState = useSelector((state) => state.loginStatusReducer);
   const isLogin = loginState.loginStatus;
-
-  useEffect(() => {
-    return () => {
-      // TODO: 각 Item마다 한 번씩 UPDATE를 보내는 것으로 하였으나, 배열로 보내는게 나을 수도 있다.
-      axios
-        .post(url, { data: todoItems })
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-    };
-  });
 
   return (
     <React.Fragment>
