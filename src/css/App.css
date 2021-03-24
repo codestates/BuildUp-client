@@ -219,8 +219,9 @@ li {
 
 textarea {
   overflow-y: scroll;
-  
- /* input 창 옵션 */
+}
+
+/* input 창 옵션 */
 input[type="text"],
 input[type="password"] {
   width: 100%;
