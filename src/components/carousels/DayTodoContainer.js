@@ -312,7 +312,6 @@ const DayTodoItemList = (props) => {
                 move_stop,
                 "cursor-move",
                 "target",
-                checkClassName,
               ].join(" ")}
               isdrag={isDrag ? 1 : 0}
               //! onDragStart: Element를 드래그하기 시작할 때
@@ -374,7 +373,9 @@ const DayTodoItemList = (props) => {
                   defaultValue={val.content}
                 ></textarea>
               ) : (
-                <span className="notTarget">{val.content}</span>
+                <span className={["notTarget", checkClassName].join(" ")}>
+                  {val.content}
+                </span>
               )}
             </li>
           );
