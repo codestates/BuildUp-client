@@ -39,7 +39,7 @@ function Profile() {
       <section id="profile-section-a" className="profile-section-same">
         <div>
           <article id="profile-label-box">
-            <label className="profile-label-name">Display Username</label>
+            <label className="profile-label-name">유저네임</label>
           </article>
           <article id="profile-info-box">
             <span className="profile-info-name">{userInfo.username}</span>
@@ -47,7 +47,7 @@ function Profile() {
         </div>
         <article>
           <div id="profile-label-box">
-            <label className="profile-label-name">Display Email</label>
+            <label className="profile-label-name">이메일</label>
           </div>
           <div id="profile-info-box">
             <span className="profile-info-name">{userInfo.email}</span>

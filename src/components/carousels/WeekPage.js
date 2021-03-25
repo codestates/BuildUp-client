@@ -76,11 +76,17 @@ function WeekPage() {
   return (
     <section id="week-container" className="disable-select week-title-font">
       <div id="week-main-title">
-        <button onClick={handlePrevWeek}>왼쪽</button>
+        <button onClick={handlePrevWeek} className="left-btn week-left-btn">
+          &#60;
+        </button>
+
         <span id="week-title" className="week-title-font">
           Week
         </span>
-        <button onClick={handleNextWeek}>오른쪽</button>
+
+        <button onClick={handleNextWeek} className="right-btn week-right-btn">
+          &#62;
+        </button>
       </div>
       <div id="week-todo-container">
         <div id="week-todo-subtitle-container">{renderDays()}</div>
