@@ -90,7 +90,6 @@ function TodoManager(props) {
       createTodoList({ order: maxOrder + 1, content: word, date, id: PK }),
     );
 
-    //
     setMaxorder(maxOrder + 1);
     setAlert("");
     toggleTextarea();
@@ -134,7 +133,6 @@ function TodoManager(props) {
             <textarea
               maxLength="100"
               onChange={(e) => {
-                console.log(e.target.value);
                 setWord(e.target.value);
               }}
             ></textarea>

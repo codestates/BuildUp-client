@@ -241,7 +241,6 @@ const TodoManagerListContainer = (props) => {
 
   const handleEditText = (key) => {
     setEditKey(key);
-    console.log(editKey);
   };
 
   const handleEditTextConfirm = async (PK) => {

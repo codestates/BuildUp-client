@@ -45,7 +45,6 @@ const toDoItemsReducer = (state = initialState, action) => {
     case ACTIONS.DELETE_TODOLIST: {
       // payload is {id}
       const newItems = Object.assign([], state.todoItems);
-      console.log(newItems);
       let idx;
       for (let i = 0; i < state.todoItems.length; i++) {
         const item = state.todoItems[i];
