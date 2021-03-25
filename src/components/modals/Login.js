@@ -6,6 +6,11 @@ import {
   toggleModal,
   setUserInfo,
 } from "../../actions/index";
+import {
+  isValidEmail,
+  isValidPassword,
+  isValidID,
+} from "../../utilities/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -37,6 +42,18 @@ function Login(props) {
     }
 
     // TODO 2. 아이디와 비밀번호 유효성 검사
+    // TODO 아이디, 이메일, 비밀번호 유효성 검사
+    if (!isValidEmail(email)) {
+      setAlert("유효하지 않은 이메일 주소입니다.");
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setAlert(
+        "비밀번호는 영문, 숫자, 특수문자 조합으로 8~20자로 작성해야 합니다.",
+      );
+      return;
+    }
 
     // TODO 3. Send Request to Server
     axios
@@ -47,7 +64,6 @@ function Login(props) {
       )
       .then((data) => {
         const token = data.data.data.accessToken;
-        console.log("01. 로그인 이후 토큰을 받아옵니다.", token);
         dispatch(setAccessToken(token));
         dispatch(toggleModal());
         dispatch(toggleLoginStatus());
@@ -61,7 +77,6 @@ function Login(props) {
         });
       })
       .then((data) => {
-        console.log("02. 토큰을 가지고 사용자 정보를 가져옵니다.");
         const { username, email } = data.data.data;
         dispatch(setUserInfo(username, email));
       })

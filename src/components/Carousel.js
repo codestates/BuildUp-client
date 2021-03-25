@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import DayPage from "./carousels/DayPage";
 import WeekPage from "./carousels/WeekPage";
 import MonthPage from "./carousels/MonthPage";
 import Summary from "./carousels/Summary";
+import { toggleModal } from "../actions/index";
 import "./css/temporary-CSS-for-Carousel.css";
 
 function Carousel() {
+  const dispatch = useDispatch();
   const [pos, setPos] = useState(0);
   const [direction, setDirection] = useState("");
   const [isValid, setValid] = useState(true);
+
+  const modalState = useSelector((state) => state.modalStateReducer);
+  const isModalOpen = modalState.modalStatus;
+
   const items = [<Summary />, <DayPage />, <WeekPage />, <MonthPage />];
   let container = [];
 
@@ -35,6 +42,8 @@ function Carousel() {
     setDirection("left");
     containerHandler(items);
 
+    if (isModalOpen) dispatch(toggleModal());
+
     setTimeout(() => {
       let newPos = pos;
       --newPos < 0 ? setPos(items.length - 1) : setPos(newPos);
@@ -51,6 +60,8 @@ function Carousel() {
     setValid(false);
     setDirection("right");
     containerHandler(items);
+
+    if (isModalOpen) dispatch(toggleModal());
 
     setTimeout(() => {
       let newPos = pos;

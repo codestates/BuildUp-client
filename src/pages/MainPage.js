@@ -28,7 +28,6 @@ export default function MainPage() {
   const accessToken = accessTokenState.accessToken;
 
   useEffect(() => {
-    console.log("MAINPAGE USEEFFECT가 작동하고 있습니다");
     if (isLogin) {
       if (todoItems.length === 0) {
         const loadItems = async () => {

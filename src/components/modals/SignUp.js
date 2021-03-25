@@ -7,6 +7,11 @@ import {
   faEnvelope,
   faUnlockAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  isValidEmail,
+  isValidPassword,
+  isValidID,
+} from "../../utilities/index";
 
 require("dotenv").config();
 const axios = require("axios");
@@ -43,6 +48,29 @@ function SignUp(props) {
       return;
     }
     // TODO 아이디, 이메일, 비밀번호 유효성 검사
+
+    // !아이디는 대소문자 구분없이 영문 + 숫자로 작성해야 합니다.
+    // ! 아이디는 5자 이상, 15자 이하여야 합니다.
+
+    // ! 비밀번호는 8자 이상, 20자 이하로 작성해야 합니다.
+    // ! 비밀번호는 특수문자(공백, 줄바꿈 포함)이 없어야합니다.
+    // ! 비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.
+
+    if (!isValidID(username)) {
+      setAlert("아이디는 영문과 숫자로 5~15자로 작성해야 합니다.");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setAlert("유효하지 않은 이메일 주소입니다.");
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setAlert("비밀번호는 영문, 숫자, 특수문자로 8~20자로 작성해야 합니다.");
+      return;
+    }
+
     // TODO Send Request
     axios
       .post(`${scheme}://${host}:${port}/user/signup`, {
