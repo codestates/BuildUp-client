@@ -8,7 +8,7 @@ Build-Up은 일정을 관리하는 서비스를 제공하며 하루하루가 쌓
 쉽게 지나치거나 흘려버리기 쉬운 하루에 대한 시작과 끝을 **Build-Up**과 함께 해 보세요! :wink:
 
 
-# SKILLS
+# :wrench: SKILLS
 ## FRONT
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
@@ -24,7 +24,7 @@ Build-Up은 일정을 관리하는 서비스를 제공하며 하루하루가 쌓
 react, redux, hooks
 node.js, sequelize, mysql, nginx, aws ec2, amazon rds, express
 
-# Architecture
+# :bulb: Architecture
 
 ## Client-side Flow chart
 <img src = "https://drive.google.com/uc?export=view&id=1ryr2keaGKPazvPOdvma91FyPp-QHNyiX">
@@ -34,7 +34,7 @@ node.js, sequelize, mysql, nginx, aws ec2, amazon rds, express
 ![BuildUp (2)](https://user-images.githubusercontent.com/67426853/112517423-a1fd0500-8ddb-11eb-8c0e-d712e781b64e.jpg)
 
 
-# Team Build-Up
+# :star: Team Build-Up
 #### :sunglasses:  [정진규](https://github.com/kavoom2) <img src="https://img.shields.io/badge/-Front--End-red"/> <img src="https://img.shields.io/badge/-Captain-yellow"/>
 #### :ghost:  [홍성현](https://github.com/hsh411) <img src="https://img.shields.io/badge/-Front--End-red"/>
 #### :smirk_cat:  [전성재](https://github.com/jeon-seongjae) <img src="https://img.shields.io/badge/-Back--End-9cf"/>
