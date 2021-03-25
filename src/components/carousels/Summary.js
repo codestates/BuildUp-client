@@ -97,7 +97,7 @@ function Summary() {
         <article className="summary-item">
           <div className="header">오늘</div>
           <div className="percent">
-            {getPercent(dayChecked, dayTotal)}
+            <b>{getPercent(dayChecked, dayTotal)}</b>
             <span className="mini-percent">{getUnits(dayTotal)}</span>
           </div>
           <div className="count">
@@ -110,7 +110,7 @@ function Summary() {
         <article className="summary-item">
           <div className="header">이번주</div>
           <div className="percent">
-            {getPercent(weekChecked, weekTotal)}
+            <b>{getPercent(weekChecked, weekTotal)}</b>
             <span className="mini-percent">{getUnits(weekTotal)}</span>
           </div>
           <div className="count">
@@ -123,8 +123,7 @@ function Summary() {
         <article className="summary-item">
           <div className="header">이번달</div>
           <div className="percent">
-            {" "}
-            {getPercent(monthChecked, monthTotal)}
+            <b>{getPercent(monthChecked, monthTotal)}</b>
             <span className="mini-percent">{getUnits(monthTotal)}</span>
           </div>
           <div className="count">
