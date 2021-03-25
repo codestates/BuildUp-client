@@ -79,6 +79,15 @@ function MonthPage() {
                 dateSelector.month,
               ).padStart(2, 0)}-${String(dateSelector.day).padStart(2, 0)}`,
             ),
+            "yyyy",
+          )}
+          &nbsp;
+          {format(
+            parseISO(
+              `${String(dateSelector.year).padStart(4, 0)}-${String(
+                dateSelector.month,
+              ).padStart(2, 0)}-${String(dateSelector.day).padStart(2, 0)}`,
+            ),
             "MMM",
           )}
         </span>
