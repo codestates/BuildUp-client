@@ -1,5 +1,8 @@
 # 📌 Build-Up
-Build-Up은 학생, 직장인, 개발자 등 다양한 사람들의 일정 관리를 도주는 서비스입니다.    
+<img src="https://drive.google.com/uc?export=view&id=1l-cvsOltC1QdAuz6pXDh6t59oDi4orUH" width=300px/>
+
+
+#### Build-Up은 학생, 직장인, 개발자 등 다양한 사람들의 일정 관리를 도주는 서비스입니다.
 
 Build-Up은 일정을 관리하는 서비스를 제공하며 하루하루가 쌓여 큰 결실을 맺고 성장한다는 의미로,
 조금 부족하더라도 어제보다 성장한 하루를 쌓아가자는 저희의 모토를 담고 있습니다.
