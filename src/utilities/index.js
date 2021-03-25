@@ -1,3 +1,5 @@
+import { isValid } from "date-fns";
+
 require("dotenv").config();
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
@@ -153,10 +155,9 @@ export const fetch_custom = {
       })
       .then((data) => {
         const token = data.data.accessToken;
-        console.log("새로 발급된 ACCESSTOKEN은", token);
         return token;
       })
-      .catch((err) => console.log("ACCESS TOKEN 발급에 문제가 있습니다", err));
+      .catch((err) => console.log(err));
 
     return result;
   },
@@ -305,7 +306,7 @@ export const getWeatherCode = (code) => {
 
 // --------- 유효성 검사 메서드입니다 --------- //
 
-export const isValidEamil = (str) => {
+export const isValidEmail = (str) => {
   // ! 이메일 유형에 맞는지
   const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   return regExp.test(str);
@@ -315,7 +316,7 @@ export const isValidPassword = (str) => {
   // ! 비밀번호는 8자 이상, 20자 이하로 작성해야 합니다.
   // ! 비밀번호는 특수문자(공백, 줄바꿈 포함)이 없어야합니다.
   // ! 비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.
-  const regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8, 20}$/;
+  const regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/i;
   return regExp.test(str);
 };
 

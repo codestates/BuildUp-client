@@ -65,7 +65,7 @@ function TodoManager(props) {
   };
   const handleAddTodo = async () => {
     if (word.length === 0) {
-      setAlert("최소 1자 이상 입력해야 합니다.");
+      setAlert("최소 한 글자 이상 입력해야 합니다.");
       return;
     }
     let { year, month, day } = dateSelector;
