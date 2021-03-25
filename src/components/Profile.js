@@ -38,21 +38,21 @@ function Profile() {
 
       <section id="profile-section-a" className="profile-section-same">
         <div>
-          <div id="profile-label-box">
+          <article id="profile-label-box">
             <label className="profile-label-name">Display Username</label>
-          </div>
-          <div id="profile-info-box">
+          </article>
+          <article id="profile-info-box">
             <span className="profile-info-name">{userInfo.username}</span>
-          </div>
+          </article>
         </div>
-        <div>
+        <article>
           <div id="profile-label-box">
             <label className="profile-label-name">Display Email</label>
           </div>
           <div id="profile-info-box">
             <span className="profile-info-name">{userInfo.email}</span>
           </div>
-        </div>
+        </article>
       </section>
     </div>
   );

@@ -99,7 +99,7 @@ export default function MainPage() {
       </header>
       <section>
         <article id="top-h"></article>
-        <article id="welcome-box">
+        <article id="welcome-box" classNam="welcome-text-box">
           <h3 className="welcome-text">환영합니다</h3>
         </article>
         {/* <div id="btn-demo-box" className="btn-demo-box">

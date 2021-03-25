@@ -102,7 +102,7 @@ function Summary() {
       className="disable-select summary-title-font"
     >
       <div id="summary-main-container">
-        <div className="summary-item">
+        <article className="summary-item">
           <div className="header">오늘</div>
           <div className="percent">
             {getPercent(dayChecked, dayTotal)}
@@ -114,8 +114,8 @@ function Summary() {
           <div className="detail">
             {getMessage(dayChecked, dayTotal, "오늘")}
           </div>
-        </div>
-        <div className="summary-item">
+        </article>
+        <article className="summary-item">
           <div className="header">이번주</div>
           <div className="percent">
             {getPercent(weekChecked, weekTotal)}
@@ -127,8 +127,8 @@ function Summary() {
           <div className="detail">
             {getMessage(weekChecked, weekTotal, "이번주")}
           </div>
-        </div>
-        <div className="summary-item">
+        </article>
+        <article className="summary-item">
           <div className="header">이번달</div>
           <div className="percent">
             {" "}
@@ -141,7 +141,7 @@ function Summary() {
           <div className="detail">
             {getMessage(monthChecked, monthTotal, "이번달")}
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );
