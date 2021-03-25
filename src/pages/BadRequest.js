@@ -1,14 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  toggleModal,
-  setModalType,
-  setUserInfo,
-  toggleLoginStatus,
-  setAccessToken,
-  setRefreshToken,
-} from "../actions/index";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import Carousel from "../components/Carousel";
 require("dotenv").config();
 
 export default function BadRequest() {

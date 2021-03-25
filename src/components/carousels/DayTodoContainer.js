@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-datyTodoContainer.css";
-import { fetch_custom } from "../../utilities/index.js";
-import { updateTodoList } from "../../actions/index";
+import { fetch_custom, jwt_isExpired } from "../../utilities/index.js";
+import { updateTodoList, setAccessToken } from "../../actions/index";
 import { format } from "date-fns";
 
 const _initGrabData = {
@@ -127,14 +127,19 @@ const DayTodoItemList = (props) => {
     }
   };
 
-  const handleUpdateListOrder = (lists) => {
-    // // TODO: List Order를 UPDATE하는 함수
+  const handleUpdateListOrder = async (lists) => {
     if (lists.length <= 0 && !lists) return;
     for (let idx = 0; idx < lists.length; idx++) {
       const storeIdx = todoItems.indexOf(lists[idx]);
       const item = todoItems[storeIdx];
       const { id, content, checked, order } = item;
       if (order === idx) continue;
+
+      // if (jwt_isExpired(accessToken)) {
+      //   let token = await fetch_custom.getAccessToken(accessToken);
+      //   await dispatch(setAccessToken(token));
+      // }
+
       dispatch(updateTodoList({ id, content, checked, order: idx }));
       fetch_custom.updateTodo(accessToken, {
         id,
@@ -145,7 +150,7 @@ const DayTodoItemList = (props) => {
     }
   };
 
-  const handleCheckboxEvent = (e) => {
+  const handleCheckboxEvent = async (e) => {
     if (e.target.value !== "checkbox") return;
     const PK = Number(e.target.parentNode.dataset.key);
     let index;
@@ -159,6 +164,12 @@ const DayTodoItemList = (props) => {
     const item = todoItems[index];
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
+
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
     dispatch(updateTodoList({ id, content, order, checked }));
     fetch_custom.updateTodo(accessToken, {
       id,
