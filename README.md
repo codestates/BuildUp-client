@@ -27,9 +27,11 @@ node.js, sequelize, mysql, nginx, aws ec2, amazon rds, express
 # Architecture
 
 ## Client-side Flow chart
-
+<img src = "https://drive.google.com/uc?export=view&id=1ryr2keaGKPazvPOdvma91FyPp-QHNyiX">
 
 ## Server-side Flow chart
+![BuildUp (1)](https://user-images.githubusercontent.com/67426853/112517405-9dd0e780-8ddb-11eb-811c-b74607ade6b1.jpg)
+![BuildUp (2)](https://user-images.githubusercontent.com/67426853/112517423-a1fd0500-8ddb-11eb-8c0e-d712e781b64e.jpg)
 
 
 # Team Build-Up
