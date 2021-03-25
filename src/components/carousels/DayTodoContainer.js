@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-datyTodoContainer.css";
 import { fetch_custom, jwt_isExpired } from "../../utilities/index.js";
-import { updateTodoList, setAccessToken } from "../../actions/index";
+import {
+  updateTodoList,
+  setAccessToken,
+  deleteTodoList,
+} from "../../actions/index";
 import { format } from "date-fns";
 
 const _initGrabData = {
@@ -18,6 +22,8 @@ const DayTodoItemList = (props) => {
   const [lists, setLists] = useState([]);
   const [grab, setGrab] = useState(_initGrabData);
   const [isDrag, setIsDrag] = useState(false);
+  const [editText, setEditText] = useState("");
+  const [editKey, setEditKey] = useState("");
 
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
   const accessTokenState = useSelector((state) => state.accessTokenReducer);
@@ -193,6 +199,93 @@ const DayTodoItemList = (props) => {
     setLists(sorted);
   };
 
+  const handleDeleteTodo = async (PK) => {
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
+    dispatch(deleteTodoList({ id: PK }));
+    fetch_custom.removeTodo(accessToken, { id: PK });
+
+    // TODO: LIST에도 체크 여부를 전달해야 한다.
+    let date = format(props.pos, "yyyy-MM-dd").split("-");
+    const year = date[0].padStart(4, "0");
+    const month = date[1].padStart(2, "0");
+    const day = date[2].padStart(2, "0");
+
+    const curPos = `${year}-${month}-${day}`;
+
+    const sorted = todoItems.filter((el) => {
+      if (el.date === curPos) {
+        return true;
+      }
+      return false;
+    });
+
+    setLists(sorted);
+  };
+
+  const handleUpdateTextarea = (e) => {
+    setEditText(e.target.value);
+  };
+
+  const handleEditText = (key) => {
+    setEditKey(key);
+  };
+
+  const handleEditTextConfirm = async (PK) => {
+    if (editText.length === 0) return;
+    let index;
+
+    for (let i = 0; i < todoItems.length; i++) {
+      const item = todoItems[i];
+      if (item.id === PK) {
+        index = i;
+        break;
+      }
+    }
+
+    const item = todoItems[index];
+    let { id, checked, order } = item;
+
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
+    dispatch(updateTodoList({ id, content: editText, order, checked }));
+    fetch_custom.updateTodo(accessToken, {
+      id,
+      content: editText,
+      order,
+      isChecked: checked,
+    });
+
+    // TODO: LIST에도 체크 여부를 전달해야 한다.
+    let date = format(props.pos, "yyyy-MM-dd").split("-");
+    const year = date[0].padStart(4, "0");
+    const month = date[1].padStart(2, "0");
+    const day = date[2].padStart(2, "0");
+
+    const curPos = `${year}-${month}-${day}`;
+
+    const sorted = todoItems.filter((el) => {
+      if (el.date === curPos) {
+        return true;
+      }
+      return false;
+    });
+
+    setLists(sorted);
+    setEditText("");
+    handleExitEditText();
+  };
+
+  const handleExitEditText = () => {
+    setEditKey(null);
+  };
+
   return (
     <React.Fragment>
       {/* ! onDragOver: 드래그를 내렸을 때 발생하는 이벤트, Event.target은 덮어씌워진 Element(자신)  */}
@@ -239,7 +332,50 @@ const DayTodoItemList = (props) => {
                 defaultChecked={val.checked}
                 className="notTarget"
               />
-              <span className="notTarget">{val.content}</span>
+              {editKey === val.id ? (
+                <>
+                  <button
+                    className="notTarget"
+                    onClick={() => {
+                      handleEditTextConfirm(val.id);
+                    }}
+                  >
+                    확인
+                  </button>
+                  <button className="notTarget" onClick={handleExitEditText}>
+                    취소
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="notTarget"
+                    onClick={() => {
+                      handleEditText(val.id);
+                    }}
+                  >
+                    편집
+                  </button>
+                  <button
+                    className="notTarget"
+                    onClick={() => {
+                      handleDeleteTodo(val.id);
+                    }}
+                  >
+                    삭제
+                  </button>
+                </>
+              )}
+              {editKey === val.id ? (
+                <textarea
+                  maxLength="100"
+                  className={["notTarget", val.id, "textarea"].join(" ")}
+                  onChange={handleUpdateTextarea}
+                  defaultValue={val.content}
+                ></textarea>
+              ) : (
+                <span className="notTarget">{val.content}</span>
+              )}
             </li>
           );
         })}

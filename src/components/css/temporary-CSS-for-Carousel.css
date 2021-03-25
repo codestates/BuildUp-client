@@ -131,23 +131,12 @@
 
   #week-container #week-main-title {
     /* border-radius: 0.5rem; */
+    display: flex;
     color: var(--main-color-hightlight);
     opacity: 0.98;
     padding: 0.3rem;
-    display: flex;
     align-items: center;
-  }
-
-  #week-main-title > button {
-    /* padding: 1rem; */
-    /* padding-left: 2rem;
-    padding-right: 2rem; */
-    font-size: 1.5rem;
-  }
-
-  #week-main-title > span {
-    margin-left: 5rem;
-    margin-right: 5rem;
+    justify-content: space-evenly;
   }
 
   #week-main-title .week-title-font {
@@ -221,12 +210,5 @@
   #week-main-title > span {
     margin-left: 10rem;
     margin-right: 10rem;
-  }
-
-  #month-main .left-btn {
-    margin-left: 7px;
-  }
-  #month-main .right-btn {
-    margin-right: 7px;
   }
 }

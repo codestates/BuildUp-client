@@ -4,7 +4,14 @@ import "../css/temporary-CSS-for-Carousel.css";
 import WeekTodoSubContainer from "./WeekTodoSubContainer";
 import "../css/temporary-CSS-weekTodoContainer.css";
 import { setDateSelector } from "../../actions/index";
-import { startOfWeek, addDays, addWeeks, format, parseISO } from "date-fns";
+import {
+  startOfWeek,
+  addDays,
+  addWeeks,
+  format,
+  parseISO,
+  getWeekOfMonth,
+} from "date-fns";
 
 function WeekPage() {
   const dispatch = useDispatch();
@@ -73,6 +80,33 @@ function WeekPage() {
     dispatch(setDateSelector(newYear, newWeek, newDay));
   };
 
+  const getWeekNumber = () => {
+    function ordinal_suffix_of(i) {
+      var j = i % 10,
+        k = i % 100;
+      if (j == 1 && k != 11) {
+        return i + "st";
+      }
+      if (j == 2 && k != 12) {
+        return i + "nd";
+      }
+      if (j == 3 && k != 13) {
+        return i + "rd";
+      }
+      return i + "th";
+    }
+
+    let weekNum = getWeekOfMonth(
+      parseISO(
+        `${String(dateSelector.year).padStart(4, 0)}-${String(
+          dateSelector.month,
+        ).padStart(2, 0)}-${String(dateSelector.day).padStart(2, 0)}`,
+      ),
+    );
+
+    return ordinal_suffix_of(weekNum);
+  };
+
   return (
     <section id="week-container" className="disable-select week-title-font">
       <div id="week-main-title">
@@ -81,6 +115,8 @@ function WeekPage() {
         </button>
 
         <span id="week-title" className="week-title-font">
+          {/* {getWeekNumber()} */}
+          {/* &nbsp;  */}
           Week
         </span>
 
