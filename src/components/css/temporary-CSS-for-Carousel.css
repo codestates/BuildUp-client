@@ -196,7 +196,6 @@
   .right-btn {
     border-radius: 5px;
     padding: 15px 10px 15px 10px;
-
     font-size: 2em;
   }
   #week-main-title {
@@ -205,8 +204,8 @@
     align-items: center;
   }
   #week-main-title > span {
-    margin-left: 33.3rem;
-    margin-right: 33.3rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
 
   #month-main .left-btn {
