@@ -40,6 +40,6 @@ node.js, sequelize, mysql, nginx, aws ec2, amazon rds, express
 #### :smirk_cat:  [전성재](https://github.com/jeon-seongjae) <img src="https://img.shields.io/badge/-Back--End-9cf"/>
 #### :smiling_imp:  [김서경](https://github.com/riley909) <img src="https://img.shields.io/badge/-Back--End-9cf"/>
 
-# Project Details
+# :book: Project Details
 ### [Build-Up WIKI](https://github.com/codestates/BuildUp-client/wiki)
 
