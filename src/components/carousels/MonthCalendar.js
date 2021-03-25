@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { js_date } from "../../utilities/index";
 import "../css/temporary-CSS-for-Carousel.css";
 import "../css/temporary-CSS-monthTodoContainer.css";
 import {
@@ -17,6 +16,7 @@ import {
   format,
   isSameMonth,
   addDays,
+  parseISO,
 } from "date-fns";
 
 function Calendar() {
@@ -24,11 +24,6 @@ function Calendar() {
   const MAX_ELEMENTS_COUNT = 3;
 
   const dispatch = useDispatch();
-  const [time, setTime] = useState(new Date());
-  const [month, setMonth] = useState(js_date.getMonth(time));
-  // !TODO: Force update하도록 해주는 함수
-  // const [, updateState] = React.useState();
-  // const forceUpdate = React.useCallback(() => updateState({}), []);
 
   const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
@@ -45,9 +40,9 @@ function Calendar() {
     const [year, month, day] = date;
 
     if (
-      Number(year) === dateSelector.year &&
-      Number(month) === dateSelector.month &&
-      Number(day) === dateSelector.day
+      Number(year) === Number(dateSelector.year) &&
+      Number(month) === Number(dateSelector.month) &&
+      Number(day) === Number(dateSelector.day)
     )
       return true;
     return false;
@@ -99,14 +94,23 @@ function Calendar() {
   };
 
   const renderCells = () => {
-    const monthStart = startOfMonth(time);
+    let { year, month, day } = dateSelector;
+    const timeObj = parseISO(
+      `${String(year).padStart(4, 0)}-${String(month).padStart(2, 0)}-${String(
+        day,
+      ).padStart(2, 0)}`,
+    );
+
+    const monthStart = startOfMonth(timeObj);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
 
+    const startMonth = format(monthStart, "MM");
+
     const rows = [];
     let days = [];
-    let day = startDate;
+    day = startDate;
     let formattedDate = "";
     let propsDate = "";
 
@@ -114,9 +118,10 @@ function Calendar() {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, "d");
         propsDate = format(day, "yyyy-MM-dd");
+        const targetMonth = format(day, "MM");
         days.push(
           <div
-            onClick={handleDateSelector}
+            onClick={targetMonth === startMonth ? handleDateSelector : () => {}}
             data-date={propsDate}
             className={[
               "col",
@@ -126,6 +131,7 @@ function Calendar() {
                 : isSelectedDay(propsDate)
                 ? "selected"
                 : "",
+              targetMonth === startMonth ? "" : "month-disabled",
             ].join(" ")}
             key={day}
           >

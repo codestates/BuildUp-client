@@ -1,4 +1,4 @@
-const data = require("../Data");
+import { format } from "date-fns";
 
 export const initialState = {
   userInfo: {
@@ -11,5 +11,9 @@ export const initialState = {
   accessToken: "",
   modalStatus: false,
   modalType: "",
-  dateSelector: { year: "", month: "", day: "" },
+  dateSelector: {
+    year: format(new Date(), "yyyy"),
+    month: format(new Date(), "MM"),
+    day: format(new Date(), "dd"),
+  },
 };

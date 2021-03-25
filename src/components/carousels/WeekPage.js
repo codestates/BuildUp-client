@@ -1,55 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "../css/temporary-CSS-for-Carousel.css";
-import { js_date } from "../../utilities/index.js";
 import WeekTodoSubContainer from "./WeekTodoSubContainer";
 import "../css/temporary-CSS-weekTodoContainer.css";
-import { startOfWeek, addDays, format } from "date-fns";
+import { setDateSelector } from "../../actions/index";
+import { startOfWeek, addDays, addWeeks, format, parseISO } from "date-fns";
 
 function WeekPage() {
-  const [time, setTime] = useState(new Date());
-  const [day, setDay] = useState(js_date.getDay(time));
+  const dispatch = useDispatch();
   const [weekArr, setWeekArr] = useState([]);
 
-  const getWeekArr = (time) => {
-    const idx = js_date.getLabel(time, "number");
+  const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
+  const { dateSelector } = dateSelectorState;
 
-    const [year, month, day] = [
-      js_date.getYear(time, "number"),
-      js_date.getMonth(time, "number"),
-      js_date.getDay(time, "number"),
-    ];
+  useEffect(() => {
+    const { day, month, year } = dateSelector;
+    const timeObj = parseISO(
+      `${String(year).padStart(4, 0)}-${String(month).padStart(2, 0)}-${String(
+        day,
+      ).padStart(2, 0)}`,
+    );
+    const startWeekDay = startOfWeek(timeObj);
 
     const sorted = [];
+
     for (let i = 0; i < 7; i++) {
-      let dayMinus = 0;
-      if (day - idx + 1 <= 0) {
-        dayMinus = -1;
-      }
-      const pos = new Date(year, month - 1 + dayMinus, day - idx + i);
+      const pos = addDays(startWeekDay, i);
       sorted.push(pos);
     }
     setWeekArr(sorted);
-  };
-
-  useEffect(() => {
-    getWeekArr(new Date());
-
-    let timeOutId = setInterval(() => {
-      const newTime = new Date();
-      const newTimeDay = js_date.getDay(newTime);
-      if (day !== newTimeDay) {
-        setDay(newTimeDay);
-      }
-
-      setTime(newTime);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeOutId);
-    };
-  }, [day]);
+  }, [dateSelector]);
 
   const renderDays = () => {
+    if (weekArr.length === 0) return;
     const dateFormat = "MM. dd. eee";
     const days = [];
     let startDate = startOfWeek(new Date());
@@ -57,19 +40,47 @@ function WeekPage() {
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="week-todo-subtitle" key={i}>
-          {format(addDays(startDate, i), dateFormat)}
+          {format(weekArr[i], dateFormat)}
         </div>,
       );
     }
     return days;
   };
 
+  const handlePrevWeek = () => {
+    const { day, month, year } = dateSelector;
+    const timeObj = parseISO(
+      `${String(year).padStart(4, 0)}-${String(month).padStart(2, 0)}-${String(
+        day,
+      ).padStart(2, 0)}`,
+    );
+    const startWeekDay = startOfWeek(timeObj);
+    const startDay = addWeeks(startWeekDay, -1);
+    let [newYear, newWeek, newDay] = format(startDay, "yyyy-MM-dd").split("-");
+    dispatch(setDateSelector(newYear, newWeek, newDay));
+  };
+
+  const handleNextWeek = () => {
+    const { day, month, year } = dateSelector;
+    const timeObj = parseISO(
+      `${String(year).padStart(4, 0)}-${String(month).padStart(2, 0)}-${String(
+        day,
+      ).padStart(2, 0)}`,
+    );
+    const startWeekDay = startOfWeek(timeObj);
+    const startDay = addWeeks(startWeekDay, 1);
+    let [newYear, newWeek, newDay] = format(startDay, "yyyy-MM-dd").split("-");
+    dispatch(setDateSelector(newYear, newWeek, newDay));
+  };
+
   return (
     <section id="week-container" className="disable-select week-title-font">
       <div id="week-main-title">
+        <button onClick={handlePrevWeek}>왼쪽</button>
         <span id="week-title" className="week-title-font">
           Week
         </span>
+        <button onClick={handleNextWeek}>오른쪽</button>
       </div>
       <div id="week-todo-container">
         <div id="week-todo-subtitle-container">{renderDays()}</div>
