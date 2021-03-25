@@ -1,16 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "../css/temporary-CSS-for-Carousel.css";
 import "../css/temporary-CSS-summary.css";
-import {
-  startOfWeek,
-  startOfMonth,
-  startOfYear,
-  format,
-  parseJSON,
-  setDay,
-  set,
-} from "date-fns";
+import { startOfWeek, startOfMonth, format } from "date-fns";
 
 function Summary() {
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);

@@ -74,15 +74,12 @@ function TodoManager(props) {
     day = day.toString().padStart(2, "0");
     const date = `${year}-${month}-${day}`;
 
-    //
     // TODO: 1. 토큰이 만료되었는지 확인한다
-    const isExpired = jwt_isExpired(accessToken);
-
     // TODO: 2. 토큰이 만료되었으면 새로운 토큰을 요청한다.
-    if (isExpired) {
-      const token = await fetch_custom.getAccessToken(accessToken);
-      await dispatch(setAccessToken(token));
-    }
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
 
     // TODO 3. 새로 생성할 TODO를 서버에 전송하여 Primary Key를 받는다.
     const data = { order: maxOrder + 1, content: word, now: date };

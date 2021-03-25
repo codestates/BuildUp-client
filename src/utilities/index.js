@@ -3,6 +3,7 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const parseJSON = require("date-fns/parseJSON");
 const addMinutes = require("date-fns/addMinutes");
+const addSeconds = require("date-fns/addSeconds");
 const scheme = process.env.REACT_APP_SERVER_SCHEME;
 const host = process.env.REACT_APP_SERVER_HOST;
 const port = process.env.REACT_APP_SERVER_PORT;
@@ -11,6 +12,13 @@ const accessSecret = process.env.REACT_APP_SERVER_ACCESS_SECRET;
 const URL = `${scheme}://${host}:${port}`;
 
 // --------- Fetch API --------- //
+const app = axios.create({
+  baseURL: URL,
+  withCredentials: true,
+});
+
+axios.default.withCredentials = true;
+
 export const fetch_custom = {
   // ! ENDPOUNT: USER
   getUserInfo: (token) => {
@@ -22,6 +30,7 @@ export const fetch_custom = {
           "Content-Type": "application/json",
         },
         withCredentials: true,
+        crossDomain: true,
       })
       .then((data) => {
         const { username, email } = data.data.data;
@@ -41,6 +50,7 @@ export const fetch_custom = {
           "Content-Type": "application/json",
         },
         withCredentials: true,
+        crossDomain: true,
       })
       .then((data) => {
         const datas = data.data;
@@ -79,6 +89,7 @@ export const fetch_custom = {
             "Content-Type": "application/json",
           },
           withCredentials: true,
+          crossDomain: true,
         },
       )
       .then((data) => {
@@ -103,6 +114,7 @@ export const fetch_custom = {
             "Content-Type": "application/json",
           },
           withCredentials: true,
+          crossDomain: true,
         },
       )
       .then((data) => {
@@ -112,7 +124,7 @@ export const fetch_custom = {
     return result;
   },
 
-  removeTodo: (token, data) => {
+  removeTodo: async (token, data) => {
     // * DATA: {id}
     // * RETURN: nothing;
 
@@ -124,6 +136,7 @@ export const fetch_custom = {
           "Content-Type": "application/json",
         },
         withCredentials: true,
+        crossDomain: true,
       })
       .then((data) => {
         console.log(data);
@@ -134,6 +147,7 @@ export const fetch_custom = {
 
   getAccessToken: (token) => {
     // * RETURN: NEW ACCESSTOKEN
+    console.log("ACCESS TOKEN 재발급을 시작합니다.");
     const result = axios
       .get(`${URL}/user/refreshtokenrequest`, {
         headers: {
@@ -147,7 +161,9 @@ export const fetch_custom = {
         const token = data.data.access_token;
         return token;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("ACCESS TOKEN 발급에 문제가 있습니다", err));
+
+    console.log("ACCESS TOKEN이 성공적으로 재발급되었습니다.", result);
     return result;
   },
 };
@@ -156,14 +172,19 @@ export const fetch_custom = {
 
 export const jwt_isExpired = (token) => {
   // ! TRUE: EXPIRED, FALSE: NOT EXPIRED
+  let result;
   if (!token) return true;
 
-  const decoded = jwt.verify(token, accessSecret);
-  const createdAt = parseJSON(decoded.createdAt);
-  const curTime = addMinutes(new Date(), -30);
-
-  if (createdAt >= curTime) return true;
-  else return false;
+  const decoded = jwt.verify(token, accessSecret, (err, decoded) => {
+    if (err) {
+      console.log("ACCESS TOKEN이 만료되었습니다.", err);
+      result = true;
+      return;
+    }
+    console.log("ACCESS TOKEN이 유효합니다");
+    result = false;
+  });
+  return result;
 };
 
 // --------- 현재 시간을 기준으로 년/월/일을 얻을 수 있는 메서드 --------- //

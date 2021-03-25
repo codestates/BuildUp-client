@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/temporary-CSS-todoManager.css";
-import { deleteTodoList, updateTodoList } from "../../actions/index";
-import { fetch_custom } from "../../utilities/index";
+import {
+  deleteTodoList,
+  updateTodoList,
+  setAccessToken,
+} from "../../actions/index";
+import { fetch_custom, jwt_isExpired } from "../../utilities/index";
 
 const _initGrabData = {
   target: null,
@@ -14,7 +18,6 @@ const _initGrabData = {
 
 const TodoManagerListContainer = (props) => {
   const dispatch = useDispatch();
-  // const [maxOrder, setMaxOrder] = useState(0);
   const [lists, setLists] = useState([]);
   const [grab, setGrab] = useState(_initGrabData);
   const [isDrag, setIsDrag] = useState(false);
@@ -43,8 +46,6 @@ const TodoManagerListContainer = (props) => {
       }
       return false;
     });
-
-    // useEffect(() => {});
 
     sorted.sort((a, b) => a.order - b.order);
 
@@ -138,8 +139,7 @@ const TodoManagerListContainer = (props) => {
     }
   };
 
-  const handleUpdateListOrder = (lists) => {
-    // TODO: List Order를 UPDATE하는 함수
+  const handleUpdateListOrder = async (lists) => {
     if (lists.length <= 0 && lists) return;
 
     for (let idx = 0; idx < lists.length; idx++) {
@@ -147,6 +147,13 @@ const TodoManagerListContainer = (props) => {
       const item = todoItems[storeIdx];
       const { id, content, checked, order } = item;
       if (order === idx) continue;
+
+      // if (jwt_isExpired(accessToken)) {
+      //   console.log("토큰 재발급을 시작합니다.....!");
+      //   let token = await fetch_custom.getAccessToken(accessToken);
+      //   await dispatch(setAccessToken(token));
+      // }
+
       dispatch(updateTodoList({ id, content, checked, order: idx }));
       fetch_custom.updateTodo(accessToken, {
         id,
@@ -161,7 +168,12 @@ const TodoManagerListContainer = (props) => {
     setEditText(e.target.value);
   };
 
-  const handleDeleteTodo = (PK) => {
+  const handleDeleteTodo = async (PK) => {
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
     dispatch(deleteTodoList({ id: PK }));
     fetch_custom.removeTodo(accessToken, { id: PK });
 
@@ -179,12 +191,10 @@ const TodoManagerListContainer = (props) => {
       return false;
     });
 
-    console.log(sorted);
-
     setLists(sorted);
   };
 
-  const handleCheckboxEvent = (PK) => {
+  const handleCheckboxEvent = async (PK) => {
     let index;
 
     for (let i = 0; i < todoItems.length; i++) {
@@ -198,6 +208,12 @@ const TodoManagerListContainer = (props) => {
     const item = todoItems[index];
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
+
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
     dispatch(updateTodoList({ id, content, order, checked }));
     fetch_custom.updateTodo(accessToken, {
       id,
@@ -228,7 +244,7 @@ const TodoManagerListContainer = (props) => {
     console.log(editKey);
   };
 
-  const handleEditTextConfirm = (PK) => {
+  const handleEditTextConfirm = async (PK) => {
     if (editText.length === 0) return;
     let index;
 
@@ -242,6 +258,12 @@ const TodoManagerListContainer = (props) => {
 
     const item = todoItems[index];
     let { id, checked, order } = item;
+
+    // if (jwt_isExpired(accessToken)) {
+    //   let token = await fetch_custom.getAccessToken(accessToken);
+    //   await dispatch(setAccessToken(token));
+    // }
+
     dispatch(updateTodoList({ id, content: editText, order, checked }));
     fetch_custom.updateTodo(accessToken, {
       id,

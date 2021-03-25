@@ -2,13 +2,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Profile from "../components/Profile";
 import ProfilePassword from "../components/ProfilePassword";
-import { useHistory } from "react-router";
 
 export default function MyPage() {
-  const history = useHistory();
-  const handleRedirectToMain = () => {
-    history.push("/");
-  };
   return (
     <div id="myPage-box" className="myPage-box">
       <aside id="myPage-aside">

@@ -7,7 +7,6 @@ import {
   faEnvelope,
   faUnlockAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { set } from "date-fns";
 
 require("dotenv").config();
 const axios = require("axios");

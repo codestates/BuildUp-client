@@ -40,7 +40,11 @@ function Login(props) {
 
     // TODO 3. Send Request to Server
     axios
-      .post(`${scheme}://${host}:${port}/user/login`, { email, password })
+      .post(
+        `${scheme}://${host}:${port}/user/login`,
+        { email, password },
+        { withCredentials: true, crossDomain: true },
+      )
       .then((data) => {
         const token = data.data.data.accessToken;
         dispatch(setAccessToken(token));
@@ -52,6 +56,7 @@ function Login(props) {
             "Content-Type": "application/json",
           },
           withCredentials: true,
+          crossDomain: true,
         });
       })
       .then((data) => {
