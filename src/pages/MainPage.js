@@ -32,10 +32,10 @@ export default function MainPage() {
     if (isLogin) {
       if (todoItems.length === 0) {
         const loadItems = async () => {
-          if (jwt_isExpired(accessToken)) {
-            let token = await fetch_custom.getAccessToken(accessToken);
-            await dispatch(setAccessToken(token));
-          }
+          // if (jwt_isExpired(accessToken)) {
+          //   let token = await fetch_custom.getAccessToken(accessToken);
+          //   await dispatch(setAccessToken(token));
+          // }
           const items = await fetch_custom.getTodoInfo(accessToken);
           await dispatch(getTodoList(items));
         };

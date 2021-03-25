@@ -169,10 +169,10 @@ const TodoManagerListContainer = (props) => {
   };
 
   const handleDeleteTodo = async (PK) => {
-    // if (jwt_isExpired(accessToken)) {
-    //   let token = await fetch_custom.getAccessToken(accessToken);
-    //   await dispatch(setAccessToken(token));
-    // }
+    if (jwt_isExpired(accessToken)) {
+      let token = await fetch_custom.getAccessToken(accessToken);
+      await dispatch(setAccessToken(token));
+    }
 
     dispatch(deleteTodoList({ id: PK }));
     fetch_custom.removeTodo(accessToken, { id: PK });
@@ -209,10 +209,10 @@ const TodoManagerListContainer = (props) => {
     let { id, content, checked, order } = item;
     checked === true ? (checked = false) : (checked = true);
 
-    // if (jwt_isExpired(accessToken)) {
-    //   let token = await fetch_custom.getAccessToken(accessToken);
-    //   await dispatch(setAccessToken(token));
-    // }
+    if (jwt_isExpired(accessToken)) {
+      let token = await fetch_custom.getAccessToken(accessToken);
+      await dispatch(setAccessToken(token));
+    }
 
     dispatch(updateTodoList({ id, content, order, checked }));
     fetch_custom.updateTodo(accessToken, {
@@ -258,10 +258,10 @@ const TodoManagerListContainer = (props) => {
     const item = todoItems[index];
     let { id, checked, order } = item;
 
-    // if (jwt_isExpired(accessToken)) {
-    //   let token = await fetch_custom.getAccessToken(accessToken);
-    //   await dispatch(setAccessToken(token));
-    // }
+    if (jwt_isExpired(accessToken)) {
+      let token = await fetch_custom.getAccessToken(accessToken);
+      await dispatch(setAccessToken(token));
+    }
 
     dispatch(updateTodoList({ id, content: editText, order, checked }));
     fetch_custom.updateTodo(accessToken, {
