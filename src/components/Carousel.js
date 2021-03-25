@@ -20,7 +20,7 @@ function Carousel() {
       else if (i > items.length - 1) idx = i - items.length;
 
       const item = (
-        <div className={["carousel-child", direction].join(" ")}>
+        <div key={i} className={["carousel-child", direction].join(" ")}>
           {items[idx]}
         </div>
       );

@@ -104,7 +104,7 @@ function Login(props) {
           </div>
           <div id="sub-login-box">
             <div id="auto-login">
-              <label for="auto-login">자동 로그인</label>
+              <label htmlFor="auto-login">자동 로그인</label>
               <input
                 type="checkbox"
                 name="auto-login"

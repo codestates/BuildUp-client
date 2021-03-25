@@ -336,7 +336,7 @@ const TodoManagerListContainer = (props) => {
                 onClick={() => {
                   handleCheckboxEvent(val.id);
                 }}
-                checked={val.checked}
+                defaultChecked={val.checked}
               />
               <button
                 className="notTarget"

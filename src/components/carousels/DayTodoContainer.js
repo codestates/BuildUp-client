@@ -236,7 +236,7 @@ const DayTodoItemList = (props) => {
                 type="checkbox"
                 value="checkbox"
                 onClick={handleCheckboxEvent}
-                checked={val.checked}
+                defaultChecked={val.checked}
                 className="notTarget"
               />
               <span className="notTarget">{val.content}</span>
