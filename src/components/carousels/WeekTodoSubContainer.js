@@ -98,7 +98,7 @@ function WeekTodoSubContainer(props) {
     >
       {lists.map((el, idx) => {
         return (
-          <div className="week-todo-subcontainer-item">
+          <div key={idx} className="week-todo-subcontainer-item">
             <li
               key={`${el.id}`}
               data-order={`${el.order}`}
