@@ -127,15 +127,32 @@ body {
   flex-basis: 100px;
   flex-direction: column;
 }
+/* 버튼 설정*/
 
-#welcome-box .welcome-text {
+#welcome-box {
+  text-shadow: 0 0 1.8rem rgba(26, 43, 46, 0.65);
+}
+
+.welcome-text {
   text-align: center;
   align-items: center;
   font-size: 7rem;
   animation: text-fadein 1s;
   color: var(--main-colco-text);
+  transition: all 0.5s ease;
 }
 
+.welcome-text:hover {
+  font-size: 8.5rem;
+  color: var(--main-colco-text);
+}
+
+@media screen and (max-width: 800px) {
+  .welcome-text {
+    font-size: 5em;
+    color: var(--main-colco-text);
+  }
+}
 /* 
 로그인 후
 인사
@@ -177,12 +194,6 @@ body {
   flex-basis: 100px;
 }
 
-/* 버튼 설정*/
-
-#welcome-box {
-  text-shadow: 0 0 1.8rem rgba(26, 43, 46, 0.65);
-}
-
 /*타임*/
 #main-clock {
   display: flex;
@@ -196,14 +207,29 @@ body {
 
 #main-clock .time-clock {
   font-size: 2em;
+  font-weight: 600;
 }
 
 #main-clock .time-date {
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
-#main-clock .time-message {
+.time-message {
   align-items: center;
-  font-size: 4em;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 3.5em;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: black;
+}
+
+.time-message:hover {
+  font-size: 4.7rem;
+  color: var(--main-colco-text);
+}
+
+@media screen and (max-width: 800px) {
+  .time-message {
+    font-size: 2em;
+    color: var(--main-colco-text);
+  }
 }

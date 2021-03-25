@@ -19,7 +19,7 @@ export default function BuildUpTime() {
   const day = today.toLocaleDateString(locale, { weekday: "long" });
   const date = `${today.toLocaleDateString(locale, {
     month: "long",
-  })}, ${today.getDate()}, ${day}`;
+  })} ${today.getDate()}일 ${day}`;
 
   const hour = today.getHours();
   const min = today.getMinutes();
