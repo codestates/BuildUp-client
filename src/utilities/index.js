@@ -117,9 +117,7 @@ export const fetch_custom = {
           crossDomain: true,
         },
       )
-      .then((data) => {
-        console.log("data");
-      })
+      .then((data) => {})
       .catch((err) => console.log(err));
     return result;
   },
@@ -138,16 +136,13 @@ export const fetch_custom = {
         withCredentials: true,
         crossDomain: true,
       })
-      .then((data) => {
-        console.log(data);
-      })
+      .then((data) => {})
       .catch((err) => console.log(err));
     return result;
   },
 
   getAccessToken: (token) => {
     // * RETURN: NEW ACCESSTOKEN
-    console.log("ACCESS TOKEN 재발급을 시작합니다.");
     const result = axios
       .get(`${URL}/user/refreshtokenrequest`, {
         headers: {
@@ -157,13 +152,11 @@ export const fetch_custom = {
         withCredentials: true,
       })
       .then((data) => {
-        console.log(data);
         const token = data.data.access_token;
         return token;
       })
       .catch((err) => console.log("ACCESS TOKEN 발급에 문제가 있습니다", err));
 
-    console.log("ACCESS TOKEN이 성공적으로 재발급되었습니다.", result);
     return result;
   },
 };
@@ -177,11 +170,11 @@ export const jwt_isExpired = (token) => {
 
   const decoded = jwt.verify(token, accessSecret, (err, decoded) => {
     if (err) {
-      console.log("ACCESS TOKEN이 만료되었습니다.", err);
+      // console.log("ACCESS TOKEN이 만료되었습니다.", err);
       result = true;
       return;
     }
-    console.log("ACCESS TOKEN이 유효합니다");
+    // console.log("ACCESS TOKEN이 유효합니다");
     result = false;
   });
   return result;
@@ -271,8 +264,6 @@ export const geoInit = () => {
 
   var geoSuccess = function (position) {
     startPos = position;
-    console.log(startPos.coords.latitude);
-    console.log(startPos.coords.longitude);
 
     // ! 위치정보를 가져오는지 확인합니다.(임시)
     const coords = {
@@ -280,10 +271,8 @@ export const geoInit = () => {
       longitude: startPos.coords.longitude,
     };
     const code = getWeatherCode(getWeather(coords));
-    console.log("Weather code :", code);
   };
   var geoError = function (error) {
-    console.log("Error occurred. Error code: " + error.code);
     // error.code can be:
     //   0: unknown error
     //   1: permission denied
