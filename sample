@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lobster&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 에니메이션 효과 */
+@keyframes text-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes text2-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 
+로그인 하기전 메인페이지
+인사
+데모 체험 페이지
+*/
+#main-page-before {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+#main-page-before #header {
+  /* border: green solid 1px; */
+  padding: 10px;
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main-header-name {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  font-family: "Dancing Script", cursive;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  transition: 0.6s;
+  cursor: pointer;
+}
+.main-header-name::after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px var(--main-color-white);
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.main-header-name:hover:after {
+  transform: scaleX(1);
+}
+
+.main-header-name:after {
+  transform-origin: 0% 50%;
+}
+
+#main-page-before #button-box {
+  display: flex;
+  flex-direction: row;
+}
+
+#top-h,
+#top-l {
+  flex: 15%;
+}
+#welcome-box {
+  flex: 40%;
+}
+/*로그인 로그아웃 버튼 설정*/
+.button-box .main-btn {
+  position: absolute;
+  border-radius: 0px;
+  font-size: 1.4rem;
+  background-color: inherit;
+}
+.main-btn {
+  border-width: 0px;
+  border-color: var(--main-color-white);
+  border-style: solid;
+  transition: 0.1s ease-in-out;
+}
+
+.main-btn:hover {
+  border-width: 3px;
+  font-size: 1.5rem;
+  transition: 0.1s ease-in-out;
+}
+/* header 버튼 위치 */
+.main-signup-btn {
+  right: 120px;
+}
+.main-profile-btn {
+  right: 140px;
+}
+
+.main-login-btn {
+  right: 30px;
+}
+.main-logout-btn {
+  right: 30px;
+}
+
+/* flex 비율 설정 */
+#main-page-before section {
+  display: flex;
+  flex: 80%;
+  flex-direction: column;
+}
+#main-page-before footer {
+  display: flex;
+  flex-basis: 100px;
+  flex-direction: column;
+}
+/* 버튼 설정*/
+
+#welcome-box {
+  text-shadow: 0 0 1.8rem rgba(26, 43, 46, 0.65);
+}
+
+.welcome-text {
+  text-align: center;
+  align-items: center;
+  font-size: 7.5rem;
+  font-family: "Lobster", cursive;
+  animation: text-fadein 1s;
+  color: var(--main-colco-text);
+  transition: all 0.5s ease;
+}
+
+.welcome-text:hover {
+  font-size: 8.5rem;
+  font-family: "Lobster", cursive;
+  color: var(--main-colco-text);
+}
+
+@media screen and (max-width: 800px) {
+  .welcome-text {
+    font-size: 5em;
+    color: var(--main-colco-text);
+  }
+}
+/* 
+로그인 후
+인사
+데모 체험 페이지
+*/
+
+#main-page-after {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: hidden;
+
+  animation: bg 1s;
+}
+
+#main-page-after #header {
+  /* border: green solid 1px; */
+  padding: 10px;
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#main-page-after #button-box {
+  display: flex;
+  flex-direction: row;
+}
+/* flex 비율 설정 */
+#main-page-after section {
+  /* border: green solid 1px; */
+  display: flex;
+  flex: 80%;
+  flex-direction: column;
+}
+#main-page-after footer {
+  /* border: green solid 1px; */
+  display: flex;
+  flex-basis: 100px;
+}
+
+/*타임*/
+#main-clock .time-zone {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-colco-text);
+}
+
+#main-clock .time-clock {
+  font-size: 1.5em;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+}
+
+#main-clock .time-date {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1em;
+}
+#main-clock .time-message {
+  display: block;
+  position: absolute;
+  align-items: center;
+  margin-left: 41%;
+  top: 50%;
+}
+
+.time-box {
+  display: block;
+  position: absolute;
+  top: 0px;
+  box-sizing: border-box;
+
+  margin-left: 45%;
+  margin-right: 40%;
+  border-radius: 0px 0px 20px 20px;
+  padding: 10px;
+  transition: ease-out 0.5s;
+}
+
+.time-box:hover {
+  background-color: rgba(255, 255, 255, 0.548);
+  color: black;
+  transition: ease-in 0.5s;
+}
+
+.time-message {
+  font-size: 3.7em;
+  transition: all 0.3s ease;
+}
+
+.time-message:hover {
+  color: var(--main-colco-text);
+}
+
+@media screen and (max-width: 800px) {
+  .time-message {
+    font-size: 2em;
+    color: var(--main-colco-text);
+  }
+}
+
+
+import React, { useEffect, useRef, useState } from "react";
+import "../css/MainPage.css";
+
+export default function BuildUpTime() {
+  const locale = "ko";
+  const [today, setDate] = useState(new Date()); // Save the current date to be able to trigger an update
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      //1 분마다 현재 데이터를 업데이트한다.
+      setDate(new Date());
+    }, (60 * 1000) / 1000);
+
+    return () => {
+      clearInterval(timer); // 마운트 해제시 호출되지 않도록 타이머를 지우는 기능
+    };
+  }, []);
+
+  const day = today.toLocaleDateString(locale, { weekday: "long" });
+  const date = `${today.toLocaleDateString(locale, {
+    month: "long",
+  })} ${today.getDate()}일 ${day}`;
+
+  const hour = today.getHours();
+  const min = today.getMinutes();
+  const sec = today.getSeconds();
+
+  const time = today.toLocaleTimeString({
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric",
+  });
+  const wish = ` ${
+    (time <= 12 && "대충 오전 아무말") ||
+    (time <= 17 && "대충 오후 아무말") ||
+    (time <= 20 && "대충 저녁 아무말") ||
+    "대충 빨리 자라"
+  }`;
+  return (
+    <div>
+      <section className="time-zone">
+        <article className="time-message">{wish}</article>
+        <div className="time-box">
+          <article className="time-clock">{time}</article>
+
+          <article className="time-date"> {date} </article>
+        </div>
+      </section>
+    </div>
+  );
+}
+// let time = new Date().toLocaleTimeString();
+
+// const [ntime, setNTime] = useState(time);
+
+// const startTime = () => {
+//   time = new Date().toLocaleTimeString();
+//   setNTime(time);
+// };
+
+// setInterval(startTime, 1000);
+// return <span className="time">{ntime}</span>;

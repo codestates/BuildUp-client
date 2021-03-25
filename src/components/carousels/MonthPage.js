@@ -71,7 +71,9 @@ function MonthPage() {
   return (
     <section id="month-container" className="disable-select">
       <div id="month-main">
-        <button onClick={handlePrevMonth}>왼쪽</button>
+        <button onClick={handlePrevMonth} className="left-btn month-left-btn">
+          &#60;
+        </button>
         <span id="month-header">
           {format(
             parseISO(
@@ -91,7 +93,9 @@ function MonthPage() {
             "MMM",
           )}
         </span>
-        <button onClick={handleNextMonth}>오른쪽</button>
+        <button onClick={handleNextMonth} className="right-btn month-right-btn">
+          &#62;
+        </button>
       </div>
       <div id="month-main-days">{renderDays()}</div>
 

@@ -24,28 +24,29 @@ export default function BuildUpTime() {
   const hour = today.getHours();
   const min = today.getMinutes();
   const sec = today.getSeconds();
-  const wish = `대충 ${
-    (hour < 12 && "오전 아무말") ||
-    (hour < 17 && "오후 아무말") ||
-    "저녁 아무말"
-  }`;
 
-  const time = today.toLocaleTimeString(locale, {
-    hour: "numeric",
+  const time = today.toLocaleTimeString({
     hour12: true,
+    hour: "numeric",
     minute: "numeric",
   });
-
+  const wish = ` ${
+    (time <= 12 && "대충 오전 아무말") ||
+    (time <= 17 && "대충 오후 아무말") ||
+    (time <= 20 && "대충 저녁 아무말") ||
+    "대충 빨리 자라"
+  }`;
   return (
-    <span className="time-zone">
-      <section>
-        <article className="time-clock">
-          {time}:{sec}
-        </article>
-        <article className="time-date">{date}</article>
+    <div>
+      <section className="time-zone">
         <article className="time-message">{wish}</article>
+        <div className="time-box">
+          <article className="time-clock">{time}</article>
+
+          <article className="time-date"> {date} </article>
+        </div>
       </section>
-    </span>
+    </div>
   );
 }
 // let time = new Date().toLocaleTimeString();
