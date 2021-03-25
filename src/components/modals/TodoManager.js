@@ -22,6 +22,10 @@ function TodoManager(props) {
     el.scrollTo(0, 0);
   }, [dateSelector]);
 
+  useEffect(() => {
+    setTextarea(false);
+  }, []);
+
   const handleDateChangerLeft = () => {
     const { year, month, day } = dateSelector;
     let [newYear, newMonth, newDay] = [year, month, day];

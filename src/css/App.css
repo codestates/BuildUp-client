@@ -30,7 +30,7 @@
   --border-radius: 5px;
   --box-padding: 46px;
   --set-background-wallpaper: url("../background1.jpeg");
-  --set-background-wallpaper1: url("../wallpaper5.jpg");
+  /* --set-background-wallpaper: url("../wallpaper5.jpg"); */
 }
 
 html {
