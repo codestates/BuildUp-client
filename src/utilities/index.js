@@ -164,20 +164,22 @@ export const fetch_custom = {
 // --------- DECODE ACCESS WEB TOKEN --------- //
 
 export const jwt_isExpired = (token) => {
-  // ! TRUE: EXPIRED, FALSE: NOT EXPIRED
-  let result;
-  if (!token) return true;
+  // // ! TRUE: EXPIRED, FALSE: NOT EXPIRED
+  // let result;
+  // if (!token) return true;
 
-  const decoded = jwt.verify(token, accessSecret, (err, decoded) => {
-    if (err) {
-      // console.log("ACCESS TOKEN이 만료되었습니다.", err);
-      result = true;
-      return;
-    }
-    // console.log("ACCESS TOKEN이 유효합니다");
-    result = false;
-  });
-  return result;
+  // const decoded = jwt.verify(token, accessSecret, (err, decoded) => {
+  //   if (err) {
+  //     // console.log("ACCESS TOKEN이 만료되었습니다.", err);
+  //     result = true;
+  //     return;
+  //   }
+  //   // console.log("ACCESS TOKEN이 유효합니다");
+  //   result = false;
+  // });
+  // return result;
+
+  return false;
 };
 
 // --------- 현재 시간을 기준으로 년/월/일을 얻을 수 있는 메서드 --------- //

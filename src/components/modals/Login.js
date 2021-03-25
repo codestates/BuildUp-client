@@ -47,6 +47,7 @@ function Login(props) {
       )
       .then((data) => {
         const token = data.data.data.accessToken;
+        console.log("01. 로그인 이후 토큰을 받아옵니다.", token);
         dispatch(setAccessToken(token));
         dispatch(toggleModal());
         dispatch(toggleLoginStatus());
@@ -60,6 +61,7 @@ function Login(props) {
         });
       })
       .then((data) => {
+        console.log("02. 토큰을 가지고 사용자 정보를 가져옵니다.");
         const { username, email } = data.data.data;
         dispatch(setUserInfo(username, email));
       })

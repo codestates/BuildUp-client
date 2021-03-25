@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 require("dotenv").config();
 
 export default function BadRequest() {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const handleRedirectToMain = () => {
