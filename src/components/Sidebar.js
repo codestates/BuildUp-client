@@ -21,7 +21,7 @@ function Sidebar(props) {
       </div>
       <button className="sidebar-btn-back" onClick={handleRedirectToMain}>
         <FontAwesomeIcon icon={faHome} size="1x" className="icon" />
-        &nbsp; 메인 페이지로 돌아가기
+        &nbsp; 메인 페이지
       </button>
     </div>
   );

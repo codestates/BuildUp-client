@@ -315,6 +315,7 @@ const TodoManagerListContainer = (props) => {
               "todo-manager-item",
               classNames,
               move_stop,
+              val.id,
               "cursor-move",
             ].join(" ")}
             isdrag={isDrag ? 1 : 0}
@@ -359,9 +360,11 @@ const TodoManagerListContainer = (props) => {
                 <span className="notTarget">
                   <textarea
                     maxLength="100"
-                    className="notTarget"
+                    className={["notTarget", val.id, "textarea"].join(" ")}
                     onChange={handleUpdateTextarea}
-                  ></textarea>
+                  >
+                    {val.content}
+                  </textarea>
                   <button
                     className="notTarget"
                     onClick={() => {
