@@ -15,7 +15,6 @@ function WeekTodoSubContainer(props) {
   const MAX_ELEMENTS_COUNT = 8;
 
   const dispatch = useDispatch();
-  const [time, setTime] = useState(props.pos);
   const [lists, setLists] = useState([]);
 
   const todoItemsState = useSelector((state) => state.toDoItemsReducer);
@@ -24,15 +23,15 @@ function WeekTodoSubContainer(props) {
   const modalState = useSelector((state) => state.modalStateReducer);
   const modalTypeState = useSelector((state) => state.modalTypeReducer);
   const dateSelectorState = useSelector((state) => state.dateSelectorReducer);
+  const { year, month, day } = dateSelectorState;
   const isModalOpen = modalState.modalStatus;
   const { modalType } = modalTypeState;
-  const { year, month, day } = dateSelectorState;
 
   useEffect(() => {
     const [year, month, day] = [
-      js_date.getYear(time),
-      js_date.getMonth(time),
-      js_date.getDay(time),
+      format(props.pos, "yyyy"),
+      format(props.pos, "MM"),
+      format(props.pos, "dd"),
     ];
     const curPos = `${year}-${month}-${day}`;
 
@@ -50,17 +49,18 @@ function WeekTodoSubContainer(props) {
       }
       return false;
     });
+
     setLists(sorted);
-  }, [time, todoItems]);
+  }, [props.pos, todoItems]);
 
   const handleModalTodoManager = () => {
     if (!isModalOpen) dispatch(toggleModal());
     if (modalType !== "TODOMANAGER") dispatch(setModalType("TODOMANAGER"));
 
     let [newYear, newMonth, newDay] = [
-      js_date.getYear(time),
-      js_date.getMonth(time),
-      js_date.getDay(time),
+      format(props.pos, "yyyy"),
+      format(props.pos, "MM"),
+      format(props.pos, "dd"),
     ];
 
     if (newYear === year && newMonth === month && newDay === day) return;
@@ -79,9 +79,9 @@ function WeekTodoSubContainer(props) {
     const [year, month, day] = date;
 
     if (
-      curYear === Number(year) &&
-      curMonth === Number(month) &&
-      curDay === Number(day)
+      Number(curYear) === Number(year) &&
+      Number(curMonth) === Number(month) &&
+      Number(curDay) === Number(day)
     )
       return true;
     return false;
@@ -91,7 +91,7 @@ function WeekTodoSubContainer(props) {
     <div
       className={[
         "week-todo-subcontainer",
-        isSelectedDay(time) ? "selected" : "",
+        isSelectedDay(props.pos) ? "selected" : "",
       ].join(" ")}
       key="idx"
       onClick={handleModalTodoManager}
