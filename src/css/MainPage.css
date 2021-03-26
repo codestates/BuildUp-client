@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Orbitron:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lobster&display=swap");
 
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 * {
   box-sizing: border-box;
 }
@@ -219,11 +220,13 @@ body {
   font-size: 1em;
 }
 #main-clock .time-message {
-  display: block;
+  display: flex;
+  justify-content: center;
   position: absolute;
-  align-items: center;
-  margin-left: 41%;
   top: 50%;
+  left: 16%;
+  animation: text2-fadein 1.5s;
+  font-family: "Nanum Pen Script", serif;
 }
 
 .time-box {
