@@ -230,6 +230,28 @@ body {
   animation: text2-fadein 1.5s;
   font-family: "Nanum Pen Script", serif;
 }
+@media screen and (max-height: 800px) {
+  #main-clock .time-message {
+    font-size: 3em;
+    top: 60%;
+    color: var(--main-colco-text);
+  }
+}
+@media screen and (max-height: 500px) {
+  #main-clock .time-message {
+    font-size: 2em;
+    top: 60%;
+    color: var(--main-colco-text);
+  }
+}
+
+@media screen and (max-height: 300px) {
+  #main-clock .time-message {
+    font-size: 1em;
+    top: 70%;
+    color: var(--main-colco-text);
+  }
+}
 
 .time-box {
   display: block;
