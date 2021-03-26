@@ -22,6 +22,7 @@ export default function BuildUpTime() {
   })} ${today.getDate()}일 ${day}`;
 
   const hour = today.getHours();
+  // const getHour = hour - 12;
   const min = today.getMinutes();
   const sec = today.getSeconds();
 
@@ -31,9 +32,9 @@ export default function BuildUpTime() {
     minute: "numeric",
   });
   const wish = ` ${
-    (hour <= 12 && "좋은 오전 입니다. 상쾌한 하루를 시작해 보세요!") ||
-    (hour <= 17 && "식사는 맛있게 하셨나요? 오후도 보람차게 보내세요!") ||
-    "하루 잘 마무리 하셨나요? 즐거운 저녁 되세요 "
+    (hour < 12 && "좋은 오전 입니다. 상쾌한 하루를 시작해 보세요!") ||
+    (hour < 17 && "식사는 맛있게 하셨나요? 오후도 보람차게 보내세요!") ||
+    (hour < 22 && "하루 잘 마무리 하셨나요? 즐거운 저녁 되세요")
   }`;
   return (
     <div>
@@ -59,3 +60,11 @@ export default function BuildUpTime() {
 
 // setInterval(startTime, 1000);
 // return <span className="time">{ntime}</span>;
+/*
+  if (paramType === 'day') {
+    unit = 1000 * 60 * 60 * 24; // 일 단위
+  } else if (paramType === 'hour') {
+    unit = 1000 * 60 * 60; // 시간
+  } else if (paramType === 'minute') {
+    unit = 1000 * 60; // 분
+*/
