@@ -21,8 +21,6 @@ Build-Up은 일정을 관리하는 서비스를 제공하며 하루하루가 쌓
 <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white"/>
 <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
 
-react, redux, hooks
-node.js, sequelize, mysql, nginx, aws ec2, amazon rds, express
 
 # :bulb: Architecture
 
