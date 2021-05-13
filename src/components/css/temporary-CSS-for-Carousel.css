@@ -1,0 +1,214 @@
+:root {
+  --sidebar-width: 200px;
+  --sidebar-padding: 30px;
+  --section-padding: 10px;
+  --body-max-width: 920px;
+  --body-padding-top: 38px;
+  --header-bottom-margin: 50px;
+  --add-button-gradient-height: 15px;
+  --border-radius: 5px;
+  --box-padding: 46px;
+}
+/* Profile Main Page Same Option*/
+@media all and (min-width: 800px) {
+  /* Aside */
+  #carousel-aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    width: 150px;
+    height: 80%;
+    top: 0px;
+    z-index: 1000;
+  }
+  #carousel-aside.left {
+    left: 0px;
+    margin-top: 70px;
+  }
+  #carousel-aside.right {
+    right: 0px;
+
+    margin-top: 70px;
+  }
+
+  /* Btn */
+  .btn-carousel {
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+    color: var(--main-color-carousel-title);
+    font-weight: bolder;
+  }
+
+  .btn-carousel:hover + {
+    color: rgb(75, 75, 75);
+  }
+  .aside-btn-box {
+    background-color: rgba(73, 73, 73, 0.253);
+    border-radius: 5px;
+    padding: 0 10px;
+    transition: 0.45s;
+  }
+  .aside-btn-box:hover {
+    background-color: var(--main-color-carousel-subtitlebg);
+  }
+
+  /* Carousel */
+  #carousel-item-container {
+    position: relative;
+    left: -100%;
+    background: inherit;
+    width: 300%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .carousel-child {
+    /* display: flex; */
+    overflow: hidden;
+    background: inherit;
+    width: 33.33333%;
+    height: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+
+    transition-duration: 0s;
+  }
+
+  .carousel-child.left {
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transform: translate(100%, 0);
+  }
+
+  .carousel-child.right {
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transform: translate(-100%, 0);
+  }
+
+  #day-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    height: 80vh;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
+  }
+  /*week-containers */
+  #week-container {
+    display: flex;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    height: 80vh;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
+  }
+
+  #summary-container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background-color: var(--main-color-carousel-white);
+    box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
+  }
+
+  #week-container #week-main-title {
+    /* border-radius: 0.5rem; */
+    display: flex;
+    color: var(--main-color-hightlight);
+    opacity: 0.98;
+    padding: 0.3rem;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  #week-main-title .week-title-font {
+    font-size: 3.8rem;
+    font-weight: 500;
+    font-family: "Quicksand", sans-serif;
+  }
+  /* month-containers */
+  #month-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    height: 80vh;
+
+    align-items: center;
+    border-radius: 0.4rem;
+    box-shadow: 0rem 0.1rem 1rem 0rem rgba(50, 50, 50, 0.8);
+  }
+
+  #month-todo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    margin-left: 7rem;
+    margin-right: 7rem;
+  }
+
+  #dayTodoItem {
+    height: 4rem;
+    transition-duration: 0.4s;
+    list-style: none;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .grabbing {
+    cursor: grabbing;
+    /* transform: translateX(-10000px); */
+    /* color: rgba(0, 0, 0, 0); */
+  }
+
+  .move_stop {
+    transition-duration: 0s;
+  }
+
+  .move_down {
+    transform: translate(0, 41px);
+  }
+
+  .move_up {
+    transform: translate(0, -41px);
+  }
+
+  /*Month, Week Pages*/
+  .left-btn {
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+    font-size: 2em;
+  }
+  .right-btn {
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+    font-size: 2em;
+  }
+  #week-main-title {
+    display: flex;
+
+    align-items: center;
+  }
+  #week-main-title > span {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}

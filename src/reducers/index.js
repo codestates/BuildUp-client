@@ -1,11 +1,20 @@
 import { combineReducers } from "redux";
-const initialState = require("./initialState");
+import loginStatusReducer from "./loginStatusReducer";
+import toDoItemsReducer from "./toDoItemsReducer";
+import userInfoReducer from "./userInfoReducer";
+import accessTokenReducer from "./accessTokenReducer";
+import modalStateReducer from "./modalStatusReducer";
+import modalTypeReducer from "./modalTypeReducer";
+import dateSelectorReducer from "./dateSelectorReducer";
 
 const rootReducer = combineReducers({
-  reducer1: (state = initialState, action) => {
-    return state;
-  },
-  //...
+  loginStatusReducer,
+  toDoItemsReducer,
+  userInfoReducer,
+  accessTokenReducer,
+  modalStateReducer,
+  modalTypeReducer,
+  dateSelectorReducer,
 });
 
 export default rootReducer;

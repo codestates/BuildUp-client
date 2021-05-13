@@ -1,0 +1,161 @@
+@media all and (min-width: 550px) {
+  #modal-container.active {
+    position: fixed;
+    overflow: auto;
+    border: none 1px solid;
+    transition: 0.6s ease;
+    filter: drop-shadow(0 0 0.3rem grey);
+  }
+  /* login, signUP seletor */
+
+  .authOption.active {
+    color: #272727fa;
+    transition: 0.1s;
+    cursor: pointer;
+  }
+
+  .authOption.active::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .authOption.active:hover {
+    color: #272727fa;
+  }
+
+  .authOption.active:hover:after {
+    transform: scaleX(1);
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+  }
+
+  .authOption.inactive {
+    color: var(--main-color-lightgrey);
+  }
+
+  .authOption.inactive::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-hightlight-sub);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .authOption.inactive:hover {
+    color: #272727fa;
+  }
+  .authOption.inactive:hover:after {
+    transform: scaleX(1);
+  }
+  /* .authOption {
+    color: #000;
+  }
+  .authOption.active:after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px var(--main-color-grey);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .active:focus:after {
+    transform: scaleX(1);
+  } */
+  .modal-close-btn {
+    position: absolute;
+    box-sizing: border-box;
+    right: 10px;
+    top: 10px;
+    font-size: 1em;
+    border-radius: 7px;
+    font-weight: bold;
+  }
+
+  /* container */
+  #modal-container {
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+
+    padding: 1rem;
+
+    width: 400px;
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+
+    border-radius: 0.6rem;
+
+    position: absolute;
+    z-index: 999999;
+    top: 0.8rem;
+    right: 0.5rem;
+    overflow: auto;
+    background-color: rgba(250, 251, 251, 0.9);
+  }
+
+  /*애니메이션 효과 */
+
+  /* @keyframes animatetop {
+  from {
+    top: -200px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+} */
+
+  .input-icons {
+    position: relative;
+  }
+  .input-icons input[type="text"],
+  .input-icons input[type="password"] {
+    padding-left: 35px;
+  }
+  .input-icons .icon {
+    position: absolute;
+    color: #aaa;
+    left: 0;
+    top: 19px;
+    transition: 0.3s;
+    padding: 1px 5px;
+    margin-left: 5px;
+  }
+
+  .input-icons .icon:focus {
+    /* color: dodgerBlue; */
+    color: var(--main-color-hightlight-sub);
+  }
+
+  #modal-header-daySelector {
+    display: flex;
+    flex-wrap: nowrap;
+    /* width: 6rem; */
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+  }
+
+  #modal-header-daySelector span {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+
+  #auto-login {
+    display: flex;
+    text-align: center;
+  }
+}
+
+#modal-container.deactive {
+  color: rgba(255, 255, 255, 0.5);
+  top: -100vh;
+  transition: 0.6s ease;
+  /* display: none; */
+}

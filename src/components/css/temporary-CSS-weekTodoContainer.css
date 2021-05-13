@@ -1,0 +1,57 @@
+#week-todo-container {
+  display: flex;
+  flex: 2;
+  width: 100%;
+  /* background-color: inherit; */
+  flex-direction: column;
+  /* border-radius: 0.4rem; */
+  /* padding: 0px 1px 0px 1px; */
+}
+
+#week-todo-subtitle-container {
+  display: flex;
+}
+
+#week-todo-container-lists {
+  background-color: var(--main-color-carousel-white);
+  display: flex;
+  flex: 1;
+  padding: 0.6rem;
+}
+
+.week-todo-subcontainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0.8rem;
+  overflow: hidden;
+  border-right: 1px solid var(--main-color-carousel-lightgrey);
+  transition: 0.3s;
+}
+
+.week-todo-subcontainer:last-child {
+  border-right: none;
+}
+
+.week-todo-subcontainer-item {
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--main-color-carousel-lightgrey);
+  max-height: 12.5%;
+  min-height: 12.5%;
+}
+
+.week-todo-subcontainer > li {
+  display: inline;
+  word-break: normal;
+}
+
+.week-todo-subtitle {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5em;
+  background-color: var(--main-color-carousel-subtitlebg);
+  color: var(--main-color-carousel-title);
+  padding: 0.5rem;
+}
